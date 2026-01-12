@@ -1,75 +1,76 @@
 import { Quiz } from './types'
 
-    id: 'js-adv-1',
-   
+export const ADVANCED_QUIZZES: Quiz[] = [
+  {
     id: 'js-adv-1',
     topic: 'javascript',
     question: 'What will this closure return?',
     code: `function createCounter() {
-    options: ['0
-    explanation: 'The
-  },
-   
- 
-  if (e.target.matches('.child')
-  }
-    options: ['Adding mul
-    explanation: 'Event delegation uses event bubbling to hand
-  },
-    id: 'js-adv-3',
-    question: 'What will
-  .t
-  .
-    correctAnswer: 
-    difficulty: 'hard'
-  {
-    topic: 'javascript',
-    code: `console.log(x);
-    options: ['Error', 'undefined
-   
-  },
-    id: 'js-adv-5',
-    question: 'What i
-const { a, b } = obj;
-    options: ['Error', '
-    
-  }
-    id: 'ts-adv-1',
-    question: 'What is a
-function process(value: StringOrNumber) {
-}`,
-    correctAnswer: 
-    difficulty: 'easy'
-  {
-    topic: 'typescript',
-    code: `function p
-    return value.toUpperCase();
-  return value * 2;
-    
-   
-  },
-    id: 'ts-adv-3',
-    question: 'What is the keyof o
-type PointKeys = keyof Poi
-    correctA
+  let count = 0;
+  return () => ++count;
+}
+const counter = createCounter();
+console.log(counter());
+console.log(counter());`,
+    options: ['0, 0', '1, 1', '1, 2', 'undefined, undefined'],
+    correctAnswer: 2,
+    explanation: 'The closure maintains access to the count variable, incrementing it with each call.',
     difficulty: 'medium'
+  },
   {
-    topic: 'typescript',
-    code: `function iden
-}`,
-   
-    difficulty: 'me
+    id: 'js-adv-2',
+    topic: 'javascript',
+    question: 'What is event delegation?',
+    code: `document.getElementById('parent').addEventListener('click', (e) => {
+  if (e.target.matches('.child')) {
+    console.log('Child clicked');
+  }
+});`,
+    options: ['Adding multiple listeners', 'Using event bubbling to handle child events', 'Creating custom events', 'Preventing default behavior'],
+    correctAnswer: 1,
+    explanation: 'Event delegation uses event bubbling to handle events on child elements from a parent listener.',
+    difficulty: 'hard'
+  },
   {
-    topic: 'typescript',
-    code: `type User = { name: string;
+    id: 'js-adv-3',
+    topic: 'javascript',
+    question: 'What will this output?',
+    code: `const promise = new Promise((resolve) => {
+  console.log(1);
+  resolve();
+}).then(() => {
+  console.log(2);
+});
+console.log(3);`,
+    options: ['1, 2, 3', '1, 3, 2', '3, 1, 2', '2, 1, 3'],
+    correctAnswer: 1,
+    explanation: 'Promise executor runs synchronously, then 3 is logged, and finally the then callback in the microtask queue.',
+    difficulty: 'hard'
+  },
+  {
+    id: 'js-adv-4',
+    topic: 'javascript',
+    question: 'What is hoisting?',
+    code: `console.log(x);
+var x = 5;`,
+    options: ['Error', 'undefined', '5', 'null'],
+    correctAnswer: 1,
+    explanation: 'Variable declarations are hoisted to the top but not their assignments, so x is undefined.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'js-adv-5',
+    topic: 'javascript',
+    question: 'What is destructuring?',
+    code: `const obj = { a: 1, b: 2 };
 const { a, b } = obj;
 console.log(a);`,
     options: ['Error', '1', 'undefined', '{a: 1}'],
-    topic: 'react',
+    correctAnswer: 1,
     explanation: 'Destructuring extracts properties from objects into distinct variables.',
     difficulty: 'easy'
   },
-   
+  {
     id: 'ts-adv-1',
     topic: 'typescript',
     question: 'What is a union type?',
@@ -80,9 +81,9 @@ function process(value: StringOrNumber) {
     options: ['Type intersection', 'Type that can be one of several types', 'Type alias', 'Generic type'],
     correctAnswer: 1,
     explanation: 'Union types allow a value to be one of several types, denoted with the | operator.',
+    difficulty: 'easy'
   },
-  },
-   
+  {
     id: 'ts-adv-2',
     topic: 'typescript',
     question: 'What is type narrowing?',
@@ -97,24 +98,24 @@ function process(value: StringOrNumber) {
     explanation: 'Type narrowing refines union types to more specific types within conditional blocks.',
     difficulty: 'medium'
   },
-   
+  {
     id: 'ts-adv-3',
     topic: 'typescript',
     question: 'What is the keyof operator?',
     code: `type Point = { x: number; y: number };
 type PointKeys = keyof Point;`,
     options: ['Creates new keys', 'Gets union of all keys', 'Deletes keys', 'Renames keys'],
-        yield i
-    explanation: 'keyof creates a union type of all keys in an object type.',
     correctAnswer: 1,
-    
-   
+    explanation: 'keyof creates a union type of all keys in an object type.',
+    difficulty: 'medium'
+  },
+  {
     id: 'ts-adv-4',
     topic: 'typescript',
     question: 'What are generics?',
     code: `function identity<T>(arg: T): T {
   return arg;
-   
+}`,
     options: ['Type variables', 'Reusable type parameters', 'Class inheritance', 'Interface extension'],
     correctAnswer: 1,
     explanation: 'Generics allow you to write reusable code that works with multiple types.',
@@ -126,137 +127,76 @@ type PointKeys = keyof Point;`,
     question: 'What does the Partial utility type do?',
     code: `type User = { name: string; age: number };
 type PartialUser = Partial<User>;`,
-    difficulty: 'medium'
-  {
-    topic: 'django',
+    options: ['Makes all properties required', 'Makes all properties optional', 'Removes all properties', 'Duplicates the type'],
+    correctAnswer: 1,
+    explanation: 'Partial<T> creates a type with all properties of T set to optional.',
     difficulty: 'medium'
   },
   {
-  {
-    topic: 'django'
-    code: `User.objects.filter(active=True)`,
+    id: 'react-adv-1',
+    topic: 'react',
+    question: 'What is useCallback used for?',
+    code: `const memoizedCallback = useCallback(
+  () => {
+    doSomething(a, b);
+  },
+  [a, b]
+);`,
+    options: ['Memoize values', 'Memoize callback functions', 'Handle side effects', 'Manage state'],
     correctAnswer: 1,
-    difficulty: 'easy
+    explanation: 'useCallback memoizes callback functions to prevent unnecessary re-renders.',
+    difficulty: 'medium'
+  },
   {
-    topic: 'django',
-    code: `MIDDLEWARE
-]`,
+    id: 'react-adv-2',
+    topic: 'react',
+    question: 'What does useMemo do?',
+    code: `const expensiveValue = useMemo(() => {
+  return computeExpensiveValue(a, b);
+}, [a, b]);`,
+    options: ['Memoizes callbacks', 'Memoizes computed values', 'Handles effects', 'Creates refs'],
     correctAnswer: 1,
-    
+    explanation: 'useMemo memoizes expensive computed values to avoid recalculation on every render.',
+    difficulty: 'medium'
+  },
   {
-    topic: 'django',
-    code: `Author.o
+    id: 'python-adv-1',
+    topic: 'python',
+    question: 'What are generators?',
+    code: `def counter():
+    i = 0
+    while True:
+        yield i
+        i += 1`,
+    options: ['Functions that return lists', 'Functions that return iterators', 'Class methods', 'Lambda functions'],
     correctAnswer: 1,
+    explanation: 'Generators use yield to return iterators that produce values lazily.',
     difficulty: 'hard'
-  {
-    topic: 'c
-    code: `div:not(.special) { color: red; }`,
-    correctAnswer: 1,
-    difficulty: 'medium'
-  {
-    
-   
-    options: ['Grid la
-    explanation: 'F
   },
-    id: 'css-adv-3',
-    question: 'What does t
-    options: ['Animates elements', 'Applies 2D/3D transformations', 'Changes color', 'Modifies text'
-    explanation: 'The
-  },
-    id: 'css-adv-4',
-    
-col
-    correctAnswer: 1,
-    difficulty: 'me
   {
-    topic: 'c
-    code: `@media (max-width: 768px) {
-}`,
+    id: 'python-adv-2',
+    topic: 'python',
+    question: 'What is a decorator?',
+    code: `@my_decorator
+def my_function():
+    pass`,
+    options: ['A comment', 'A function that modifies another function', 'A class method', 'An import statement'],
     correctAnswer: 1,
-    difficulty: 'easy'
-]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    explanation: 'Decorators are functions that modify or enhance other functions or classes.',
+    difficulty: 'hard'
+  },
+  {
+    id: 'django-adv-1',
+    topic: 'django',
+    question: 'What is a Django signal?',
+    code: `from django.db.models.signals import post_save
+post_save.connect(my_handler, sender=MyModel)`,
+    options: ['Database query', 'Event notification system', 'URL pattern', 'Template tag'],
+    correctAnswer: 1,
+    explanation: 'Signals allow decoupled applications to get notified when actions occur elsewhere in the framework.',
+    difficulty: 'hard'
+  },
+  {
     id: 'django-adv-2',
     topic: 'django',
     question: 'What does select_related do?',
