@@ -2,73 +2,92 @@ import { Quiz } from './types'
 
 export const ADVANCED_QUIZZES: Quiz[] = [
   {
-    question: 'What
+    id: 'js-adv-1',
+    topic: 'javascript',
+    question: 'What will this closure return?',
+    code: `function createCounter() {
   let count = 0;
+  return function() {
     return ++count;
-}`,
-    correctAnswe
+  };
+}
+const counter = createCounter();
+console.log(counter(), counter());`,
+    options: ['0 0', '1 1', '1 2', 'undefined undefined'],
+    correctAnswer: 2,
+    explanation: 'Closures maintain access to their outer scope. The count variable persists between calls, so it returns 1 then 2.',
     difficulty: 'hard'
-  {
-   
-   
-    correctAnswer: 1,
-    difficulty: 'hard
-  {
-    topic: 'javascript
-    
-   
-    difficulty: 'me
-  {
-    topic: 'javascript',
-    code: `element.addEventListener('click', handler);`,
-    correctAnswer: 0,
-    difficulty: 'medi
-  {
-    topic: 'javascript
-    
-   
-    explanation: 'O
   },
-    id: 'js-adv-6',
-    question: 'What is the Tempo
-let x = 5;`,
-    correctAnswer: 1,
-    difficulty: 'hard'
   {
-    
-   
-  let y = 10;
-console.log(x, y);`,
-    correctAnswer: 1,
-    difficulty: 'medium'
-  {
-    topic: 'javascrip
-    code: `const obj = {a: 1};
-console.log(obj.a);`,
-    
-   
-  {
+    id: 'js-adv-2',
     topic: 'javascript',
-    code: `console.log(x);
-    options: ['5', 'undefined', 'Error', 'nul
-    explanat
-  },
-    id: 'js-adv-10',
-    question: 'What does Array.map() return?',
-    options: ['[1, 2, 3]
-    
+    question: 'What is event delegation?',
+    code: `document.getElementById('parent').addEventListener('click', (e) => {
+  if (e.target.matches('.child')) {
+    console.log('Child clicked');
   }
-    id: 'ts-adv-1',
-    question: 'What does
-type PartialUser = Partial<User>;`,
+});`,
+    options: ['Adding events to all children', 'Using event bubbling to handle events on parent', 'Removing event listeners', 'Preventing default behavior'],
     correctAnswer: 1,
+    explanation: 'Event delegation uses event bubbling to handle events at a parent level rather than attaching listeners to each child element.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'js-adv-3',
+    topic: 'javascript',
+    question: 'What does this Promise chain do?',
+    code: `Promise.resolve(1)
+  .then(x => x + 1)
+  .then(x => { throw new Error('oops'); })
+  .catch(e => 'error')
+  .then(x => console.log(x));`,
+    options: ['Logs 2', 'Logs "error"', 'Throws error', 'Logs undefined'],
+    correctAnswer: 1,
+    explanation: 'The catch handler catches the error and returns "error", which is passed to the final then.',
+    difficulty: 'hard'
+  },
+  {
+    id: 'js-adv-4',
+    topic: 'javascript',
+    question: 'What does this async/await code log?',
+    code: `async function test() {
+  console.log(1);
+  await Promise.resolve();
+  console.log(2);
+}
+console.log(3);
+test();
+console.log(4);`,
+    options: ['1 2 3 4', '3 1 4 2', '1 3 4 2', '3 4 1 2'],
+    correctAnswer: 1,
+    explanation: 'Synchronous code runs first (3, 1, 4), then the awaited promise resolves and logs 2.',
+    difficulty: 'hard'
+  },
+  {
+    id: 'js-adv-5',
+    topic: 'javascript',
+    question: 'What is the difference between event.preventDefault() and event.stopPropagation()?',
+    code: `element.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+});`,
+    options: ['They do the same thing', 'preventDefault stops default action, stopPropagation stops bubbling', 'They both stop bubbling', 'They both prevent default'],
+    correctAnswer: 1,
+    explanation: 'preventDefault() stops the default browser behavior, while stopPropagation() prevents the event from bubbling up.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'js-adv-6',
+    topic: 'javascript',
+    question: 'What is the Temporal Dead Zone?',
+    code: `console.log(x);
 let x = 5;`,
     options: ['No error', 'ReferenceError', 'undefined', 'null'],
     correctAnswer: 1,
     explanation: 'The Temporal Dead Zone is the period between entering scope and declaration where let/const variables cannot be accessed.',
     difficulty: 'hard'
   },
-   
+  {
     id: 'js-adv-7',
     topic: 'javascript',
     question: 'What is the difference between var and let?',
@@ -127,11 +146,13 @@ type PartialUser = Partial<User>;`,
     difficulty: 'medium'
   },
   {
-}, [a, b]);`,
-    correctAnswer: 1,
-    difficulty: 'medium'
-    code: `if (typeof x === 'string') {
-  x.toUpperCase();
+    id: 'ts-adv-2',
+    topic: 'typescript',
+    question: 'What is type narrowing?',
+    code: `function process(x: string | number) {
+  if (typeof x === 'string') {
+    x.toUpperCase();
+  }
 }`,
     options: ['Type casting', 'Refining types within conditional blocks', 'Creating new types', 'Type assertion'],
     correctAnswer: 1,
@@ -262,133 +283,134 @@ def function():
     yield 2`,
     options: ['A function that returns once', 'A function that yields values lazily', 'A class', 'A decorator'],
     correctAnswer: 1,
-    id: 'django-adv-5',
-    question: 'What is
-    
-   
+    explanation: 'Generators are functions that yield values one at a time, allowing lazy evaluation and memory efficiency.',
+    difficulty: 'hard'
   },
-    id: 'css-adv-1',
-    question: 'What does the :not() pseudo
-    options: ['Selects all but
-    explanation: ':
-  },
-    id: 'css-adv-2',
-    question: 'What is CSS specificity?',
-.class { color: blue; }`
-    
-   
   {
-    topic: 'css',
-    code: `div { transform: translateX
+    id: 'python-adv-4',
+    topic: 'python',
+    question: 'What is list comprehension?',
+    code: `squares = [x**2 for x in range(5)]`,
+    options: ['A loop', 'A concise way to create lists', 'A function', 'A class'],
     correctAnswer: 1,
-    difficulty: '
+    explanation: 'List comprehensions provide a concise syntax for creating lists based on existing iterables.',
+    difficulty: 'easy'
+  },
   {
+    id: 'python-adv-5',
+    topic: 'python',
+    question: 'What does *args do?',
+    code: `def func(*args):
+    print(args)`,
+    options: ['Creates a list', 'Accepts variable number of positional arguments', 'Creates a dictionary', 'Accepts keyword arguments'],
+    correctAnswer: 1,
+    explanation: '*args allows a function to accept any number of positional arguments as a tuple.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'django-adv-1',
+    topic: 'django',
+    question: 'What is a Django QuerySet?',
+    code: `users = User.objects.filter(is_active=True)`,
+    options: ['A list', 'A lazy database query', 'A dictionary', 'A function'],
+    correctAnswer: 1,
+    explanation: 'QuerySets are lazy - they only execute database queries when evaluated.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'django-adv-2',
+    topic: 'django',
+    question: 'What does select_related do?',
+    code: `Book.objects.select_related('author')`,
+    options: ['Filters results', 'Performs SQL JOIN to reduce queries', 'Orders results', 'Creates relationships'],
+    correctAnswer: 1,
+    explanation: 'select_related performs a SQL JOIN to fetch related objects in a single query, reducing database hits.',
+    difficulty: 'hard'
+  },
+  {
+    id: 'django-adv-3',
+    topic: 'django',
+    question: 'What is the purpose of Django middleware?',
+    code: `MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+]`,
+    options: ['Handles templates', 'Processes requests/responses globally', 'Manages static files', 'Creates models'],
+    correctAnswer: 1,
+    explanation: 'Middleware processes requests before they reach views and responses before they reach the client.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'django-adv-4',
+    topic: 'django',
+    question: 'What are Django signals?',
+    code: `post_save.connect(my_handler, sender=User)`,
+    options: ['Database indexes', 'Event notifications for model actions', 'URL patterns', 'Template tags'],
+    correctAnswer: 1,
+    explanation: 'Signals allow decoupled applications to get notified when certain actions occur elsewhere in the framework.',
+    difficulty: 'hard'
+  },
+  {
+    id: 'django-adv-5',
+    topic: 'django',
+    question: 'What is Django ORM?',
+    code: `User.objects.create(username='john')`,
+    options: ['A template engine', 'Object-Relational Mapping for database operations', 'A web server', 'A testing framework'],
+    correctAnswer: 1,
+    explanation: 'ORM allows you to interact with databases using Python objects instead of writing SQL.',
+    difficulty: 'easy'
+  },
+  {
+    id: 'css-adv-1',
     topic: 'css',
+    question: 'What does the :not() pseudo-class do?',
+    code: `li:not(.active) { color: gray; }`,
+    options: ['Selects all elements', 'Selects elements that do not match selector', 'Inverts colors', 'Hides elements'],
+    correctAnswer: 1,
+    explanation: ':not() pseudo-class selects elements that do not match the given selector.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'css-adv-2',
+    topic: 'css',
+    question: 'What is CSS specificity?',
+    code: `#id { color: red; }
+.class { color: blue; }`,
+    options: ['File order', 'Weight determining which styles apply', 'Browser preference', 'Random selection'],
+    correctAnswer: 1,
+    explanation: 'Specificity determines which CSS rules apply when multiple rules target the same element. IDs have higher specificity than classes.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'css-adv-3',
+    topic: 'css',
+    question: 'What does transform do?',
+    code: `div { transform: translateX(50px) rotate(45deg); }`,
+    options: ['Changes HTML', 'Applies 2D/3D transformations', 'Changes colors', 'Animates automatically'],
+    correctAnswer: 1,
+    explanation: 'The transform property applies 2D or 3D transformations like translate, rotate, scale, and skew.',
+    difficulty: 'easy'
+  },
+  {
+    id: 'css-adv-4',
+    topic: 'css',
+    question: 'What are CSS custom properties?',
     code: `--primary-color: blue;
-    options: ['A JavaS
-    
-  }
+color: var(--primary-color);`,
+    options: ['A JavaScript feature', 'CSS variables for reusable values', 'Browser settings', 'Preprocessor syntax'],
+    correctAnswer: 1,
+    explanation: 'CSS custom properties (variables) allow you to store and reuse values throughout your stylesheet.',
+    difficulty: 'easy'
+  },
+  {
     id: 'css-adv-5',
-    question: 'What 
+    topic: 'css',
+    question: 'What do media queries do?',
+    code: `@media (max-width: 768px) {
   .container { width: 100%; }
-    options: ['Creates animatio
-    explanation: '@media queries apply styles conditionally based on device
+}`,
+    options: ['Creates animations', 'Applies styles based on device characteristics', 'Loads images', 'Defines fonts'],
+    correctAnswer: 1,
+    explanation: '@media queries apply styles conditionally based on device characteristics like screen width.',
+    difficulty: 'easy'
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+]
