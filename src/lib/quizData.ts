@@ -1,4 +1,5 @@
 import { Quiz, Topic } from './types'
+import { ADVANCED_QUIZZES } from './advancedQuizzes'
 
 export const TOPICS: Topic[] = [
   {
@@ -7,7 +8,7 @@ export const TOPICS: Topic[] = [
     icon: 'js',
     description: 'Core JavaScript concepts and ES6+ features',
     color: 'oklch(0.75 0.15 70)',
-    totalQuizzes: 10,
+    totalQuizzes: 105,
     difficulty: 'easy',
     category: 'Frontend'
   },
@@ -17,7 +18,7 @@ export const TOPICS: Topic[] = [
     icon: 'ts',
     description: 'TypeScript types, interfaces, and generics',
     color: 'oklch(0.55 0.15 245)',
-    totalQuizzes: 10,
+    totalQuizzes: 105,
     difficulty: 'medium',
     category: 'Frontend'
   },
@@ -27,7 +28,7 @@ export const TOPICS: Topic[] = [
     icon: 'react',
     description: 'React hooks, components, and patterns',
     color: 'oklch(0.65 0.15 195)',
-    totalQuizzes: 10,
+    totalQuizzes: 105,
     difficulty: 'medium',
     category: 'Frontend'
   },
@@ -37,7 +38,7 @@ export const TOPICS: Topic[] = [
     icon: 'python',
     description: 'Python syntax, data structures, and OOP',
     color: 'oklch(0.58 0.18 245)',
-    totalQuizzes: 10,
+    totalQuizzes: 105,
     difficulty: 'easy',
     category: 'Backend'
   },
@@ -47,7 +48,7 @@ export const TOPICS: Topic[] = [
     icon: 'django',
     description: 'Django models, views, and REST framework',
     color: 'oklch(0.35 0.08 155)',
-    totalQuizzes: 10,
+    totalQuizzes: 105,
     difficulty: 'hard',
     category: 'Backend'
   },
@@ -57,7 +58,7 @@ export const TOPICS: Topic[] = [
     icon: 'css',
     description: 'CSS layouts, animations, and modern features',
     color: 'oklch(0.55 0.20 265)',
-    totalQuizzes: 10,
+    totalQuizzes: 105,
     difficulty: 'easy',
     category: 'Frontend'
   }
@@ -400,8 +401,10 @@ grid-template-columns: 1fr 1fr 1fr;`,
   }
 ]
 
+const ALL_QUIZZES = [...QUIZZES, ...ADVANCED_QUIZZES]
+
 export function getQuizzesByTopic(topicId: string): Quiz[] {
-  return QUIZZES.filter(q => q.topic === topicId)
+  return ALL_QUIZZES.filter(q => q.topic === topicId)
 }
 
 export function getRandomQuizzes(topicId: string, count: number): Quiz[] {
