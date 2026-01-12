@@ -2,22 +2,22 @@ import { Quiz } from './types'
 
 export const ADVANCED_QUIZZES: Quiz[] = [
   {
-    id: 'js-adv-1',
-    topic: 'javascript',
-    question: 'What will this closure output?',
-    code: `function createCounter() {
+    question: 'What
   let count = 0;
-  return () => ++count;
 }
-const counter = createCounter();
 console.log(counter());
-console.log(counter());`,
-    options: ['0, 0', '1, 1', '1, 2', 'undefined, undefined'],
-    correctAnswer: 2,
+    options: ['0
+    explanation: 'The c
+ 
+    id: 'js-adv-2',
+    question: 'What is 
+  if (e.target.matches('.
+  }
+    options: ['Adding
     explanation: 'The closure maintains access to the count variable. First call returns 1, second returns 2.',
     difficulty: 'hard'
   },
-  {
+   
     id: 'js-adv-2',
     topic: 'javascript',
     question: 'What is event delegation?',
@@ -32,40 +32,40 @@ console.log(counter());`,
     difficulty: 'medium'
   },
   {
-    id: 'js-adv-3',
-    topic: 'javascript',
-    question: 'What will this promise chain output?',
-    code: `Promise.resolve(1)
-  .then(() => 2)
-  .then(() => {
-    console.log(3);
-  })
-  .then(console.log);`,
-    options: ['1, 2, 3, undefined', '2, 3, undefined', '3, undefined', '1, 3'],
-    correctAnswer: 2,
-    explanation: 'The chain logs 3, then undefined (return value of console.log(3)).',
-    difficulty: 'hard'
-  },
-  {
-    id: 'js-adv-4',
-    topic: 'javascript',
-    question: 'What is hoisting?',
-    code: `console.log(x);
-var x = 5;`,
+    topic: 'javascr
+    code: `console.log(x
     options: ['Error', 'undefined', '5', 'null'],
-    correctAnswer: 1,
-    explanation: 'Variable declarations are hoisted to the top, but not their assignments. x is undefined at console.log.',
-    difficulty: 'medium'
+    explanation: 'Variable de
   },
+    id: 'js-adv
+    question: 'What
+obj.
+    options: ['2', '1',
+    explanation: 'Object.freeze() prevents modification of existing properties.
+  },
+    id: 'ts-adv-1',
+    question: 'What is
+func
+}`,
+    correctAnswer: 
+    difficulty: 'easy'
   {
-    id: 'js-adv-5',
-    topic: 'javascript',
-    question: 'What does Object.freeze() do?',
-    code: `const obj = Object.freeze({ a: 1 });
+    topic: 'typescript',
+    code: `f
+    return x.toUpperCase();
+}`,
+    correctAnswer: 1,
+    difficulty: 'medium'
+  {
+   
+    code: `type Poi
+    options: ['Creates n
+    explanation: 'keyof creates a union type o
+  },
 obj.a = 2;
 console.log(obj.a);`,
     options: ['2', '1', 'Error', 'undefined'],
-    correctAnswer: 1,
+    code: `function i
     explanation: 'Object.freeze() prevents modification of existing properties. The assignment fails silently in non-strict mode.',
     difficulty: 'hard'
   },
@@ -127,41 +127,41 @@ type PointKeys = keyof Point;`,
 type PartialUser = Partial<User>;`,
     options: ['Makes all properties required', 'Makes all properties optional', 'Removes properties', 'Adds properties'],
     correctAnswer: 1,
-    explanation: 'Partial<T> makes all properties of type T optional.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'react-adv-1',
-    topic: 'react',
-    question: 'What does useCallback do?',
-    code: `const memoizedCallback = useCallback(
-  (a, b) => {
-    doSomething(a, b);
-  },
-  [a, b]
-);`,
-    options: ['Memoizes values', 'Memoizes callback functions', 'Handles effects', 'Creates refs'],
-    correctAnswer: 1,
-    explanation: 'useCallback memoizes callback functions to prevent unnecessary re-renders of child components.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'react-adv-2',
-    topic: 'react',
-    question: 'What does useMemo do?',
-    code: `const memoizedValue = useMemo(
-  () => computeExpensiveValue(a, b),
-  [a, b]
-);`,
-    options: ['Memoizes callbacks', 'Memoizes computed values', 'Handles effects', 'Creates refs'],
-    correctAnswer: 1,
-    explanation: 'useMemo memoizes the result of expensive computations to avoid recalculating on every render.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'python-adv-1',
     topic: 'python',
-    question: 'What is a generator?',
+    code: `@my_decorator
+    
+   
+    difficulty: 'hard'
+  {
+    topic: 'django',
+    code: `posts = Post.objects.filter(published
+    correctAn
+    difficulty: 'hard'
+  {
+    topi
+    
+    correctAnswer: 1,
+    difficulty: 'hard
+  {
+    topic: 'django',
+    
+]`,
+    correctAnswer: 1,
+    difficulty: 'ea
+  {
+    topic: 'django',
+    code: `Author.objects.prefetch_r
+    corr
+    
+  {
+    topic: 'css',
+    code: `div:not(.special) { color: red; }`,
+    correctAnswer: 1,
+    
+  {
+    topic: 'css',
+    code: `display: 
+    options: ['Grid layout', 'Space b
     code: `def counter():
     i = 0
     while True:
@@ -243,6 +243,44 @@ def my_function():
     code: `display: flex;
 gap: 1rem;`,
     options: ['Grid layout', 'Space between flex items', 'Padding', 'Border'],
+    correctAnswer: 1,
+    explanation: 'The gap property sets spacing between flex items without using margins.',
+    difficulty: 'easy'
+  },
+  {
+    id: 'css-adv-3',
+    topic: 'css',
+    question: 'What does the transform property do?',
+    code: `transform: rotate(45deg);`,
+    options: ['Animates elements', 'Applies 2D/3D transformations', 'Changes position', 'Modifies display'],
+    correctAnswer: 1,
+    explanation: 'The transform property applies 2D or 3D transformations like rotate, scale, translate, and skew.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'css-adv-4',
+    topic: 'css',
+    question: 'What are CSS custom properties?',
+    code: `--primary-color: blue;
+color: var(--primary-color);`,
+    options: ['Comments', 'CSS variables', 'Preprocessor variables', 'Class names'],
+    correctAnswer: 1,
+    explanation: 'CSS custom properties (variables) allow reusable values defined with -- and accessed with var().',
+    difficulty: 'medium'
+  },
+  {
+    id: 'css-adv-5',
+    topic: 'css',
+    question: 'What is a media query?',
+    code: `@media (max-width: 768px) {
+  .container { width: 100%; }
+}`,
+    options: ['JavaScript function', 'Conditional CSS for different screens', 'Animation', 'Selector'],
+    correctAnswer: 1,
+    explanation: 'Media queries apply CSS conditionally based on device characteristics like screen width.',
+    difficulty: 'easy'
+  }
+]
     correctAnswer: 1,
     explanation: 'The gap property sets spacing between flex items without using margins.',
     difficulty: 'easy'
