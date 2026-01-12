@@ -16,7 +16,8 @@ export default defineConfig({
     tailwindcss(),
     // DO NOT REMOVE
     createIconImportProxy() as PluginOption,
-    sparkPlugin() as PluginOption,
+    // Only use sparkPlugin in non-GitHub Pages environments
+    ...(!process.env.GITHUB_PAGES ? [sparkPlugin() as PluginOption] : []),
   ],
   resolve: {
     alias: {
