@@ -1,40 +1,40 @@
 import { Quiz } from './types'
 
+export const ADVANCED_QUIZZES: Quiz[] = [
+  {
     id: 'js-adv-1',
-   
-    options: ['[]',
-    explanation: 'Arrays
-  },
-    id: 'js-adv-2',
-    question: 'What does Promise.race() return?'
-    options: ['All re
-    explanation: 'Promise.race() returns the first promise that settles (resolves or rejects).',
-  },
-    
-   
+    topic: 'javascript',
+    question: 'What is a closure?',
+    code: `function outer() {
   let count = 0;
+  return function inner() {
     return ++count;
-}`,
-    correctAnswer: 1,
-    difficulty: 'hard'
-  {
-    topic: 'javascript',
-    code: `element.add
-    
-   
-  {
-    topic: 'javascript',
-    code: `const obj = Object.freez
-    options: ['obj.a becomes 
-    explanation:
-  },
-    id: 'js-adv-6',
-   
+  }
 }`,
     options: ['A nested function', 'A function that remembers its lexical scope', 'A callback', 'An IIFE'],
     correctAnswer: 1,
     explanation: 'A closure is a function that has access to variables from its outer scope even after the outer function returns.',
     difficulty: 'hard'
+  },
+  {
+    id: 'js-adv-2',
+    topic: 'javascript',
+    question: 'What does Promise.race() return?',
+    code: `Promise.race([promise1, promise2, promise3])`,
+    options: ['All resolved promises', 'First settled promise', 'Last resolved promise', 'Array of all results'],
+    correctAnswer: 1,
+    explanation: 'Promise.race() returns the first promise that settles (resolves or rejects).',
+    difficulty: 'hard'
+  },
+  {
+    id: 'js-adv-3',
+    topic: 'javascript',
+    question: 'What does Array.from() do?',
+    code: `Array.from('hello')`,
+    options: ['Creates array of letters', 'Returns "hello"', 'Error', 'Returns empty array'],
+    correctAnswer: 0,
+    explanation: 'Array.from() creates a new array from an iterable or array-like object.',
+    difficulty: 'medium'
   },
   {
     id: 'js-adv-4',
@@ -92,16 +92,6 @@ const s2 = Symbol('desc');`,
   {
     id: 'js-adv-9',
     topic: 'javascript',
-    question: 'What does Array.from() do?',
-    code: `Array.from('hello')`,
-    options: ['Creates array of letters', 'Returns "hello"', 'Error', 'Returns empty array'],
-    correctAnswer: 0,
-    explanation: 'Array.from() creates a new array from an iterable or array-like object.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'js-adv-10',
-    topic: 'javascript',
     question: 'What is the output?',
     code: `const obj = {a: 1};
 delete obj.a;
@@ -110,6 +100,17 @@ console.log(obj.a);`,
     correctAnswer: 1,
     explanation: 'The delete operator removes the property, so accessing it returns undefined.',
     difficulty: 'easy'
+  },
+  {
+    id: 'js-adv-10',
+    topic: 'javascript',
+    question: 'What is hoisting?',
+    code: `console.log(x);
+var x = 5;`,
+    options: ['ReferenceError', 'undefined', '5', 'null'],
+    correctAnswer: 1,
+    explanation: 'Variable declarations (not initializations) are hoisted to the top of their scope, so x exists but is undefined.',
+    difficulty: 'medium'
   },
   ...generateJavaScriptQuizzes(),
   ...generateTypeScriptQuizzes(),
@@ -124,17 +125,6 @@ function generateJavaScriptQuizzes(): Quiz[] {
     {
       id: 'js-adv-11',
       topic: 'javascript',
-      question: 'What is hoisting?',
-      code: `console.log(x);
-var x = 5;`,
-      options: ['ReferenceError', 'undefined', '5', 'null'],
-      correctAnswer: 1,
-      explanation: 'Variable declarations (not initializations) are hoisted to the top of their scope, so x exists but is undefined.',
-      difficulty: 'medium'
-    },
-    {
-      id: 'js-adv-12',
-      topic: 'javascript',
       question: 'What does the rest parameter collect?',
       code: `function sum(...numbers) {
   return numbers.reduce((a, b) => a + b);
@@ -145,7 +135,7 @@ var x = 5;`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-13',
+      id: 'js-adv-12',
       topic: 'javascript',
       question: 'What is the output?',
       code: `console.log(1 + '1' - 1);`,
@@ -155,7 +145,7 @@ var x = 5;`,
       difficulty: 'hard'
     },
     {
-      id: 'js-adv-14',
+      id: 'js-adv-13',
       topic: 'javascript',
       question: 'What is optional chaining?',
       code: `const value = obj?.prop?.nested;`,
@@ -165,7 +155,7 @@ var x = 5;`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-15',
+      id: 'js-adv-14',
       topic: 'javascript',
       question: 'What does Promise.all() do?',
       code: `Promise.all([p1, p2, p3])`,
@@ -175,7 +165,7 @@ var x = 5;`,
       difficulty: 'medium'
     },
     {
-      id: 'js-adv-16',
+      id: 'js-adv-15',
       topic: 'javascript',
       question: 'What is a WeakMap?',
       code: `const wm = new WeakMap();
@@ -186,7 +176,7 @@ wm.set(obj, 'value');`,
       difficulty: 'hard'
     },
     {
-      id: 'js-adv-17',
+      id: 'js-adv-16',
       topic: 'javascript',
       question: 'What does Object.seal() do?',
       code: `const obj = Object.seal({a: 1});
@@ -197,7 +187,7 @@ obj.b = 2;`,
       difficulty: 'medium'
     },
     {
-      id: 'js-adv-18',
+      id: 'js-adv-17',
       topic: 'javascript',
       question: 'What is the output?',
       code: `console.log([1, 2, 3] == [1, 2, 3]);`,
@@ -207,7 +197,7 @@ obj.b = 2;`,
       difficulty: 'medium'
     },
     {
-      id: 'js-adv-19',
+      id: 'js-adv-18',
       topic: 'javascript',
       question: 'What is the nullish coalescing operator?',
       code: `const value = null ?? 'default';`,
@@ -217,7 +207,7 @@ obj.b = 2;`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-20',
+      id: 'js-adv-19',
       topic: 'javascript',
       question: 'What is event capturing?',
       code: `element.addEventListener('click', handler, true);`,
@@ -227,7 +217,7 @@ obj.b = 2;`,
       difficulty: 'medium'
     },
     {
-      id: 'js-adv-21',
+      id: 'js-adv-20',
       topic: 'javascript',
       question: 'What does Array.flat() do?',
       code: `const arr = [[1, 2], [3, 4]];
@@ -238,7 +228,7 @@ arr.flat();`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-22',
+      id: 'js-adv-21',
       topic: 'javascript',
       question: 'What is the output?',
       code: `console.log(!![]);`,
@@ -248,7 +238,7 @@ arr.flat();`,
       difficulty: 'hard'
     },
     {
-      id: 'js-adv-23',
+      id: 'js-adv-22',
       topic: 'javascript',
       question: 'What does Object.create() do?',
       code: `const obj = Object.create(proto);`,
@@ -258,7 +248,7 @@ arr.flat();`,
       difficulty: 'medium'
     },
     {
-      id: 'js-adv-24',
+      id: 'js-adv-23',
       topic: 'javascript',
       question: 'What is destructuring with default values?',
       code: `const {a = 10} = {};`,
@@ -268,7 +258,7 @@ arr.flat();`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-25',
+      id: 'js-adv-24',
       topic: 'javascript',
       question: 'What does Array.reduce() do?',
       code: `[1,2,3].reduce((acc, val) => acc + val, 0)`,
@@ -278,7 +268,7 @@ arr.flat();`,
       difficulty: 'medium'
     },
     {
-      id: 'js-adv-26',
+      id: 'js-adv-25',
       topic: 'javascript',
       question: 'What is a Proxy in JavaScript?',
       code: `const proxy = new Proxy(target, handler);`,
@@ -288,7 +278,7 @@ arr.flat();`,
       difficulty: 'hard'
     },
     {
-      id: 'js-adv-27',
+      id: 'js-adv-26',
       topic: 'javascript',
       question: 'What is the output?',
       code: `console.log(+'42');`,
@@ -298,7 +288,7 @@ arr.flat();`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-28',
+      id: 'js-adv-27',
       topic: 'javascript',
       question: 'What does setTimeout return?',
       code: `const id = setTimeout(() => {}, 1000);`,
@@ -308,7 +298,7 @@ arr.flat();`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-29',
+      id: 'js-adv-28',
       topic: 'javascript',
       question: 'What is the output?',
       code: `console.log(false == '0');`,
@@ -318,7 +308,7 @@ arr.flat();`,
       difficulty: 'medium'
     },
     {
-      id: 'js-adv-30',
+      id: 'js-adv-29',
       topic: 'javascript',
       question: 'What does Array.some() do?',
       code: `[1,2,3].some(x => x > 2)`,
@@ -328,7 +318,7 @@ arr.flat();`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-31',
+      id: 'js-adv-30',
       topic: 'javascript',
       question: 'What is a Set in JavaScript?',
       code: `const set = new Set([1, 2, 2, 3]);`,
@@ -338,7 +328,7 @@ arr.flat();`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-32',
+      id: 'js-adv-31',
       topic: 'javascript',
       question: 'What does Array.findIndex() return?',
       code: `[10,20,30].findIndex(x => x === 20)`,
@@ -348,7 +338,7 @@ arr.flat();`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-33',
+      id: 'js-adv-32',
       topic: 'javascript',
       question: 'What is the output?',
       code: `console.log([] + {});`,
@@ -358,7 +348,7 @@ arr.flat();`,
       difficulty: 'hard'
     },
     {
-      id: 'js-adv-34',
+      id: 'js-adv-33',
       topic: 'javascript',
       question: 'What does String.includes() do?',
       code: `'hello'.includes('ell')`,
@@ -368,7 +358,7 @@ arr.flat();`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-35',
+      id: 'js-adv-34',
       topic: 'javascript',
       question: 'What is the spread operator in objects?',
       code: `const merged = {...obj1, ...obj2};`,
@@ -378,7 +368,7 @@ arr.flat();`,
       difficulty: 'medium'
     },
     {
-      id: 'js-adv-36',
+      id: 'js-adv-35',
       topic: 'javascript',
       question: 'What does Object.keys() return?',
       code: `Object.keys({a: 1, b: 2})`,
@@ -388,7 +378,7 @@ arr.flat();`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-37',
+      id: 'js-adv-36',
       topic: 'javascript',
       question: 'What is the output?',
       code: `console.log(3 > 2 > 1);`,
@@ -398,7 +388,7 @@ arr.flat();`,
       difficulty: 'hard'
     },
     {
-      id: 'js-adv-38',
+      id: 'js-adv-37',
       topic: 'javascript',
       question: 'What does JSON.parse() do?',
       code: `JSON.parse('{"a": 1}')`,
@@ -408,7 +398,7 @@ arr.flat();`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-39',
+      id: 'js-adv-38',
       topic: 'javascript',
       question: 'What is template literal?',
       code: `const str = \`Value: \${x}\`;`,
@@ -418,7 +408,7 @@ arr.flat();`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-40',
+      id: 'js-adv-39',
       topic: 'javascript',
       question: 'What does Array.every() do?',
       code: `[2,4,6].every(x => x % 2 === 0)`,
@@ -428,7 +418,7 @@ arr.flat();`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-41',
+      id: 'js-adv-40',
       topic: 'javascript',
       question: 'What is the output?',
       code: `console.log(typeof undefined);`,
@@ -438,7 +428,7 @@ arr.flat();`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-42',
+      id: 'js-adv-41',
       topic: 'javascript',
       question: 'What does Array.slice() do?',
       code: `[1,2,3,4].slice(1, 3)`,
@@ -448,7 +438,7 @@ arr.flat();`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-43',
+      id: 'js-adv-42',
       topic: 'javascript',
       question: 'What is the output?',
       code: `console.log('5' - 3);`,
@@ -458,7 +448,7 @@ arr.flat();`,
       difficulty: 'medium'
     },
     {
-      id: 'js-adv-44',
+      id: 'js-adv-43',
       topic: 'javascript',
       question: 'What does String.split() return?',
       code: `'a,b,c'.split(',')`,
@@ -468,7 +458,7 @@ arr.flat();`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-45',
+      id: 'js-adv-44',
       topic: 'javascript',
       question: 'What is isNaN() used for?',
       code: `isNaN('hello')`,
@@ -478,7 +468,7 @@ arr.flat();`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-46',
+      id: 'js-adv-45',
       topic: 'javascript',
       question: 'What does Math.random() return?',
       code: `Math.random()`,
@@ -488,7 +478,7 @@ arr.flat();`,
       difficulty: 'easy'
     },
     {
-      id: 'js-adv-47',
+      id: 'js-adv-46',
       topic: 'javascript',
       question: 'What is the output?',
       code: `console.log(null == undefined);`,
@@ -498,7 +488,7 @@ arr.flat();`,
       difficulty: 'medium'
     },
     {
-      id: 'js-adv-48',
+      id: 'js-adv-47',
       topic: 'javascript',
       question: 'What does Array.join() do?',
       code: `[1,2,3].join('-')`,
@@ -508,523 +498,492 @@ arr.flat();`,
       difficulty: 'easy'
     },
     {
+      id: 'js-adv-48',
+      topic: 'javascript',
+      question: 'What does Array.reverse() do?',
+      code: `[1,2,3].reverse()`,
+      options: ['Returns new reversed array', 'Reverses array in place', 'Sorts array', 'Filters array'],
+      correctAnswer: 1,
+      explanation: 'reverse() reverses the array in place and returns the reference to the same array.',
+      difficulty: 'easy'
+    },
+    {
       id: 'js-adv-49',
       topic: 'javascript',
-      code: `[1,2,3].reverse()`,
-      correctAnswer: 1,
-      difficul
-    {
-      topic: 'javascrip
+      question: 'What is BigInt?',
       code: `const big = 9007199254740991n;`,
+      options: ['Regular number', 'Arbitrary precision integer', 'String', 'Float'],
       correctAnswer: 1,
-      
-    {
-      topic: 'javascri
-      code: `'  hello  '.t
-      correctAnswer: 1,
-      difficulty: 'easy'
-    {
-      topic: 'javascrip
-      code: `console.log(1 + 2 + '3');`,
-      correctAnswer: 0,
-      
-    {
-      topic: 'javascri
-      code: `Object.assign
-      correctAnswer: 1,
+      explanation: 'BigInt allows representation of integers larger than Number.MAX_SAFE_INTEGER.',
       difficulty: 'medium'
-    {
-      topic: 'javascrip
-      code: `[1,2].concat([3,4])`,
-      correctAnswer: 1,
-      
-    {
-      topic: 'javascri
-      code: `Number.isInte
-      correctAnswer: 1,
-      difficulty: 'easy'
-    {
-      topic: 'javascrip
-      code: `console.log(Math.max());`,
-      correctAnswer: 1,
-      
-    {
-      topic: 'javascri
-      code: `new Array(3).
-      correctAnswer: 1,
-      difficulty: 'easy'
-    {
-      topic: 'javascrip
-      code: `'hello'.startsWith('he')`,
-      correctAnswer: 1,
-      
-    {
-      topic: 'javascri
-      code: `console.log(0
-      correctAnswer: 1,
-      difficulty: 'hard'
-    {
-      topic: 'javascrip
-      code: `[1,2,3].indexOf(2)`,
-      correctAnswer: 1,
-      
-    {
-      topic: 'javascri
-      code: `Object.values
-      correctAnswer: 1,
-      difficulty: 'easy'
-    {
-      topic: 'javascrip
-      code: `console.log(typeof []);`,
-      correctAnswer: 1,
-      
-    {
-      topic: 'javascri
-      code: `'ha'.repeat(3
-      correctAnswer: 1,
-      difficulty: 'easy'
-    {
-      topic: 'javascrip
-      code: `const arr = [1,2,3];
-      options: ['Removes f
-    
-    }
-      id: 'js-adv-68',
-      question: 'What is t
-      options: ['false', 'true', '"false"'
-      explanation: 'Non-empty stri
     },
-      id: 'js-adv-69',
-      question: 'What does Array.unshift() do?',
-      options: ['Removes
-      
-    }
-      id: 'js-adv-70',
-      question: 'What is O
-      options: ['Returns keys', 'Returns [["a", 1]]', 
-      explanation: 'Object.entries() 
+    {
+      id: 'js-adv-50',
+      topic: 'javascript',
+      question: 'What does String.trim() do?',
+      code: `'  hello  '.trim()`,
+      options: ['Removes all spaces', 'Removes leading and trailing whitespace', 'Converts to lowercase', 'Splits string'],
+      correctAnswer: 1,
+      explanation: 'trim() removes whitespace from both ends of a string, leaving internal spaces intact.',
+      difficulty: 'easy'
     },
-      id: 'js-adv-71',
+    {
+      id: 'js-adv-51',
+      topic: 'javascript',
       question: 'What is the output?',
-      options: ['true', 
-      
-    }
-      id: 'js-adv-72',
-      question: 'What does
-      options: ['Modifies string', 'Re
-      explanation: 'toUpperCase() retur
+      code: `console.log(1 + 2 + '3');`,
+      options: ['"33"', '"123"', '6', '33'],
+      correctAnswer: 0,
+      explanation: '1 + 2 = 3, then 3 + "3" = "33" (number coerced to string for concatenation).',
+      difficulty: 'medium'
     },
-      id: 'js-adv-73',
-      question: 'What is Array.pop()?',
-arr.pop();`,
-      
-     
     {
+      id: 'js-adv-52',
       topic: 'javascript',
-      code: `console.log([1,2] + [3,4]);`,
-      correctAnswer: 0,
+      question: 'What does Object.assign() do?',
+      code: `Object.assign(target, source)`,
+      options: ['Deep clones object', 'Shallow copies properties to target', 'Compares objects', 'Freezes object'],
+      correctAnswer: 1,
+      explanation: 'Object.assign() copies enumerable own properties from sources to target object.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-53',
+      topic: 'javascript',
+      question: 'What does Array.concat() do?',
+      code: `[1,2].concat([3,4])`,
+      options: ['Modifies first array', 'Returns new merged array', 'Returns first array', 'Returns last array'],
+      correctAnswer: 1,
+      explanation: 'concat() merges arrays and returns a new array without modifying the originals.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-54',
+      topic: 'javascript',
+      question: 'What does Number.isInteger() do?',
+      code: `Number.isInteger(4.5)`,
+      options: ['Returns true', 'Returns false', 'Rounds number', 'Converts to integer'],
+      correctAnswer: 1,
+      explanation: 'Number.isInteger() determines whether a value is an integer (returns false for 4.5).',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-55',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(Math.max());`,
+      options: ['0', '-Infinity', 'Infinity', 'NaN'],
+      correctAnswer: 1,
+      explanation: 'Math.max() without arguments returns -Infinity (the identity element for max).',
       difficulty: 'hard'
+    },
     {
+      id: 'js-adv-56',
       topic: 'javascript',
-      code: `Math.floor(
-      
-     
-    {
-      topic: 'javascript',
-      code: `'hello'.charAt(1)`,
+      question: 'What does Array fill() do?',
+      code: `new Array(3).fill(0)`,
+      options: ['Creates empty array', 'Fills array with value', 'Filters array', 'Maps array'],
       correctAnswer: 1,
+      explanation: 'fill() fills all array elements with a static value.',
       difficulty: 'easy'
+    },
     {
+      id: 'js-adv-57',
       topic: 'javascript',
-      code: `console.log
-      
-     
-    {
-      topic: 'javascript',
-      code: `Math.ceil(4.1)`,
+      question: 'What does String.startsWith() do?',
+      code: `'hello'.startsWith('he')`,
+      options: ['Returns index', 'Returns boolean', 'Returns substring', 'Modifies string'],
       correctAnswer: 1,
+      explanation: 'startsWith() determines whether a string begins with the specified characters.',
       difficulty: 'easy'
+    },
     {
+      id: 'js-adv-58',
       topic: 'javascript',
-      code: `[1,2,3,2].l
-      
-     
+      question: 'What is the output?',
+      code: `console.log(0.1 + 0.2 === 0.3);`,
+      options: ['true', 'false', 'undefined', 'Error'],
+      correctAnswer: 1,
+      explanation: 'Floating point arithmetic has precision issues; 0.1 + 0.2 is actually 0.30000000000000004.',
+      difficulty: 'hard'
+    },
     {
+      id: 'js-adv-59',
       topic: 'javascript',
-      code: `console.log(undefined + 1);`,
-      correctAnswer: 2,
+      question: 'What does Array.indexOf() do?',
+      code: `[1,2,3].indexOf(2)`,
+      options: ['Returns element', 'Returns index of first match', 'Returns boolean', 'Removes element'],
+      correctAnswer: 1,
+      explanation: 'indexOf() returns the first index at which an element is found, or -1 if not found.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-60',
+      topic: 'javascript',
+      question: 'What does Object.values() return?',
+      code: `Object.values({a: 1, b: 2})`,
+      options: ['Keys', 'Array of values', 'Key-value pairs', 'Object'],
+      correctAnswer: 1,
+      explanation: 'Object.values() returns an array of an object\'s own enumerable property values.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-61',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(typeof []);`,
+      options: ['"array"', '"object"', '"Array"', '"list"'],
+      correctAnswer: 1,
+      explanation: 'Arrays are objects in JavaScript, so typeof returns "object".',
       difficulty: 'medium'
+    },
     {
+      id: 'js-adv-62',
       topic: 'javascript',
-      code: `Math.round(
-      
-     
-    {
-      topic: 'javascript',
-      code: `'hello'.slice(1, 3)`,
+      question: 'What does String.repeat() do?',
+      code: `'ha'.repeat(3)`,
+      options: ['"ha"', '"hahaha"', '"ha3"', 'Error'],
       correctAnswer: 1,
+      explanation: 'repeat() constructs and returns a new string with the specified number of copies.',
       difficulty: 'easy'
+    },
     {
+      id: 'js-adv-63',
       topic: 'javascript',
-      code: `console.log
-      
-     
-    {
-      topic: 'javascript',
-      code: `[1,2,3].includes(2)`,
-      correctAnswer: 1,
-      difficulty: 'easy'
-    {
-      topic: 'javascript',
-      code: `'hello'.repla
-      
-     
-    {
-      topic: 'javascript',
-      code: `console.log(Number(''));`,
-      correctAnswer: 1,
-      difficulty: 'medium'
-    {
-      topic: 'javascript',
-      code: `Math.abs(-5
-      
-     
-    {
-      topic: 'javascript',
-      code: `[1,2].flatMap(x => [x, x*2])
-      correctAnswer: 1,
-      difficul
-    {
-      topic: 'javascrip
-      code: `console.log(null + 1);`,
-      correctAnswer: 1,
-      
-    {
-      topic: 'javascri
-      code: `'hello'.subst
-      correctAnswer: 1,
-      difficulty: 'easy'
-    {
-      topic: 'javascrip
-      code: `Math.pow(2, 3)`,
-      correctAnswer: 2,
-      
-    {
-      topic: 'javascri
-      code: `console.log(S
-      correctAnswer: 0,
-      difficulty: 'easy'
-    {
-      topic: 'javascrip
-      code: `[10,5,40].sort()`,
-      correctAnswer: 1,
-      
-    {
-      topic: 'javascri
-      code: `'HELLO'.toLow
-      correctAnswer: 0,
-      difficulty: 'easy'
-    {
-      topic: 'javascrip
-      code: `console.log(parseFloat('10.5abc'));`,
-      correctAnswer: 0,
-      
-    {
-      topic: 'javascri
-      code: `Math.min(5, 2
-      correctAnswer: 1,
-      difficulty: 'easy'
-    {
-      topic: 'javascrip
-      code: `'hello'.endsWith('lo')`,
-      correctAnswer: 1,
-      
-    {
-      topic: 'javascri
-      code: `console.log(5
-      correctAnswer: 2,
-      difficulty: 'easy'
-    {
-      topic: 'javascrip
+      question: 'What does Array.shift() do?',
       code: `const arr = [1,2,3];
-      options: ['Returns
-      
-    }
-      id: 'js-adv-100'
-      question: 'What is M
-      options: ['4', '8', '16', '2'],
-      explanation: 'Math.sqrt() r
-    }
-}
-function generateTypeSc
-  
-    const templates = [
-      
-     
-        difficulty: (i
-      {
-        code: `type Result = UtilityTy
-        correctAnswer: 1,
-        difficulty: (i < 40 ? 'easy' : i < 70 ? 'medium' : '
-    ]
-    const template = templates[i % 2]
-      id: `ts-adv-${i}`,
-      
-  }
-  return quizzes
-
-  const quizzes: Quiz[] = []
-  for (let i = 11; i <= 100; i
-      {
-        code: `const va
-        correctAnswer: 1,
-        difficulty: (i <
-      
-     
-        explanation: '
-      }
-    
-    quizzes.push({
-      topic: 'react',
-    })
-  
-}
-functi
-  
-    const templates = 
-        question: `What do
-        options: ['Creates functions',
-        explanation: 'This is a Pyt
-      },
-        question: `What
-        options: ['A variable', 'Python syntax for specific functionality', 'An import', 'A module'],
-        explanation: 'This
-      
-    
-    quizzes.push({
-      topic: 'python',
-    })
-  
-}
-function generateDjango
-  
-    const templates = [
-      
-     
-        explanation: '
-      },
-        question: `What does ${['filter()', 'se
-        options: ['Deletes data', 'Quer
-        explanation: 'This is a Django ORM method that helps q
-      }
-    
-    quizzes.push({
-      
-    }
-  
-}
-function generateCSSQuizzes(): Quiz[] 
-  
-    const templates = [
-        question: `What
-        options: ['A CSS property', 'A CSS concept', 'A JavaScript feature', 'An HTML 
-        explanation: 'This
-      
-     
-        options: ['Add
-        explanation: 'This
-      }
-    
-    quizzes.push({
-      topic: 'css',
-    })
-  
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      id: 'js-adv-100',
+arr.shift();`,
+      options: ['Removes first element', 'Removes last element', 'Adds first element', 'Reverses array'],
+      correctAnswer: 0,
+      explanation: 'shift() removes the first element from an array and returns that element.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-64',
       topic: 'javascript',
-      question: 'What is Math.sqrt()?',
+      question: 'What is the output?',
+      code: `console.log(Boolean('false'));`,
+      options: ['false', 'true', '"false"', 'Error'],
+      correctAnswer: 1,
+      explanation: 'Non-empty strings are truthy, including the string "false".',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-65',
+      topic: 'javascript',
+      question: 'What does Array.unshift() do?',
+      code: `arr.unshift(0)`,
+      options: ['Removes first element', 'Adds elements to beginning', 'Removes last element', 'Adds to end'],
+      correctAnswer: 1,
+      explanation: 'unshift() adds elements to the beginning of an array and returns the new length.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-66',
+      topic: 'javascript',
+      question: 'What does Object.entries() return?',
+      code: `Object.entries({a: 1})`,
+      options: ['Returns keys', 'Returns [["a", 1]]', 'Returns values', 'Returns object'],
+      correctAnswer: 1,
+      explanation: 'Object.entries() returns an array of key-value pairs as [key, value] arrays.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-67',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log('5' === 5);`,
+      options: ['true', 'false', 'undefined', 'Error'],
+      correctAnswer: 1,
+      explanation: 'Strict equality (===) checks both value and type; string "5" is not the same as number 5.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-68',
+      topic: 'javascript',
+      question: 'What does String.toUpperCase() do?',
+      code: `'hello'.toUpperCase()`,
+      options: ['Modifies string', 'Returns new uppercase string', 'Returns same string', 'Error'],
+      correctAnswer: 1,
+      explanation: 'toUpperCase() returns a new string with all characters converted to uppercase.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-69',
+      topic: 'javascript',
+      question: 'What does Array.pop() do?',
+      code: `const arr = [1,2,3];
+arr.pop();`,
+      options: ['Removes and returns last element', 'Removes first element', 'Adds element', 'Clears array'],
+      correctAnswer: 0,
+      explanation: 'pop() removes the last element from an array and returns that element.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-70',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log([1,2] + [3,4]);`,
+      options: ['"1,23,4"', '[1,2,3,4]', '"1234"', 'Error'],
+      correctAnswer: 0,
+      explanation: 'Arrays are converted to strings: "1,2" + "3,4" = "1,23,4".',
+      difficulty: 'hard'
+    },
+    {
+      id: 'js-adv-71',
+      topic: 'javascript',
+      question: 'What does Math.floor() do?',
+      code: `Math.floor(4.9)`,
+      options: ['5', '4', '4.9', '5.0'],
+      correctAnswer: 1,
+      explanation: 'Math.floor() rounds a number down to the nearest integer.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-72',
+      topic: 'javascript',
+      question: 'What does String.charAt() do?',
+      code: `'hello'.charAt(1)`,
+      options: ['"h"', '"e"', '1', 'undefined'],
+      correctAnswer: 1,
+      explanation: 'charAt() returns the character at the specified index (0-based).',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-73',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(true + true);`,
+      options: ['2', 'true', '"truetrue"', 'Error'],
+      correctAnswer: 0,
+      explanation: 'Booleans are coerced to numbers: true becomes 1, so 1 + 1 = 2.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-74',
+      topic: 'javascript',
+      question: 'What does Math.ceil() do?',
+      code: `Math.ceil(4.1)`,
+      options: ['4', '5', '4.1', '4.0'],
+      correctAnswer: 1,
+      explanation: 'Math.ceil() rounds a number up to the nearest integer.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-75',
+      topic: 'javascript',
+      question: 'What does Array.lastIndexOf() do?',
+      code: `[1,2,3,2].lastIndexOf(2)`,
+      options: ['1', '3', '2', '-1'],
+      correctAnswer: 1,
+      explanation: 'lastIndexOf() returns the last index at which an element is found.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-76',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(undefined + 1);`,
+      options: ['1', 'undefined', 'NaN', 'Error'],
+      correctAnswer: 2,
+      explanation: 'undefined coerces to NaN, and NaN + 1 = NaN.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-77',
+      topic: 'javascript',
+      question: 'What does Math.round() do?',
+      code: `Math.round(4.5)`,
+      options: ['4', '5', '4.5', 'Error'],
+      correctAnswer: 1,
+      explanation: 'Math.round() rounds to the nearest integer. At .5, it rounds up.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-78',
+      topic: 'javascript',
+      question: 'What does String.slice() do?',
+      code: `'hello'.slice(1, 3)`,
+      options: ['"h"', '"el"', '"ell"', '"ello"'],
+      correctAnswer: 1,
+      explanation: 'slice() extracts a section of a string from start (inclusive) to end (exclusive).',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-79',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(!!"");`,
+      options: ['true', 'false', '""', 'undefined'],
+      correctAnswer: 1,
+      explanation: 'Empty strings are falsy, so !"" is true, then !true is false.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-80',
+      topic: 'javascript',
+      question: 'What does Array.includes() do?',
+      code: `[1,2,3].includes(2)`,
+      options: ['Returns index', 'Returns boolean', 'Returns element', 'Adds element'],
+      correctAnswer: 1,
+      explanation: 'includes() determines whether an array contains a value, returning true or false.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-81',
+      topic: 'javascript',
+      question: 'What does String.replace() do?',
+      code: `'hello'.replace('l', 'L')`,
+      options: ['"heLLo"', '"heLlo"', '"hello"', '"HELLO"'],
+      correctAnswer: 1,
+      explanation: 'replace() replaces the first match only (use replaceAll for all matches).',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-82',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(Number(''));`,
+      options: ['NaN', '0', 'undefined', 'null'],
+      correctAnswer: 1,
+      explanation: 'Empty string converts to 0 when coerced to a number.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-83',
+      topic: 'javascript',
+      question: 'What does Math.abs() do?',
+      code: `Math.abs(-5)`,
+      options: ['-5', '5', '0', 'Error'],
+      correctAnswer: 1,
+      explanation: 'Math.abs() returns the absolute value of a number.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-84',
+      topic: 'javascript',
+      question: 'What does Array.flatMap() do?',
+      code: `[1,2].flatMap(x => [x, x*2])`,
+      options: ['[[1,2],[2,4]]', '[1,2,2,4]', '[1,2]', 'Error'],
+      correctAnswer: 1,
+      explanation: 'flatMap() maps and flattens the result in one step.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-85',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(null + 1);`,
+      options: ['null', '1', 'NaN', 'Error'],
+      correctAnswer: 1,
+      explanation: 'null coerces to 0, so 0 + 1 = 1.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-86',
+      topic: 'javascript',
+      question: 'What does String.substring() do?',
+      code: `'hello'.substring(1, 3)`,
+      options: ['"h"', '"el"', '"ell"', '"ello"'],
+      correctAnswer: 1,
+      explanation: 'substring() returns the part of string between start and end indexes.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-87',
+      topic: 'javascript',
+      question: 'What does Math.pow() do?',
+      code: `Math.pow(2, 3)`,
+      options: ['6', '5', '8', '9'],
+      correctAnswer: 2,
+      explanation: 'Math.pow(base, exponent) returns base raised to the power of exponent: 2³ = 8.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-88',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(String(null));`,
+      options: ['"null"', 'null', '""', 'undefined'],
+      correctAnswer: 0,
+      explanation: 'String() converts null to the string "null".',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-89',
+      topic: 'javascript',
+      question: 'What does Array.sort() default to?',
+      code: `[10,5,40].sort()`,
+      options: ['[5,10,40]', '[10,40,5]', '[40,10,5]', '[5,40,10]'],
+      correctAnswer: 1,
+      explanation: 'sort() converts elements to strings and sorts lexicographically: "10", "40", "5".',
+      difficulty: 'hard'
+    },
+    {
+      id: 'js-adv-90',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `'HELLO'.toLowerCase()`,
+      options: ['"hello"', '"HELLO"', '"Hello"', 'Error'],
+      correctAnswer: 0,
+      explanation: 'toLowerCase() returns a new string with all characters converted to lowercase.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-91',
+      topic: 'javascript',
+      question: 'What does parseFloat() do?',
+      code: `console.log(parseFloat('10.5abc'));`,
+      options: ['10.5', 'NaN', '10', 'Error'],
+      correctAnswer: 0,
+      explanation: 'parseFloat() parses until it encounters a non-numeric character.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-92',
+      topic: 'javascript',
+      question: 'What does Math.min() do?',
+      code: `Math.min(5, 2, 8)`,
+      options: ['5', '2', '8', '-Infinity'],
+      correctAnswer: 1,
+      explanation: 'Math.min() returns the smallest number from the arguments.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-93',
+      topic: 'javascript',
+      question: 'What does String.endsWith() do?',
+      code: `'hello'.endsWith('lo')`,
+      options: ['false', 'true', '"lo"', 'Error'],
+      correctAnswer: 1,
+      explanation: 'endsWith() determines whether a string ends with the specified characters.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-94',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(5 / 0);`,
+      options: ['0', 'NaN', 'Infinity', 'Error'],
+      correctAnswer: 2,
+      explanation: 'Division by zero in JavaScript returns Infinity.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-95',
+      topic: 'javascript',
+      question: 'What does Array.push() return?',
+      code: `const arr = [1,2,3];
+arr.push(4);`,
+      options: ['Returns new array', 'Returns new length', 'Returns last element', 'Returns nothing'],
+      correctAnswer: 1,
+      explanation: 'push() adds elements and returns the new length of the array.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-96',
+      topic: 'javascript',
+      question: 'What does Math.sqrt() do?',
       code: `Math.sqrt(16)`,
       options: ['4', '8', '16', '2'],
       correctAnswer: 0,
