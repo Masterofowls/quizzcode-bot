@@ -1,19 +1,19 @@
 import { Quiz } from './types'
 
-export const ADVANCED_QUIZZES: Quiz[] = [
-  {
     id: 'js-adv-1',
-    topic: 'javascript',
-    question: 'What is a closure in JavaScript?',
-    code: `function counter() {
+   
   let count = 0;
-  return function() {
     return ++count;
-  }
 }
-const c = counter();
 console.log(c(), c());`,
-    options: ['0 0', '1 2', '1 1', 'undefined undefined'],
+    correctAnswe
+    difficulty: 'hard
+  {
+   
+ 
+    options: ['3 und
+    explanation: 'Defaul
+  },
     correctAnswer: 1,
     explanation: 'Closures allow inner functions to access variables from outer functions even after the outer function has returned.',
     difficulty: 'hard'
@@ -62,40 +62,40 @@ value = 42;`,
 }`,
     options: ['A nullable value', 'A value that never occurs', 'An optional parameter', 'A void return'],
     correctAnswer: 1,
-    explanation: 'The never type represents values that never occur, typically used for functions that always throw or never return.',
-    difficulty: 'hard'
   },
-  {
-    id: 'ts-adv-3',
-    topic: 'typescript',
-    question: 'What is type narrowing in TypeScript?',
-    code: `function print(value: string | number) {
-  if (typeof value === "string") {
-    console.log(value.toUpperCase());
-  }
-}`,
-    options: ['Converting types', 'Refining types based on conditions', 'Making types more generic', 'Type inference'],
-    correctAnswer: 1,
-    explanation: 'Type narrowing refines a union type to a more specific type based on conditional checks.',
-    difficulty: 'hard'
-  },
-  {
     id: 'ts-adv-4',
-    topic: 'typescript',
-    question: 'What are generics in TypeScript?',
-    code: `function identity<T>(arg: T): T {
-  return arg;
-}
-const result = identity<string>("hello");`,
-    options: ['Built-in types', 'Type variables for reusable components', 'Type aliases', 'Interfaces'],
+    
+  r
+const result = iden
     correctAnswer: 1,
-    explanation: 'Generics allow creating reusable components that work with multiple types while maintaining type safety.',
     difficulty: 'medium'
-  },
   {
-    id: 'ts-adv-5',
     topic: 'typescript',
-    question: 'What are utility types in TypeScript?',
+    code: `interface User {
+  n
+typ
+    correctAnswer: 1,
+    difficulty: 'medi
+  {
+    topic: 'react',
+    
+}, 
+    correctAnswer: 
+    difficulty: 'hard'
+  {
+    topic: 'react',
+    code: `it
+)
+    correctAnswer: 1,
+    difficulty: 'medium'
+  {
+    topic: 'react',
+    code: `const expensi
+}, [
+   
+    difficulty: 'ha
+  {
+    topic: 'python',
     code: `interface User {
   id: number;
   name: string;
@@ -157,6 +157,98 @@ def slow_function():
   {
     id: 'python-adv-2',
     topic: 'python',
+    question: 'What is a generator in Python?',
+    code: `def count_up_to(n):
+    for i in range(n):
+        yield i`,
+    options: ['A list comprehension', 'A function that returns an iterator', 'A class method', 'A decorator'],
+    correctAnswer: 1,
+    explanation: 'Generators use yield to produce values lazily, creating iterators without storing all values in memory.',
+    difficulty: 'hard'
+  },
+  {
+    id: 'python-adv-3',
+    topic: 'python',
+    question: 'What does the with statement do?',
+    code: `with open('file.txt') as f:
+    data = f.read()`,
+    options: ['Opens files only', 'Manages context and cleanup automatically', 'Handles errors', 'Creates classes'],
+    correctAnswer: 1,
+    explanation: 'The with statement ensures proper resource management by automatically handling setup and cleanup.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'django-adv-1',
+    topic: 'django',
+    question: 'What are Django signals?',
+    code: `@receiver(post_save, sender=User)
+def create_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)`,
+    options: ['HTTP requests', 'Event notifications between decoupled apps', 'Database queries', 'URL patterns'],
+    correctAnswer: 1,
+    explanation: 'Signals allow decoupled applications to get notified when certain actions occur elsewhere in the framework.',
+    difficulty: 'hard'
+  },
+  {
+    id: 'django-adv-2',
+    topic: 'django',
+    question: 'What is a Django queryset?',
+    code: `users = User.objects.filter(age__gte=18).order_by('-created')`,
+    options: ['A database table', 'A lazy-evaluated database query', 'A list of objects', 'A model instance'],
+    correctAnswer: 1,
+    explanation: 'QuerySets are lazy - they don\'t hit the database until evaluated, allowing for query optimization.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'django-adv-3',
+    topic: 'django',
+    question: 'What are Django middleware?',
+    code: `MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+]`,
+    options: ['Database connections', 'Request/response processors', 'Template tags', 'URL patterns'],
+    correctAnswer: 1,
+    explanation: 'Middleware are hooks that process requests globally before reaching the view and responses before being sent.',
+    difficulty: 'hard'
+  },
+  {
+    id: 'css-adv-1',
+    topic: 'css',
+    question: 'What is CSS specificity?',
+    code: `#id { color: red; }
+.class { color: blue; }
+div { color: green; }`,
+    options: ['Browser compatibility', 'Rule priority calculation', 'Cascade order', 'Inheritance'],
+    correctAnswer: 1,
+    explanation: 'Specificity determines which CSS rule applies when multiple rules target the same element (IDs > classes > elements).',
+    difficulty: 'medium'
+  },
+  {
+    id: 'css-adv-2',
+    topic: 'css',
+    question: 'What does the CSS calc() function do?',
+    code: `width: calc(100% - 50px);`,
+    options: ['Validates CSS', 'Performs mathematical calculations', 'Converts units', 'Optimizes performance'],
+    correctAnswer: 1,
+    explanation: 'calc() allows mathematical calculations in CSS, mixing different units like percentages and pixels.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'css-adv-3',
+    topic: 'css',
+    question: 'What are CSS custom properties (variables)?',
+    code: `:root {
+  --main-color: #06c;
+}
+.button { color: var(--main-color); }`,
+    options: ['Preprocessor variables', 'Native CSS variables', 'JavaScript variables', 'Class names'],
+    correctAnswer: 1,
+    explanation: 'CSS custom properties are native CSS variables that can be defined, inherited, and used throughout stylesheets.',
+    difficulty: 'medium'
+  }
+]
     question: 'What is a generator in Python?',
     code: `def count_up_to(n):
     for i in range(n):
