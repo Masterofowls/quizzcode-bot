@@ -304,12 +304,12 @@ function App() {
           
           <div className="flex items-center gap-4">
             <Avatar>
-              <AvatarImage src={user.avatarUrl} alt={user.login} />
-              <AvatarFallback>{user.login[0].toUpperCase()}</AvatarFallback>
+              <AvatarImage src={user?.avatarUrl} alt={user?.login} />
+              <AvatarFallback>{user?.login?.[0]?.toUpperCase() || 'U'}</AvatarFallback>
             </Avatar>
             <div className="hidden md:block">
-              <p className="font-semibold">{user.login}</p>
-              <p className="text-xs text-muted-foreground">{user.email}</p>
+              <p className="font-semibold">{user?.login}</p>
+              <p className="text-xs text-muted-foreground">{user?.email}</p>
             </div>
             <Button variant="ghost" size="icon" onClick={handleSignOut}>
               <SignOut size={20} />
