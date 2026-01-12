@@ -1,7 +1,7 @@
 import { Quiz } from './types'
 
-export const ADVANCED_QUIZZES: Quiz[] = [
-  {
+    id: 'js-adv-1',
+   
     id: 'js-adv-1',
     topic: 'javascript',
     question: 'What will this closure return?',
@@ -17,8 +17,8 @@ console.log(counter(), counter());`,
     correctAnswer: 2,
     explanation: 'Closures maintain access to their outer scope. The count variable persists between calls, so it returns 1 then 2.',
     difficulty: 'hard'
-  },
-  {
+    
+  i
     id: 'js-adv-2',
     topic: 'javascript',
     question: 'What is event delegation?',
@@ -64,52 +64,52 @@ console.log(4);`,
     difficulty: 'hard'
   },
   {
-    id: 'js-adv-5',
-    topic: 'javascript',
-    question: 'What is the difference between event.preventDefault() and event.stopPropagation()?',
-    code: `element.addEventListener('click', (e) => {
-  e.preventDefault();
-  e.stopPropagation();
 });`,
-    options: ['They do the same thing', 'preventDefault stops default action, stopPropagation stops bubbling', 'They both stop bubbling', 'They both prevent default'],
     correctAnswer: 1,
-    explanation: 'preventDefault() stops the default browser behavior, while stopPropagation() prevents the event from bubbling up.',
     difficulty: 'medium'
-  },
   {
-    id: 'js-adv-6',
-    topic: 'javascript',
-    question: 'What is the Temporal Dead Zone?',
-    code: `console.log(x);
-let x = 5;`,
-    options: ['No error', 'ReferenceError', 'undefined', 'null'],
-    correctAnswer: 1,
+    topic: 'javascrip
+    code: `console.log
+    o
     explanation: 'The Temporal Dead Zone is the period between entering scope and declaration where let/const variables cannot be accessed.',
-    difficulty: 'hard'
   },
-  {
     id: 'js-adv-7',
-    topic: 'javascript',
-    question: 'What is the difference between var and let?',
-    code: `if (true) {
-  var x = 5;
-  let y = 10;
+    question: 'What is t
+  va
 }
-console.log(x, y);`,
-    options: ['5 10', '5 error', 'error error', 'undefined undefined'],
-    correctAnswer: 1,
-    explanation: 'var is function-scoped and hoisted, let is block-scoped. y is not accessible outside the if block.',
-    difficulty: 'medium'
+    options: ['5 10
+    explanation: 'var is
   },
-  {
     id: 'js-adv-8',
-    topic: 'javascript',
-    question: 'What does the delete operator do?',
-    code: `const obj = {a: 1};
+    question
 delete obj.a;
-console.log(obj.a);`,
-    options: ['1', 'undefined', 'null', 'Error'],
+    options: ['1', 'u
+    explanation: 'The delete operator removes properties from objects. Accessing a deleted property returns undefined.',
+  },
+    
+   
+var x = 5;`,
     correctAnswer: 1,
+    difficulty: 'medium'
+  {
+    topic: '
+    code: `[1
+ 
+    difficulty: 'eas
+  {
+    topic: 'typescrip
+    code: `type User = { name: string; age: number };
+    options: ['Makes all
+    
+  }
+    id: 'ts-adv-2',
+    question: 'What is t
+  if (typeof x === 'string') {
+  }
+    options: 
+    explanation: 'Typ
+  },
+    id: 'ts-adv-3',
     explanation: 'The delete operator removes properties from objects. Accessing a deleted property returns undefined.',
     difficulty: 'easy'
   },
@@ -222,195 +222,195 @@ type NameAndAge = Pick<User, 'name' | 'age'>;`,
     topic: 'react',
     question: 'What does useRef do?',
     code: `const inputRef = useRef(null);`,
-    options: ['Creates state', 'Creates a mutable reference', 'Creates side effects', 'Memoizes values'],
-    correctAnswer: 1,
-    explanation: 'useRef creates a mutable reference that persists across renders without causing re-renders.',
-    difficulty: 'easy'
-  },
   {
-    id: 'react-adv-4',
-    topic: 'react',
-    question: 'What is prop drilling?',
-    code: `<GrandParent>
-  <Parent data={data}>
-    <Child data={data} />
-  </Parent>
-</GrandParent>`,
-    options: ['Passing props through multiple levels', 'Using context', 'Using Redux', 'Creating HOCs'],
-    correctAnswer: 0,
-    explanation: 'Prop drilling is passing props through multiple component levels to reach deeply nested components.',
-    difficulty: 'easy'
-  },
-  {
-    id: 'react-adv-5',
-    topic: 'react',
-    question: 'What does useContext do?',
-    code: `const value = useContext(MyContext);`,
-    options: ['Creates context', 'Consumes context value', 'Provides context', 'Updates context'],
-    correctAnswer: 1,
-    explanation: 'useContext allows a component to consume the value from a React context.',
-    difficulty: 'easy'
-  },
-  {
-    id: 'python-adv-1',
     topic: 'python',
-    question: 'What is a decorator?',
-    code: `@decorator
-def function():
-    pass`,
-    options: ['A comment', 'A function that modifies another function', 'A class method', 'An annotation'],
-    correctAnswer: 1,
-    explanation: 'Decorators are functions that modify the behavior of other functions or classes.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'python-adv-2',
-    topic: 'python',
-    question: 'What does the with statement do?',
-    code: `with open('file.txt') as f:
-    data = f.read()`,
-    options: ['Opens files only', 'Manages context and ensures cleanup', 'Creates a loop', 'Handles exceptions'],
-    correctAnswer: 1,
-    explanation: 'The with statement ensures proper acquisition and release of resources (context management).',
-    difficulty: 'medium'
-  },
-  {
-    id: 'python-adv-3',
-    topic: 'python',
-    question: 'What is a generator?',
     code: `def gen():
-    yield 1
     yield 2`,
-    options: ['A function that returns once', 'A function that yields values lazily', 'A class', 'A decorator'],
-    correctAnswer: 1,
-    explanation: 'Generators are functions that yield values one at a time, allowing lazy evaluation and memory efficiency.',
-    difficulty: 'hard'
-  },
+    
+   
   {
-    id: 'python-adv-4',
-    topic: 'python',
-    question: 'What is list comprehension?',
-    code: `squares = [x**2 for x in range(5)]`,
-    options: ['A loop', 'A concise way to create lists', 'A function', 'A class'],
+    topic: 'python'
+    code: `squares = [x**2 for x in ran
     correctAnswer: 1,
-    explanation: 'List comprehensions provide a concise syntax for creating lists based on existing iterables.',
     difficulty: 'easy'
-  },
   {
-    id: 'python-adv-5',
-    topic: 'python',
-    question: 'What does *args do?',
-    code: `def func(*args):
-    print(args)`,
-    options: ['Creates a list', 'Accepts variable number of positional arguments', 'Creates a dictionary', 'Accepts keyword arguments'],
-    correctAnswer: 1,
-    explanation: '*args allows a function to accept any number of positional arguments as a tuple.',
-    difficulty: 'medium'
+    topic: 
+    code: `def f
+    options: ['Creates a list', 'Accepts variable number of positional arguments', 'Creates a dictionary
+    explanation: '*ar
   },
-  {
-    id: 'django-adv-1',
-    topic: 'django',
-    question: 'What is a Django QuerySet?',
-    code: `users = User.objects.filter(is_active=True)`,
-    options: ['A list', 'A lazy database query', 'A dictionary', 'A function'],
-    correctAnswer: 1,
-    explanation: 'QuerySets are lazy - they only execute database queries when evaluated.',
-    difficulty: 'medium'
+    id: 'django-adv-1'
+    
+   
+    explanation: 'Quer
   },
-  {
     id: 'django-adv-2',
-    topic: 'django',
     question: 'What does select_related do?',
-    code: `Book.objects.select_related('author')`,
-    options: ['Filters results', 'Performs SQL JOIN to reduce queries', 'Orders results', 'Creates relationships'],
-    correctAnswer: 1,
-    explanation: 'select_related performs a SQL JOIN to fetch related objects in a single query, reducing database hits.',
-    difficulty: 'hard'
+    options: ['Filters results', 'Performs SQL JOIN to reduce queries', 'Orders results', 'Creates
+    explanation: 'sel
   },
-  {
-    id: 'django-adv-3',
-    topic: 'django',
-    question: 'What is the purpose of Django middleware?',
-    code: `MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-]`,
-    options: ['Handles templates', 'Processes requests/responses globally', 'Manages static files', 'Creates models'],
-    correctAnswer: 1,
-    explanation: 'Middleware processes requests before they reach views and responses before they reach the client.',
-    difficulty: 'medium'
+    id: 'django-adv-3'
+    
+   
+    options: ['Handles 
+    explanation: 'Mi
   },
-  {
-    id: 'django-adv-4',
-    topic: 'django',
-    question: 'What are Django signals?',
-    code: `post_save.connect(my_handler, sender=User)`,
-    options: ['Database indexes', 'Event notifications for model actions', 'URL patterns', 'Template tags'],
-    correctAnswer: 1,
-    explanation: 'Signals allow decoupled applications to get notified when certain actions occur elsewhere in the framework.',
-    difficulty: 'hard'
+    id: 'django-adv-4
+    question: '
+    option
+    explanation: 'Signals allow decoupled applications to get notified when certain actions occur elsewhere
   },
-  {
     id: 'django-adv-5',
-    topic: 'django',
-    question: 'What is Django ORM?',
-    code: `User.objects.create(username='john')`,
-    options: ['A template engine', 'Object-Relational Mapping for database operations', 'A web server', 'A testing framework'],
-    correctAnswer: 1,
-    explanation: 'ORM allows you to interact with databases using Python objects instead of writing SQL.',
-    difficulty: 'easy'
+    question: 'What is
+    
+   
   },
-  {
     id: 'css-adv-1',
-    topic: 'css',
-    question: 'What does the :not() pseudo-class do?',
-    code: `li:not(.active) { color: gray; }`,
-    options: ['Selects all elements', 'Selects elements that do not match selector', 'Inverts colors', 'Hides elements'],
-    correctAnswer: 1,
-    explanation: ':not() pseudo-class selects elements that do not match the given selector.',
-    difficulty: 'medium'
+    question: 'What does the :not() pseudo-class 
+    options: ['Selects all elements', 
+    explanation: ':no
   },
-  {
     id: 'css-adv-2',
-    topic: 'css',
     question: 'What is CSS specificity?',
-    code: `#id { color: red; }
-.class { color: blue; }`,
-    options: ['File order', 'Weight determining which styles apply', 'Browser preference', 'Random selection'],
-    correctAnswer: 1,
-    explanation: 'Specificity determines which CSS rules apply when multiple rules target the same element. IDs have higher specificity than classes.',
-    difficulty: 'medium'
-  },
+.class { color: blue; }`
+    
+   
   {
-    id: 'css-adv-3',
     topic: 'css',
-    question: 'What does transform do?',
-    code: `div { transform: translateX(50px) rotate(45deg); }`,
-    options: ['Changes HTML', 'Applies 2D/3D transformations', 'Changes colors', 'Animates automatically'],
+    code: `div { transform: translate
     correctAnswer: 1,
-    explanation: 'The transform property applies 2D or 3D transformations like translate, rotate, scale, and skew.',
-    difficulty: 'easy'
-  },
+    difficu
   {
-    id: 'css-adv-4',
     topic: 'css',
-    question: 'What are CSS custom properties?',
-    code: `--primary-color: blue;
-color: var(--primary-color);`,
+    code: `--primary-
     options: ['A JavaScript feature', 'CSS variables for reusable values', 'Browser settings', 'Preprocessor syntax'],
-    correctAnswer: 1,
-    explanation: 'CSS custom properties (variables) allow you to store and reuse values throughout your stylesheet.',
-    difficulty: 'easy'
+    explanation: 'CSS 
   },
-  {
-    id: 'css-adv-5',
-    topic: 'css',
-    question: 'What do media queries do?',
-    code: `@media (max-width: 768px) {
-  .container { width: 100%; }
-}`,
-    options: ['Creates animations', 'Applies styles based on device characteristics', 'Loads images', 'Defines fonts'],
-    correctAnswer: 1,
-    explanation: '@media queries apply styles conditionally based on device characteristics like screen width.',
-    difficulty: 'easy'
+   
+    question: 'What do 
+  .container { width
+    options: ['Creates animations', 'Applies
+    explanation: '@media queries apply styles c
   }
-]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
