@@ -1,5 +1,4 @@
 import { useState, useEffect, useMemo } from 'react'
-import { useKV } from '@github/spark/hooks'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -46,17 +45,24 @@ function App() {
   const [difficultyFilter, setDifficultyFilter] = useState<DifficultyFilter>('all')
   const [sortBy, setSortBy] = useState<SortOption>('name-asc')
   
-  const [progress, setProgress] = useKV<UserProgress>('user-progress', {
-    totalQuizzes: 0,
-    correctAnswers: 0,
-    streak: 0,
-    topicProgress: {},
-    quizHistory: [],
-    totalTimeSpent: 0,
-    averageScore: 0,
-    bestStreak: 0,
-    lastActivity: Date.now()
+  const [progress, setProgress] = useState<UserProgress>(() => {
+    const saved = localStorage.getItem('user-progress')
+    return saved ? JSON.parse(saved) : {
+      totalQuizzes: 0,
+      correctAnswers: 0,
+      streak: 0,
+      topicProgress: {},
+      quizHistory: [],
+      totalTimeSpent: 0,
+      averageScore: 0,
+      bestStreak: 0,
+      lastActivity: Date.now()
+    }
   })
+
+  useEffect(() => {
+    localStorage.setItem('user-progress', JSON.stringify(progress))
+  }, [progress])
 
   useEffect(() => {
     loadUser()
@@ -64,10 +70,40 @@ function App() {
 
   const loadUser = async () => {
     try {
-      const userInfo = await window.spark.user()
-      setUser(userInfo)
+      // Try to load user from localStorage first
+      const savedUser = localStorage.getItem('quiz-user')
+      if (savedUser) {
+        setUser(JSON.parse(savedUser))
+        return
+      }
+      
+      // Try GitHub Spark (works in Codespaces/Spark environment)
+      if (window.spark?.user) {
+        const userInfo = await window.spark.user()
+        setUser(userInfo)
+        localStorage.setItem('quiz-user', JSON.stringify(userInfo))
+      } else {
+        // Fallback for static deployment - create a guest user
+        const guestUser = {
+          login: 'Guest User',
+          avatarUrl: '',
+          email: 'guest@example.com',
+          isOwner: false
+        }
+        setUser(guestUser)
+        localStorage.setItem('quiz-user', JSON.stringify(guestUser))
+      }
     } catch (error) {
       console.error('Failed to load user:', error)
+      // Fallback to guest user on error
+      const guestUser = {
+        login: 'Guest User',
+        avatarUrl: '',
+        email: 'guest@example.com',
+        isOwner: false
+      }
+      setUser(guestUser)
+      localStorage.setItem('quiz-user', JSON.stringify(guestUser))
     }
   }
 
@@ -76,6 +112,7 @@ function App() {
   }
 
   const handleSignOut = () => {
+    localStorage.removeItem('quiz-user')
     setUser(null)
   }
 
