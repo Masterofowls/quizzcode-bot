@@ -10,6 +10,24 @@ An interactive web-based programming quiz platform that helps developers test an
 **Complexity Level**: Complex Application (advanced functionality, likely with multiple views)
 This is a feature-rich educational platform requiring user authentication, multi-topic content management, progress persistence, quiz state management, scoring systems, and multiple interactive views for different learning modes.
 
+## Development Tools
+
+### Code Quality & Formatting
+The project uses **Biome** for real-time linting and formatting, integrated directly into the Vite dev server. Biome provides:
+- Ultra-fast linting (97% faster than ESLint)
+- Automatic code formatting
+- Real-time feedback during development
+- Consistent code style enforcement
+
+See [BIOME_SETUP.md](./BIOME_SETUP.md) for detailed usage and configuration.
+
+Available commands:
+- `npm run biome:check` - Check for issues
+- `npm run biome:fix` - Auto-fix linting issues and format code
+- `npm run format` - Format all files
+
+The Vite plugin automatically checks code on save during `npm run dev`.
+
 ## Essential Features
 
 ### User Authentication & Profile System

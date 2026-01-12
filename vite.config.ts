@@ -1,6 +1,7 @@
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react-swc";
 import { defineConfig, PluginOption } from "vite";
+import { biome } from "vite-plugin-biome";
 
 import sparkPlugin from "@github/spark/spark-vite-plugin";
 import createIconImportProxy from "@github/spark/vitePhosphorIconProxyPlugin";
@@ -14,6 +15,11 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
+    biome({
+      mode: 'check',
+      files: '.',
+      applyFixes: false,
+    }),
     // DO NOT REMOVE
     createIconImportProxy() as PluginOption,
     sparkPlugin() as PluginOption,

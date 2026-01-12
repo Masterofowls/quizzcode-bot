@@ -20,6 +20,7 @@ An interactive web application for mastering programming concepts through quizze
 - **Shadcn UI v4** components
 - **Phosphor Icons** for iconography
 - **GitHub Spark** for user authentication and persistence
+- **Biome** for real-time linting and formatting
 
 ## 🛠️ Development
 
@@ -48,6 +49,23 @@ npm run build
 ```bash
 npm run preview
 ```
+
+### Code Quality
+
+This project uses **Biome** for linting and formatting:
+
+```bash
+# Check code quality
+npm run biome:check
+
+# Auto-fix issues and format code
+npm run biome:fix
+
+# Format all files
+npm run format
+```
+
+Biome runs automatically during development via Vite plugin, providing real-time feedback. See [BIOME_SETUP.md](./BIOME_SETUP.md) for detailed configuration.
 
 ## 🌐 Deployment
 
