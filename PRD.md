@@ -56,6 +56,7 @@ This is a feature-rich educational platform requiring user authentication, multi
 - **Invalid Answers**: All inputs validated before submission, disabled state prevents multiple submissions
 - **No Internet**: Offline state detected with friendly message, last loaded content remains accessible
 - **Rapid Clicking**: Button debouncing prevents double submissions and state conflicts
+- **404 Errors**: Custom styled 404 page matching app design, redirects users back to dashboard on GitHub Pages
 
 ## Design Direction
 

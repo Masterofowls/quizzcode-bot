@@ -65,6 +65,7 @@ To use a custom domain:
 - Make sure GitHub Pages is enabled in Settings
 - Verify the `base` path matches your repository name
 - Check that the workflow completed successfully
+- The project includes a custom 404.html page for better error handling
 
 ### Changes Not Showing
 - Clear your browser cache
