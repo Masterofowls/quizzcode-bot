@@ -1,7 +1,7 @@
 import { Quiz } from './types'
 
-    id: 'js-adv-1',
-   
+export const ADVANCED_QUIZZES: Quiz[] = [
+  {
     id: 'js-adv-1',
     topic: 'javascript',
     question: 'What will this closure return?',
@@ -14,9 +14,9 @@ import { Quiz } from './types'
 const counter = createCounter();
 console.log(counter(), counter());`,
     options: ['0 0', '1 1', '1 2', 'undefined undefined'],
-  {
-    topic: 'javascript',
-    code: `document.ge
+    correctAnswer: 2,
+    explanation: 'The closure maintains access to count. First call returns 1, second call returns 2.',
+    difficulty: 'medium'
   },
   {
     id: 'js-adv-2',
@@ -80,116 +80,92 @@ let x = 5;`,
     question: 'What is the difference between var and let?',
     code: `for (var i = 0; i < 3; i++) {
   setTimeout(() => console.log(i), 100);
-}
-  },
-    id: 'js-adv-7',
-   
-delete obj.a;
-    options: ['1', 'u
-    explanation: 'The delete operator removes properties from objects. Accessing a deleted property returns undefined.',
-  },
-    
-   
-var x = 5;`,
-    correctAnswer: 1,
-    difficulty: 'medium'
-  {
-    topic: 'j
-    code: `[1, 2, 3].
-    correctAnswer: 1,
-    difficulty: 'easy
-  {
-    topic: 'typescript
-    
-   
-    explanation: 'P
-  },
-    id: 'ts-adv-2',
-    question: 'What is typ
-  if (typeof
-  }
-    options: ['Type c
-    explanation: 'Type narrowing is when TypeScript refines a type to a more specific type based on conditions.',
-  },
-    
-   
-type UserKeys = key
-    correctAnswer: 1,
-    difficulty: 'medium'
-  {
-    topic: 'typescript',
-    code: `function i
 }`,
+    options: ['Logs 0 1 2', 'Logs 3 3 3', 'Logs nothing', 'Throws error'],
     correctAnswer: 1,
-    
-  {
-    topic: 'typescr
-    code: `type User = {
-    options: ['Removes properties', 'Selects specific prop
-    explanation: 'Pick<T, K> constructs a type by pic
-  },
-    id: 'react-adv-1',
-    question: 'What d
-  console.log(count);
-    options: ['Memoizes 
-    
-  }
-    id: 'react-adv-
-    question: 'What is t
-  return computeExpensive(a, b);
-    options: ['Memoizes functions', 'Memoizes com
-    explanation: 'useMemo memo
-  },
-   
-   
-    options: ['Creates state', 'Creates a mutable reference', 'Creates side effects', 'Memoizes values'],
-    explanation: 'use
-  },
-    id: 'python-adv-1'
-    
-   
-    options: ['A fu
-    explanation: 'Genera
-  },
-    id: 'python-adv-2',
-    question: 'What is list c
-    options: ['A loop', 'Concise syntax for creating lists', 'A function', 'An iterator'],
-    explanation: 'Lis
-  },
-    id: 'python-adv-3',
-    
-   
-    correctAnswer: 
+    explanation: 'var is function-scoped, so all timeouts reference the same i variable which is 3 after the loop.',
     difficulty: 'medium'
+  },
   {
-    topic: 'django',
-    code: `User.objects.filter(
-   
-    difficulty: 'medium'
-  {
-    topic: 'django',
-    code: `Book.object
-    
-   
-  {
-    topic: 'django',
-    code: `python manage.py makemigration
+    id: 'js-adv-7',
+    topic: 'javascript',
+    question: 'What does the delete operator do?',
+    code: `const obj = { a: 1, b: 2 };
+delete obj.a;
+console.log(obj.a);`,
+    options: ['1', 'undefined', 'null', 'Error'],
     correctAnswer: 1,
+    explanation: 'The delete operator removes properties from objects. Accessing a deleted property returns undefined.',
     difficulty: 'easy'
+  },
   {
-    topic: 'django',
-    code: `post_save.connect(my_handler, sender=User)`,
+    id: 'ts-adv-1',
+    topic: 'typescript',
+    question: 'What is a union type?',
+    code: `type StringOrNumber = string | number;
+const value: StringOrNumber = 5;`,
+    options: ['Type intersection', 'Type that can be one of several types', 'Type inheritance', 'Type guard'],
     correctAnswer: 1,
-    
+    explanation: 'Union types allow a value to be one of several types using the | operator.',
+    difficulty: 'easy'
+  },
   {
-    topic: 'css',
-    code: `div:not(
+    id: 'ts-adv-2',
+    topic: 'typescript',
+    question: 'What is type narrowing?',
+    code: `function print(value: string | number) {
+  if (typeof value === 'string') {
+    console.log(value.toUpperCase());
+  }
+}`,
+    options: ['Type casting', 'Refining types based on conditions', 'Type inference', 'Type generics'],
     correctAnswer: 1,
+    explanation: 'Type narrowing is when TypeScript refines a type to a more specific type based on conditions.',
     difficulty: 'medium'
+  },
   {
-    topic: 'cs
-    code: `#id { color: red; }
-    options: ['Animat
+    id: 'ts-adv-3',
+    topic: 'typescript',
+    question: 'What does the keyof operator do?',
+    code: `type User = { name: string; age: number };
+type UserKeys = keyof User;`,
+    options: ['Creates object keys', 'Gets union of object property names', 'Iterates over keys', 'Deletes keys'],
+    correctAnswer: 1,
+    explanation: 'keyof produces a union type of all property names of a given type.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'ts-adv-4',
+    topic: 'typescript',
+    question: 'What are generics?',
+    code: `function identity<T>(arg: T): T {
+  return arg;
+}`,
+    options: ['Type aliases', 'Reusable type parameters', 'Interface inheritance', 'Type guards'],
+    correctAnswer: 1,
+    explanation: 'Generics allow creating reusable components that work with multiple types.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'ts-adv-5',
+    topic: 'typescript',
+    question: 'What does Pick<T, K> do?',
+    code: `type User = { name: string; age: number; email: string };
+type UserName = Pick<User, 'name' | 'email'>;`,
+    options: ['Removes properties', 'Selects specific properties', 'Creates new type', 'Merges types'],
+    correctAnswer: 1,
+    explanation: 'Pick<T, K> constructs a type by picking specific properties from another type.',
+    difficulty: 'hard'
+  },
+  {
+    id: 'react-adv-1',
+    topic: 'react',
+    question: 'What does useCallback do?',
+    code: `const handleClick = useCallback(() => {
+  console.log(count);
+}, [count]);`,
+    options: ['Memoizes state', 'Memoizes callback functions', 'Creates side effects', 'Manages context'],
+    correctAnswer: 1,
     explanation: 'useCallback returns a memoized version of the callback that only changes if dependencies change.',
     difficulty: 'medium'
   },
@@ -305,44 +281,6 @@ type UserKeys = key
     code: `#id { color: red; }
 .class { color: blue; }`,
     options: ['Animation timing', 'Priority calculation for conflicting styles', 'Layout algorithm', 'Color scheme'],
-    correctAnswer: 1,
-    explanation: 'Specificity determines which CSS rule applies when multiple rules target the same element.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'css-adv-3',
-    topic: 'css',
-    question: 'What does transform do?',
-    code: `div { transform: translate(50px, 100px); }`,
-    options: ['Changes color', 'Applies 2D/3D transformations', 'Creates animations', 'Changes font'],
-    correctAnswer: 1,
-    explanation: 'The transform property applies 2D or 3D transformations to elements.',
-    difficulty: 'easy'
-  },
-  {
-    id: 'css-adv-4',
-    topic: 'css',
-    question: 'What are CSS custom properties?',
-    code: `--primary-color: #3498db;
-color: var(--primary-color);`,
-    options: ['A JavaScript feature', 'CSS variables for reusable values', 'Browser settings', 'Preprocessor syntax'],
-    correctAnswer: 1,
-    explanation: 'CSS custom properties (variables) allow you to store and reuse values throughout your stylesheet.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'css-adv-5',
-    topic: 'css',
-    question: 'What do media queries do?',
-    code: `@media (max-width: 768px) {
-  .container { width: 100%; }
-}`,
-    options: ['Creates animations', 'Applies styles conditionally based on device characteristics', 'Imports fonts', 'Defines variables'],
-    correctAnswer: 1,
-    explanation: '@media queries apply styles conditionally based on device characteristics like screen width.',
-    difficulty: 'easy'
-  }
-]
     correctAnswer: 1,
     explanation: 'Specificity determines which CSS rule applies when multiple rules target the same element.',
     difficulty: 'medium'

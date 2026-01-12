@@ -1,5 +1,5 @@
 import { Quiz, Topic } from './types'
-import { advancedQuizzes } from './advancedQuizzes'
+import { ADVANCED_QUIZZES } from './advancedQuizzes'
 
 export const TOPICS: Topic[] = [
   {
@@ -401,7 +401,7 @@ grid-template-columns: 1fr 1fr 1fr;`,
   }
 ]
 
-const ALL_QUIZZES = [...QUIZZES, ...advancedQuizzes]
+const ALL_QUIZZES = [...QUIZZES, ...ADVANCED_QUIZZES]
 
 export function getQuizzesByTopic(topicId: string): Quiz[] {
   return ALL_QUIZZES.filter(q => q.topic === topicId)
