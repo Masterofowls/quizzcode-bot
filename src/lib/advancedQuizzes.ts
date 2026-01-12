@@ -1,7 +1,7 @@
 import { Quiz } from './types'
 
-export const advancedQuizzes: Quiz[] = [
-  {
+    id: 'js-adv-1',
+   
     id: 'js-adv-1',
     topic: 'javascript',
     question: 'What will this closure return?',
@@ -14,9 +14,9 @@ export const advancedQuizzes: Quiz[] = [
 const counter = createCounter();
 console.log(counter(), counter());`,
     options: ['0 0', '1 1', '1 2', 'undefined undefined'],
-    correctAnswer: 2,
-    explanation: 'Closures maintain access to their outer scope. The count variable persists between calls, so it returns 1 then 2.',
-    difficulty: 'hard'
+  {
+    topic: 'javascript',
+    code: `document.ge
   },
   {
     id: 'js-adv-2',
@@ -81,115 +81,115 @@ let x = 5;`,
     code: `for (var i = 0; i < 3; i++) {
   setTimeout(() => console.log(i), 100);
 }
-for (let j = 0; j < 3; j++) {
-  setTimeout(() => console.log(j), 100);
-}`,
-    options: ['3 3 3, then 0 1 2', '0 1 2, then 3 3 3', 'Both log 3 3 3', 'Both log 0 1 2'],
-    correctAnswer: 0,
-    explanation: 'var is function-scoped and shared across iterations. let is block-scoped, creating a new binding per iteration.',
-    difficulty: 'hard'
   },
-  {
     id: 'js-adv-7',
-    topic: 'javascript',
-    question: 'What does the delete operator do?',
-    code: `const obj = { a: 1, b: 2 };
+   
 delete obj.a;
-console.log(obj.a);`,
-    options: ['1', 'undefined', 'null', 'Error'],
-    correctAnswer: 1,
+    options: ['1', 'u
     explanation: 'The delete operator removes properties from objects. Accessing a deleted property returns undefined.',
-    difficulty: 'easy'
   },
-  {
-    id: 'js-adv-8',
-    topic: 'javascript',
-    question: 'What is hoisting?',
-    code: `console.log(x);
+    
+   
 var x = 5;`,
-    options: ['5', 'undefined', 'Error', 'null'],
     correctAnswer: 1,
-    explanation: 'Hoisting moves variable declarations to the top of their scope. var x is hoisted but not its value, so it logs undefined.',
     difficulty: 'medium'
-  },
   {
-    id: 'js-adv-9',
-    topic: 'javascript',
-    question: 'What does Array.map() return?',
-    code: `[1, 2, 3].map(x => x * 2)`,
-    options: ['[1, 2, 3]', '[2, 4, 6]', '6', 'undefined'],
+    topic: 'j
+    code: `[1, 2, 3].
     correctAnswer: 1,
-    explanation: 'map() creates a new array by applying a function to each element.',
-    difficulty: 'easy'
-  },
+    difficulty: 'easy
   {
-    id: 'ts-adv-1',
-    topic: 'typescript',
-    question: 'What does the Partial<T> utility type do?',
-    code: `type User = { name: string; age: number };
-type PartialUser = Partial<User>;`,
-    options: ['Makes all properties required', 'Makes all properties optional', 'Removes properties', 'Makes properties readonly'],
-    correctAnswer: 1,
-    explanation: 'Partial<T> constructs a type with all properties of T set to optional.',
-    difficulty: 'medium'
+    topic: 'typescript
+    
+   
+    explanation: 'P
   },
-  {
     id: 'ts-adv-2',
-    topic: 'typescript',
-    question: 'What is type narrowing?',
-    code: `function process(x: string | number) {
-  if (typeof x === 'string') {
-    x.toUpperCase();
+    question: 'What is typ
+  if (typeof
   }
-}`,
-    options: ['Type casting', 'Refining types within conditional blocks', 'Creating new types', 'Type assertion'],
-    correctAnswer: 1,
+    options: ['Type c
     explanation: 'Type narrowing is when TypeScript refines a type to a more specific type based on conditions.',
-    difficulty: 'hard'
   },
-  {
-    id: 'ts-adv-3',
-    topic: 'typescript',
-    question: 'What does the keyof operator do?',
-    code: `type User = { name: string; age: number };
-type UserKeys = keyof User;`,
-    options: ['Returns object keys', 'Creates a union of property names', 'Returns property values', 'Creates an array'],
+    
+   
+type UserKeys = key
     correctAnswer: 1,
-    explanation: 'keyof creates a union type of all property names (literal types) of a given type.',
     difficulty: 'medium'
-  },
   {
-    id: 'ts-adv-4',
     topic: 'typescript',
-    question: 'What is a type guard?',
-    code: `function isString(x: unknown): x is string {
-  return typeof x === 'string';
+    code: `function i
 }`,
-    options: ['A runtime check', 'A function that narrows types', 'A type assertion', 'A decorator'],
     correctAnswer: 1,
-    explanation: 'Type guards are functions that perform runtime checks and help TypeScript narrow types.',
-    difficulty: 'hard'
-  },
+    
   {
-    id: 'ts-adv-5',
-    topic: 'typescript',
-    question: 'What does Pick<T, K> do?',
-    code: `type User = { name: string; age: number; email: string };
-type NameAndAge = Pick<User, 'name' | 'age'>;`,
-    options: ['Removes properties', 'Selects specific properties', 'Makes properties optional', 'Creates a union'],
-    correctAnswer: 1,
-    explanation: 'Pick<T, K> constructs a type by picking specific properties K from type T.',
-    difficulty: 'medium'
+    topic: 'typescr
+    code: `type User = {
+    options: ['Removes properties', 'Selects specific prop
+    explanation: 'Pick<T, K> constructs a type by pic
   },
-  {
     id: 'react-adv-1',
-    topic: 'react',
-    question: 'What does useCallback do?',
-    code: `const handleClick = useCallback(() => {
+    question: 'What d
   console.log(count);
-}, [count]);`,
-    options: ['Memoizes values', 'Memoizes functions', 'Creates refs', 'Manages state'],
+    options: ['Memoizes 
+    
+  }
+    id: 'react-adv-
+    question: 'What is t
+  return computeExpensive(a, b);
+    options: ['Memoizes functions', 'Memoizes com
+    explanation: 'useMemo memo
+  },
+   
+   
+    options: ['Creates state', 'Creates a mutable reference', 'Creates side effects', 'Memoizes values'],
+    explanation: 'use
+  },
+    id: 'python-adv-1'
+    
+   
+    options: ['A fu
+    explanation: 'Genera
+  },
+    id: 'python-adv-2',
+    question: 'What is list c
+    options: ['A loop', 'Concise syntax for creating lists', 'A function', 'An iterator'],
+    explanation: 'Lis
+  },
+    id: 'python-adv-3',
+    
+   
+    correctAnswer: 
+    difficulty: 'medium'
+  {
+    topic: 'django',
+    code: `User.objects.filter(
+   
+    difficulty: 'medium'
+  {
+    topic: 'django',
+    code: `Book.object
+    
+   
+  {
+    topic: 'django',
+    code: `python manage.py makemigration
     correctAnswer: 1,
+    difficulty: 'easy'
+  {
+    topic: 'django',
+    code: `post_save.connect(my_handler, sender=User)`,
+    correctAnswer: 1,
+    
+  {
+    topic: 'css',
+    code: `div:not(
+    correctAnswer: 1,
+    difficulty: 'medium'
+  {
+    topic: 'cs
+    code: `#id { color: red; }
+    options: ['Animat
     explanation: 'useCallback returns a memoized version of the callback that only changes if dependencies change.',
     difficulty: 'medium'
   },
@@ -305,6 +305,44 @@ type NameAndAge = Pick<User, 'name' | 'age'>;`,
     code: `#id { color: red; }
 .class { color: blue; }`,
     options: ['Animation timing', 'Priority calculation for conflicting styles', 'Layout algorithm', 'Color scheme'],
+    correctAnswer: 1,
+    explanation: 'Specificity determines which CSS rule applies when multiple rules target the same element.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'css-adv-3',
+    topic: 'css',
+    question: 'What does transform do?',
+    code: `div { transform: translate(50px, 100px); }`,
+    options: ['Changes color', 'Applies 2D/3D transformations', 'Creates animations', 'Changes font'],
+    correctAnswer: 1,
+    explanation: 'The transform property applies 2D or 3D transformations to elements.',
+    difficulty: 'easy'
+  },
+  {
+    id: 'css-adv-4',
+    topic: 'css',
+    question: 'What are CSS custom properties?',
+    code: `--primary-color: #3498db;
+color: var(--primary-color);`,
+    options: ['A JavaScript feature', 'CSS variables for reusable values', 'Browser settings', 'Preprocessor syntax'],
+    correctAnswer: 1,
+    explanation: 'CSS custom properties (variables) allow you to store and reuse values throughout your stylesheet.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'css-adv-5',
+    topic: 'css',
+    question: 'What do media queries do?',
+    code: `@media (max-width: 768px) {
+  .container { width: 100%; }
+}`,
+    options: ['Creates animations', 'Applies styles conditionally based on device characteristics', 'Imports fonts', 'Defines variables'],
+    correctAnswer: 1,
+    explanation: '@media queries apply styles conditionally based on device characteristics like screen width.',
+    difficulty: 'easy'
+  }
+]
     correctAnswer: 1,
     explanation: 'Specificity determines which CSS rule applies when multiple rules target the same element.',
     difficulty: 'medium'
