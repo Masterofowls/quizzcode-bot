@@ -20,6 +20,15 @@ export function TopicCard({ topic, progress, onClick }: TopicCardProps) {
     ? (progress.completed / progress.total) * 100 
     : 0
 
+  const getDifficultyColor = (difficulty: string) => {
+    switch (difficulty) {
+      case 'easy': return 'text-success border-success/50 bg-success/10'
+      case 'medium': return 'text-accent border-accent/50 bg-accent/10'
+      case 'hard': return 'text-destructive border-destructive/50 bg-destructive/10'
+      default: return 'text-muted-foreground'
+    }
+  }
+
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
@@ -49,7 +58,12 @@ export function TopicCard({ topic, progress, onClick }: TopicCardProps) {
           )}
         </div>
         
-        <h3 className="text-xl font-semibold mb-2">{topic.name}</h3>
+        <div className="flex items-center gap-2 mb-2">
+          <h3 className="text-xl font-semibold">{topic.name}</h3>
+          <Badge variant="outline" className={`text-xs capitalize ${getDifficultyColor(topic.difficulty)}`}>
+            {topic.difficulty}
+          </Badge>
+        </div>
         <p className="text-sm text-muted-foreground mb-4">{topic.description}</p>
         
         {progress && (

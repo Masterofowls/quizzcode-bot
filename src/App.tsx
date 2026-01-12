@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useKV } from '@github/spark/hooks'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
@@ -6,11 +6,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Progress } from '@/components/ui/progress'
 import { TopicCard } from '@/components/TopicCard'
+import { TopicFilters, DifficultyFilter, SortOption } from '@/components/TopicFilters'
 import { QuizQuestion } from '@/components/QuizQuestion'
 import { QuizResults } from '@/components/QuizResults'
 import { StatCard } from '@/components/StatCard'
 import { TOPICS, getRandomQuizzes } from '@/lib/quizData'
-import { UserProgress, Quiz, QuizResult } from '@/lib/types'
+import { UserProgress, Quiz, QuizResult, Topic } from '@/lib/types'
 import { 
   ChartBar, 
   Lightning, 
@@ -41,6 +42,8 @@ function App() {
   const [currentQuizIndex, setCurrentQuizIndex] = useState(0)
   const [score, setScore] = useState(0)
   const [startTime, setStartTime] = useState<number>(0)
+  const [difficultyFilter, setDifficultyFilter] = useState<DifficultyFilter>('all')
+  const [sortBy, setSortBy] = useState<SortOption>('name-asc')
   
   const [progress, setProgress] = useKV<UserProgress>('user-progress', {
     totalQuizzes: 0,
@@ -152,6 +155,53 @@ function App() {
     setCurrentQuizIndex(0)
     setScore(0)
   }
+
+  const getTopicProgress = (topicId: string) => {
+    return progress?.topicProgress?.[topicId]
+  }
+
+  const filteredAndSortedTopics = useMemo(() => {
+    let filtered = [...TOPICS]
+
+    if (difficultyFilter !== 'all') {
+      filtered = filtered.filter(topic => topic.difficulty === difficultyFilter)
+    }
+
+    filtered.sort((a, b) => {
+      switch (sortBy) {
+        case 'name-asc':
+          return a.name.localeCompare(b.name)
+        case 'name-desc':
+          return b.name.localeCompare(a.name)
+        case 'difficulty-asc': {
+          const difficultyOrder = { easy: 0, medium: 1, hard: 2 }
+          return difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty]
+        }
+        case 'difficulty-desc': {
+          const difficultyOrder = { easy: 0, medium: 1, hard: 2 }
+          return difficultyOrder[b.difficulty] - difficultyOrder[a.difficulty]
+        }
+        case 'progress-asc': {
+          const aProgress = getTopicProgress(a.id)
+          const bProgress = getTopicProgress(b.id)
+          const aPercent = aProgress ? (aProgress.completed / aProgress.total) * 100 : 0
+          const bPercent = bProgress ? (bProgress.completed / bProgress.total) * 100 : 0
+          return aPercent - bPercent
+        }
+        case 'progress-desc': {
+          const aProgress = getTopicProgress(a.id)
+          const bProgress = getTopicProgress(b.id)
+          const aPercent = aProgress ? (aProgress.completed / aProgress.total) * 100 : 0
+          const bPercent = bProgress ? (bProgress.completed / bProgress.total) * 100 : 0
+          return bPercent - aPercent
+        }
+        default:
+          return 0
+      }
+    })
+
+    return filtered
+  }, [difficultyFilter, sortBy, progress])
 
   if (!user) {
     return (
@@ -289,8 +339,72 @@ function App() {
 
             <div>
               <h2 className="text-2xl font-bold mb-4">Your Progress</h2>
+              <TopicFilters
+                selectedDifficulty={difficultyFilter}
+                onDifficultyChange={setDifficultyFilter}
+                sortBy={sortBy}
+                onSortChange={setSortBy}
+                totalTopics={TOPICS.length}
+                filteredCount={filteredAndSortedTopics.length}
+              />
+              {filteredAndSortedTopics.length === 0 ? (
+                <Card className="p-12 text-center bg-card mt-4">
+                  <Code size={64} className="mx-auto mb-4 text-muted-foreground opacity-50" />
+                  <h3 className="text-xl font-semibold mb-2 text-muted-foreground">
+                    No topics match your filters
+                  </h3>
+                  <p className="text-muted-foreground mb-6">
+                    Try adjusting your difficulty filter to see more topics
+                  </p>
+                  <Button onClick={() => setDifficultyFilter('all')} variant="outline">
+                    Clear Filters
+                  </Button>
+                </Card>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                  {filteredAndSortedTopics.map(topic => (
+                    <TopicCard
+                      key={topic.id}
+                      topic={topic}
+                      progress={progress?.topicProgress?.[topic.id]}
+                      onClick={() => startQuiz(topic.id)}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="topics" className="space-y-6">
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl font-bold">All Topics</h2>
+            </div>
+            
+            <TopicFilters
+              selectedDifficulty={difficultyFilter}
+              onDifficultyChange={setDifficultyFilter}
+              sortBy={sortBy}
+              onSortChange={setSortBy}
+              totalTopics={TOPICS.length}
+              filteredCount={filteredAndSortedTopics.length}
+            />
+            
+            {filteredAndSortedTopics.length === 0 ? (
+              <Card className="p-12 text-center bg-card">
+                <Code size={64} className="mx-auto mb-4 text-muted-foreground opacity-50" />
+                <h3 className="text-xl font-semibold mb-2 text-muted-foreground">
+                  No topics match your filters
+                </h3>
+                <p className="text-muted-foreground mb-6">
+                  Try adjusting your difficulty filter to see more topics
+                </p>
+                <Button onClick={() => setDifficultyFilter('all')} variant="outline">
+                  Clear Filters
+                </Button>
+              </Card>
+            ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {TOPICS.map(topic => (
+                {filteredAndSortedTopics.map(topic => (
                   <TopicCard
                     key={topic.id}
                     topic={topic}
@@ -299,27 +413,7 @@ function App() {
                   />
                 ))}
               </div>
-            </div>
-          </TabsContent>
-
-          <TabsContent value="topics" className="space-y-6">
-            <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold">All Topics</h2>
-              <p className="text-muted-foreground">
-                {TOPICS.length} topics available
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {TOPICS.map(topic => (
-                <TopicCard
-                  key={topic.id}
-                  topic={topic}
-                  progress={progress?.topicProgress?.[topic.id]}
-                  onClick={() => startQuiz(topic.id)}
-                />
-              ))}
-            </div>
+            )}
           </TabsContent>
 
           <TabsContent value="history" className="space-y-6">

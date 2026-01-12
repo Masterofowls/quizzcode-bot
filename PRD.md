@@ -20,11 +20,11 @@ This is a feature-rich educational platform requiring user authentication, multi
 - **Success criteria**: User profile persists across sessions, displays avatar/username, shows accurate quiz statistics
 
 ### Topic Selection & Navigation
-- **Functionality**: Browse and select from 6+ programming topics (JavaScript, TypeScript, React, Python, Django, CSS, etc.)
-- **Purpose**: Allows users to focus on specific technologies they want to learn or practice
+- **Functionality**: Browse and select from 6+ programming topics (JavaScript, TypeScript, React, Python, Django, CSS, etc.) with difficulty filtering and sorting options
+- **Purpose**: Allows users to focus on specific technologies they want to learn or practice, filter by difficulty level, and sort by various criteria
 - **Trigger**: User lands on dashboard or clicks topic selector
-- **Progression**: View topic grid with icons → See progress per topic → Click topic → Enter quiz mode for that topic
-- **Success criteria**: All topics visible, progress indicators accurate, smooth navigation between topics
+- **Progression**: View topic grid with icons → Apply difficulty filters (Easy/Medium/Hard) → Sort by name, difficulty, or progress → See progress per topic → Click topic → Enter quiz mode for that topic
+- **Success criteria**: All topics visible, filtering works correctly, sorting options function properly, progress indicators accurate, smooth navigation between topics
 
 ### Interactive Quiz Engine
 - **Functionality**: Multiple-choice questions with code snippets, syntax highlighting, and instant validation
@@ -51,6 +51,7 @@ This is a feature-rich educational platform requiring user authentication, multi
 
 - **No User Login**: Guest mode allows exploring topics and sample questions, but prompts login to save progress
 - **Empty Progress**: First-time users see welcome message with tutorial overlay explaining how to get started
+- **No Matching Filters**: When filters result in no topics, show helpful message with suggestion to adjust filters
 - **Quiz Interruption**: Progress automatically saves on each question, allowing users to resume where they left off
 - **Invalid Answers**: All inputs validated before submission, disabled state prevents multiple submissions
 - **No Internet**: Offline state detected with friendly message, last loaded content remains accessible
@@ -102,18 +103,20 @@ Micro-interactions for button states (scale on hover, subtle press feedback). Qu
   - Button: All actions (primary for "Submit", secondary for "Skip", destructive for "Reset")
   - Progress: Topic completion bars, quiz progress indicators
   - Tabs: Navigation between dashboard sections (Overview, Topics, History)
-  - Badge: Topic tags, difficulty levels, achievement markers
+  - Badge: Topic tags, difficulty levels, achievement markers, active filter indicators
   - Avatar: User profile display (GitHub integration)
   - Dialog: Quiz completion celebration, explanation modals
   - Separator: Visual breaks between sections
   - ScrollArea: Quiz history lists, long code snippets
   - RadioGroup: Multiple choice answer selection
+  - Select: Dropdown for sorting options (by name, difficulty, progress)
   
 - **Customizations**:
   - Custom CodeBlock component wrapping code with syntax highlighting (using Prism or similar)
   - Custom StatCard component for animated number counters on dashboard
   - Custom QuizQuestion component with integrated timer and answer feedback
-  - Custom TopicCard with hover effects and progress rings
+  - Custom TopicCard with hover effects, progress rings, and difficulty badges
+  - Custom TopicFilters component with difficulty buttons and sort dropdown
 
 - **States**:
   - Buttons: Default (subtle glow), Hover (scale 1.05 + brighter glow), Active (scale 0.98), Disabled (opacity 0.5)
@@ -132,6 +135,9 @@ Micro-interactions for button states (scale on hover, subtle press feedback). Qu
   - ArrowLeft: Previous/back
   - User: Profile
   - Star: Favorites/difficulty rating
+  - FunnelSimple: Filter toggle
+  - Sliders: Sort options
+  - SortAscending/SortDescending: Sort direction indicators
 
 - **Spacing**:
   - Section padding: p-6 to p-8

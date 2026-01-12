@@ -39,4 +39,6 @@ export interface Topic {
   description: string
   color: string
   totalQuizzes: number
+  difficulty: 'easy' | 'medium' | 'hard'
+  category?: string
 }
