@@ -2,22 +2,24 @@ import { Quiz } from './types'
 
 export const ADVANCED_QUIZZES: Quiz[] = [
   {
-    question: 'What
+    id: 'js-adv-1',
+    topic: 'javascript',
+    question: 'What will this closure return on the second call?',
+    code: `function counter() {
   let count = 0;
+  return function() {
+    return ++count;
+  };
 }
-console.log(counter());
-    options: ['0
-    explanation: 'The c
- 
-    id: 'js-adv-2',
-    question: 'What is 
-  if (e.target.matches('.
-  }
-    options: ['Adding
+const c = counter();
+console.log(c());
+console.log(c());`,
+    options: ['0, 0', '1, 2', '1, 1', 'undefined'],
+    correctAnswer: 1,
     explanation: 'The closure maintains access to the count variable. First call returns 1, second returns 2.',
     difficulty: 'hard'
   },
-   
+  {
     id: 'js-adv-2',
     topic: 'javascript',
     question: 'What is event delegation?',
@@ -32,40 +34,25 @@ console.log(counter());
     difficulty: 'medium'
   },
   {
-    topic: 'javascr
-    code: `console.log(x
+    id: 'js-adv-3',
+    topic: 'javascript',
+    question: 'What does hoisting do to this code?',
+    code: `console.log(x);
+var x = 5;`,
     options: ['Error', 'undefined', '5', 'null'],
-    explanation: 'Variable de
-  },
-    id: 'js-adv
-    question: 'What
-obj.
-    options: ['2', '1',
-    explanation: 'Object.freeze() prevents modification of existing properties.
-  },
-    id: 'ts-adv-1',
-    question: 'What is
-func
-}`,
-    correctAnswer: 
-    difficulty: 'easy'
-  {
-    topic: 'typescript',
-    code: `f
-    return x.toUpperCase();
-}`,
     correctAnswer: 1,
+    explanation: 'Variable declarations are hoisted to the top but not their assignments, so x is undefined when logged.',
     difficulty: 'medium'
-  {
-   
-    code: `type Poi
-    options: ['Creates n
-    explanation: 'keyof creates a union type o
   },
+  {
+    id: 'js-adv-4',
+    topic: 'javascript',
+    question: 'What will be logged?',
+    code: `const obj = Object.freeze({ a: 1 });
 obj.a = 2;
 console.log(obj.a);`,
     options: ['2', '1', 'Error', 'undefined'],
-    code: `function i
+    correctAnswer: 1,
     explanation: 'Object.freeze() prevents modification of existing properties. The assignment fails silently in non-strict mode.',
     difficulty: 'hard'
   },
@@ -127,41 +114,13 @@ type PointKeys = keyof Point;`,
 type PartialUser = Partial<User>;`,
     options: ['Makes all properties required', 'Makes all properties optional', 'Removes properties', 'Adds properties'],
     correctAnswer: 1,
+    explanation: 'Partial<T> makes all properties of type T optional, useful for update operations.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'python-adv-1',
     topic: 'python',
-    code: `@my_decorator
-    
-   
-    difficulty: 'hard'
-  {
-    topic: 'django',
-    code: `posts = Post.objects.filter(published
-    correctAn
-    difficulty: 'hard'
-  {
-    topi
-    
-    correctAnswer: 1,
-    difficulty: 'hard
-  {
-    topic: 'django',
-    
-]`,
-    correctAnswer: 1,
-    difficulty: 'ea
-  {
-    topic: 'django',
-    code: `Author.objects.prefetch_r
-    corr
-    
-  {
-    topic: 'css',
-    code: `div:not(.special) { color: red; }`,
-    correctAnswer: 1,
-    
-  {
-    topic: 'css',
-    code: `display: 
-    options: ['Grid layout', 'Space b
+    question: 'What are Python generators?',
     code: `def counter():
     i = 0
     while True:
@@ -243,44 +202,6 @@ def my_function():
     code: `display: flex;
 gap: 1rem;`,
     options: ['Grid layout', 'Space between flex items', 'Padding', 'Border'],
-    correctAnswer: 1,
-    explanation: 'The gap property sets spacing between flex items without using margins.',
-    difficulty: 'easy'
-  },
-  {
-    id: 'css-adv-3',
-    topic: 'css',
-    question: 'What does the transform property do?',
-    code: `transform: rotate(45deg);`,
-    options: ['Animates elements', 'Applies 2D/3D transformations', 'Changes position', 'Modifies display'],
-    correctAnswer: 1,
-    explanation: 'The transform property applies 2D or 3D transformations like rotate, scale, translate, and skew.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'css-adv-4',
-    topic: 'css',
-    question: 'What are CSS custom properties?',
-    code: `--primary-color: blue;
-color: var(--primary-color);`,
-    options: ['Comments', 'CSS variables', 'Preprocessor variables', 'Class names'],
-    correctAnswer: 1,
-    explanation: 'CSS custom properties (variables) allow reusable values defined with -- and accessed with var().',
-    difficulty: 'medium'
-  },
-  {
-    id: 'css-adv-5',
-    topic: 'css',
-    question: 'What is a media query?',
-    code: `@media (max-width: 768px) {
-  .container { width: 100%; }
-}`,
-    options: ['JavaScript function', 'Conditional CSS for different screens', 'Animation', 'Selector'],
-    correctAnswer: 1,
-    explanation: 'Media queries apply CSS conditionally based on device characteristics like screen width.',
-    difficulty: 'easy'
-  }
-]
     correctAnswer: 1,
     explanation: 'The gap property sets spacing between flex items without using margins.',
     difficulty: 'easy'
