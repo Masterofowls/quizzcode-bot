@@ -10,6 +10,7 @@ import { TopicFilters, DifficultyFilter, SortOption } from '@/components/TopicFi
 import { QuizQuestion } from '@/components/QuizQuestion'
 import { QuizResults } from '@/components/QuizResults'
 import { StatCard } from '@/components/StatCard'
+import { DetailedStats } from '@/components/DetailedStats'
 import { TOPICS, getRandomQuizzes } from '@/lib/quizData'
 import { UserProgress, Quiz, QuizResult, Topic } from '@/lib/types'
 import { 
@@ -50,7 +51,11 @@ function App() {
     correctAnswers: 0,
     streak: 0,
     topicProgress: {},
-    quizHistory: []
+    quizHistory: [],
+    totalTimeSpent: 0,
+    averageScore: 0,
+    bestStreak: 0,
+    lastActivity: Date.now()
   })
 
   useEffect(() => {
@@ -90,12 +95,13 @@ function App() {
     }
 
     const quiz = currentQuizzes[currentQuizIndex]
+    const timeSpent = Date.now() - startTime
     const result: QuizResult = {
       quizId: quiz.id,
       topic: quiz.topic,
       correct,
       timestamp: Date.now(),
-      timeSpent: Date.now() - startTime
+      timeSpent
     }
 
     setProgress((currentProgress) => {
@@ -105,18 +111,24 @@ function App() {
           correctAnswers: 0,
           streak: 0,
           topicProgress: {},
-          quizHistory: []
+          quizHistory: [],
+          totalTimeSpent: 0,
+          averageScore: 0,
+          bestStreak: 0,
+          lastActivity: Date.now()
         }
       }
       
-      const newProgress = { ...currentProgress }
-      newProgress.totalQuizzes += 1
-      if (correct) newProgress.correctAnswers += 1
+      const newProgress: UserProgress = { ...currentProgress }
+      newProgress.totalQuizzes = (newProgress.totalQuizzes || 0) + 1
+      newProgress.correctAnswers = (newProgress.correctAnswers || 0) + (correct ? 1 : 0)
+      newProgress.totalTimeSpent = (newProgress.totalTimeSpent || 0) + timeSpent
+      newProgress.lastActivity = Date.now()
       
       if (!newProgress.topicProgress[quiz.topic]) {
         newProgress.topicProgress[quiz.topic] = {
           completed: 0,
-          total: TOPICS.find(t => t.id === quiz.topic)?.totalQuizzes || 10,
+          total: TOPICS.find(t => t.id === quiz.topic)?.totalQuizzes || 100,
           score: 0
         }
       }
@@ -126,10 +138,16 @@ function App() {
       topicProg.score = ((topicProg.score * (topicProg.completed - 1)) + (correct ? 100 : 0)) / topicProg.completed
       topicProg.lastAttempt = Date.now()
       
-      newProgress.quizHistory = [result, ...newProgress.quizHistory].slice(0, 50)
+      newProgress.quizHistory = [result, ...newProgress.quizHistory].slice(0, 100)
       
       const recentResults = newProgress.quizHistory.slice(0, 10)
-      newProgress.streak = recentResults.every(r => r.correct) ? recentResults.length : 0
+      const currentStreak = recentResults.every(r => r.correct) ? recentResults.length : 0
+      newProgress.streak = currentStreak
+      newProgress.bestStreak = Math.max(newProgress.bestStreak || 0, currentStreak)
+      
+      newProgress.averageScore = newProgress.totalQuizzes > 0
+        ? Math.round((newProgress.correctAnswers / newProgress.totalQuizzes) * 100)
+        : 0
       
       return newProgress
     })
@@ -302,9 +320,10 @@ function App() {
 
       <main className="max-w-7xl mx-auto px-4 md:px-8 py-8">
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full max-w-md grid-cols-3">
+          <TabsList className="grid w-full max-w-2xl grid-cols-4">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="topics">Topics</TabsTrigger>
+            <TabsTrigger value="stats">Stats</TabsTrigger>
             <TabsTrigger value="history">History</TabsTrigger>
           </TabsList>
 
@@ -334,6 +353,39 @@ function App() {
                 value={progress?.streak || 0}
                 icon={<Lightning size={24} weight="fill" />}
                 color="var(--destructive)"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <StatCard
+                label="Best Streak"
+                value={progress?.bestStreak || 0}
+                icon={<Trophy size={24} weight="fill" />}
+                color="oklch(0.75 0.15 70)"
+              />
+              <StatCard
+                label="Avg Time/Quiz"
+                value={progress && progress.totalQuizzes > 0 
+                  ? Math.round(progress.totalTimeSpent / progress.totalQuizzes / 1000) 
+                  : 0}
+                suffix="s"
+                icon={<Lightning size={24} weight="fill" />}
+                color="oklch(0.65 0.15 195)"
+              />
+              <StatCard
+                label="Topics Started"
+                value={Object.keys(progress?.topicProgress || {}).length}
+                icon={<Code size={24} weight="fill" />}
+                color="oklch(0.55 0.15 245)"
+              />
+              <StatCard
+                label="Last Active"
+                value={progress?.lastActivity 
+                  ? Math.floor((Date.now() - progress.lastActivity) / (1000 * 60 * 60 * 24))
+                  : 0}
+                suffix="d ago"
+                icon={<CheckCircle size={24} weight="fill" />}
+                color="var(--muted-foreground)"
               />
             </div>
 
@@ -416,6 +468,11 @@ function App() {
             )}
           </TabsContent>
 
+          <TabsContent value="stats" className="space-y-6">
+            <h2 className="text-2xl font-bold">Detailed Statistics</h2>
+            <DetailedStats progress={progress} />
+          </TabsContent>
+
           <TabsContent value="history" className="space-y-6">
             <h2 className="text-2xl font-bold">Recent Activity</h2>
             
@@ -434,47 +491,70 @@ function App() {
                 </Button>
               </Card>
             ) : (
-              <div className="space-y-3">
-                {progress.quizHistory.slice(0, 20).map((result, index) => {
-                  const topic = TOPICS.find(t => t.id === result.topic)
-                  const date = new Date(result.timestamp)
-                  
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05 }}
-                    >
-                      <Card className="p-4 bg-card hover:border-accent/50 transition-colors">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-4">
-                            {result.correct ? (
-                              <CheckCircle size={24} weight="fill" className="text-success" />
-                            ) : (
-                              <Code size={24} className="text-muted-foreground" />
-                            )}
-                            <div>
-                              <p className="font-semibold">{topic?.name}</p>
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                  <Card className="p-4 bg-card">
+                    <div className="text-sm text-muted-foreground mb-1">Total Attempts</div>
+                    <div className="text-3xl font-bold" style={{ color: 'var(--accent)' }}>
+                      {progress.quizHistory.length}
+                    </div>
+                  </Card>
+                  <Card className="p-4 bg-card">
+                    <div className="text-sm text-muted-foreground mb-1">Success Rate</div>
+                    <div className="text-3xl font-bold text-success">
+                      {Math.round((progress.quizHistory.filter(r => r.correct).length / progress.quizHistory.length) * 100)}%
+                    </div>
+                  </Card>
+                  <Card className="p-4 bg-card">
+                    <div className="text-sm text-muted-foreground mb-1">Avg Response Time</div>
+                    <div className="text-3xl font-bold text-primary">
+                      {Math.round(progress.quizHistory.reduce((sum, r) => sum + r.timeSpent, 0) / progress.quizHistory.length / 1000)}s
+                    </div>
+                  </Card>
+                </div>
+
+                <div className="space-y-3">
+                  {progress.quizHistory.slice(0, 50).map((result, index) => {
+                    const topic = TOPICS.find(t => t.id === result.topic)
+                    const date = new Date(result.timestamp)
+                    
+                    return (
+                      <motion.div
+                        key={`${result.quizId}-${result.timestamp}`}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.02 }}
+                      >
+                        <Card className="p-4 bg-card hover:border-accent/50 transition-colors">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-4">
+                              {result.correct ? (
+                                <CheckCircle size={24} weight="fill" className="text-success" />
+                              ) : (
+                                <Code size={24} className="text-muted-foreground" />
+                              )}
+                              <div>
+                                <p className="font-semibold">{topic?.name}</p>
+                                <p className="text-sm text-muted-foreground">
+                                  {date.toLocaleDateString()} at {date.toLocaleTimeString()}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <p className={`font-semibold ${result.correct ? 'text-success' : 'text-muted-foreground'}`}>
+                                {result.correct ? 'Correct' : 'Incorrect'}
+                              </p>
                               <p className="text-sm text-muted-foreground">
-                                {date.toLocaleDateString()} at {date.toLocaleTimeString()}
+                                {Math.round(result.timeSpent / 1000)}s
                               </p>
                             </div>
                           </div>
-                          <div className="text-right">
-                            <p className={`font-semibold ${result.correct ? 'text-success' : 'text-muted-foreground'}`}>
-                              {result.correct ? 'Correct' : 'Incorrect'}
-                            </p>
-                            <p className="text-sm text-muted-foreground">
-                              {Math.round(result.timeSpent / 1000)}s
-                            </p>
-                          </div>
-                        </div>
-                      </Card>
-                    </motion.div>
-                  )
-                })}
-              </div>
+                        </Card>
+                      </motion.div>
+                    )
+                  })}
+                </div>
+              </>
             )}
           </TabsContent>
         </Tabs>

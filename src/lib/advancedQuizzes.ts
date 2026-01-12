@@ -111,788 +111,1093 @@ console.log(obj.a);`,
     explanation: 'The delete operator removes the property, so accessing it returns undefined.',
     difficulty: 'easy'
   },
-  {
-    id: 'ts-adv-1',
-    topic: 'typescript',
-    question: 'What is a type guard?',
-    code: `if (typeof x === 'string') {
-  x.toUpperCase();
-}`,
-    options: ['Type assertion', 'Runtime check that narrows type', 'Interface', 'Generic'],
-    correctAnswer: 1,
-    explanation: 'Type guards are runtime checks that narrow the type within a conditional block.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'ts-adv-2',
-    topic: 'typescript',
-    question: 'What does keyof do?',
-    code: `type Keys = keyof {a: number, b: string};`,
-    options: ['"a" | "b"', 'number | string', 'object', 'Error'],
-    correctAnswer: 0,
-    explanation: 'keyof creates a union type of all property keys of an object type.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'ts-adv-3',
-    topic: 'typescript',
-    question: 'What is a mapped type?',
-    code: `type Readonly<T> = {
-  readonly [P in keyof T]: T[P]
-}`,
-    options: ['Interface', 'Type that transforms properties', 'Generic', 'Utility type'],
-    correctAnswer: 1,
-    explanation: 'Mapped types transform each property in a type based on a pattern.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'ts-adv-4',
-    topic: 'typescript',
-    question: 'What does "as const" do?',
-    code: `const arr = [1, 2] as const;`,
-    options: ['Makes constant', 'Creates readonly tuple type', 'Type assertion', 'Creates array'],
-    correctAnswer: 1,
-    explanation: 'as const creates a readonly tuple with literal types instead of widened types.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'ts-adv-5',
-    topic: 'typescript',
-    question: 'What is a discriminated union?',
-    code: `type Shape = 
-  | {kind: 'circle', radius: number}
-  | {kind: 'square', size: number}`,
-    options: ['Union type', 'Tagged union with common property', 'Interface', 'Generic'],
-    correctAnswer: 1,
-    explanation: 'Discriminated unions use a common property (discriminant) to distinguish between union members.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'ts-adv-6',
-    topic: 'typescript',
-    question: 'What does Partial<T> do?',
-    code: `type User = {name: string, age: number};
-type PartialUser = Partial<User>;`,
-    options: ['Makes all properties required', 'Makes all properties optional', 'Removes properties', 'Adds properties'],
-    correctAnswer: 1,
-    explanation: 'Partial<T> utility type makes all properties in T optional.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'ts-adv-7',
-    topic: 'typescript',
-    question: 'What is type inference?',
-    code: `const x = 5;`,
-    options: ['Manual typing', 'Automatic type determination', 'Type casting', 'Type guard'],
-    correctAnswer: 1,
-    explanation: 'Type inference is when TypeScript automatically determines the type based on the value.',
-    difficulty: 'easy'
-  },
-  {
-    id: 'ts-adv-8',
-    topic: 'typescript',
-    question: 'What does never type represent?',
-    code: `function error(): never {
-  throw new Error();
-}`,
-    options: ['Null value', 'Value that never occurs', 'Undefined', 'Any value'],
-    correctAnswer: 1,
-    explanation: 'never represents values that never occur, like functions that always throw or never return.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'ts-adv-9',
-    topic: 'typescript',
-    question: 'What is a type assertion?',
-    code: `const x = value as string;`,
-    options: ['Type check', 'Tell compiler to treat value as specific type', 'Type guard', 'Type conversion'],
-    correctAnswer: 1,
-    explanation: 'Type assertions tell the compiler to treat a value as a specific type without runtime checking.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'ts-adv-10',
-    topic: 'typescript',
-    question: 'What does Pick<T, K> do?',
-    code: `type UserName = Pick<User, 'name'>;`,
-    options: ['Removes properties', 'Creates type with subset of properties', 'Adds properties', 'Makes optional'],
-    correctAnswer: 1,
-    explanation: 'Pick<T, K> creates a new type by selecting specific properties from T.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'react-adv-1',
-    topic: 'react',
-    question: 'What is useCallback used for?',
-    code: `const handleClick = useCallback(() => {
-  doSomething(a);
-}, [a]);`,
-    options: ['State management', 'Memoizing callback functions', 'Side effects', 'Refs'],
-    correctAnswer: 1,
-    explanation: 'useCallback memoizes callback functions to prevent unnecessary re-renders of child components.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'react-adv-2',
-    topic: 'react',
-    question: 'What does useMemo do?',
-    code: `const value = useMemo(() => 
-  expensiveCalc(a, b), [a, b]);`,
-    options: ['Memoizes values', 'Memoizes functions', 'Creates state', 'Creates refs'],
-    correctAnswer: 0,
-    explanation: 'useMemo memoizes computed values to avoid expensive recalculations on every render.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'react-adv-3',
-    topic: 'react',
-    question: 'What is a controlled component?',
-    code: `<input value={state} 
-  onChange={e => setState(e.target.value)} />`,
-    options: ['Uncontrolled input', 'Form controlled by React state', 'Disabled input', 'Read-only input'],
-    correctAnswer: 1,
-    explanation: 'Controlled components have their value controlled by React state.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'react-adv-4',
-    topic: 'react',
-    question: 'What does useRef return?',
-    code: `const ref = useRef(null);`,
-    options: ['State value', 'Mutable object that persists across renders', 'Function', 'Component'],
-    correctAnswer: 1,
-    explanation: 'useRef returns a mutable object that persists for the lifetime of the component.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'react-adv-5',
-    topic: 'react',
-    question: 'What is prop drilling?',
-    code: `<Parent>
-  <Child prop={data}>
-    <GrandChild prop={data} />
-  </Child>
-</Parent>`,
-    options: ['Performance issue', 'Passing props through multiple levels', 'State management', 'Error handling'],
-    correctAnswer: 1,
-    explanation: 'Prop drilling is passing props through intermediate components that don\'t need them.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'react-adv-6',
-    topic: 'react',
-    question: 'What is useReducer for?',
-    code: `const [state, dispatch] = useReducer(
-  reducer, initialState);`,
-    options: ['Simple state', 'Complex state logic', 'Side effects', 'Memoization'],
-    correctAnswer: 1,
-    explanation: 'useReducer manages complex state logic with actions, similar to Redux.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'react-adv-7',
-    topic: 'react',
-    question: 'What is React Context?',
-    code: `const ThemeContext = createContext();`,
-    options: ['State management', 'Way to pass data without props', 'Router', 'Hook'],
-    correctAnswer: 1,
-    explanation: 'Context provides a way to share values between components without explicitly passing props.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'react-adv-8',
-    topic: 'react',
-    question: 'What is lazy loading?',
-    code: `const Component = lazy(() => 
-  import('./Component'));`,
-    options: ['Slow loading', 'Code splitting for dynamic imports', 'Data fetching', 'Image loading'],
-    correctAnswer: 1,
-    explanation: 'Lazy loading splits code and loads components only when needed.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'react-adv-9',
-    topic: 'react',
-    question: 'What does StrictMode do?',
-    code: `<React.StrictMode>
-  <App />
-</React.StrictMode>`,
-    options: ['Production mode', 'Highlights potential problems', 'Prevents errors', 'Optimizes performance'],
-    correctAnswer: 1,
-    explanation: 'StrictMode activates additional checks and warnings for development.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'react-adv-10',
-    topic: 'react',
-    question: 'What is reconciliation?',
-    code: `// React compares virtual DOM`,
-    options: ['State update', 'Process of updating DOM efficiently', 'Component lifecycle', 'Error boundary'],
-    correctAnswer: 1,
-    explanation: 'Reconciliation is React\'s algorithm for efficiently updating the DOM by comparing trees.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'python-adv-1',
-    topic: 'python',
-    question: 'What are decorators?',
-    code: `@decorator
-def func():
-    pass`,
-    options: ['Comments', 'Functions that modify other functions', 'Class methods', 'Variables'],
-    correctAnswer: 1,
-    explanation: 'Decorators are functions that wrap other functions to extend or modify their behavior.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'python-adv-2',
-    topic: 'python',
-    question: 'What is a generator?',
-    code: `def gen():
-    yield 1
-    yield 2`,
-    options: ['Regular function', 'Function that returns iterator', 'Class', 'Module'],
-    correctAnswer: 1,
-    explanation: 'Generators use yield to return values lazily, creating iterators.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'python-adv-3',
-    topic: 'python',
-    question: 'What does enumerate() do?',
-    code: `for i, val in enumerate(lst):`,
-    options: ['Counts items', 'Returns index and value pairs', 'Sorts list', 'Filters list'],
-    correctAnswer: 1,
-    explanation: 'enumerate() returns an iterator of tuples containing indices and values.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'python-adv-4',
-    topic: 'python',
-    question: 'What is list slicing?',
-    code: `arr[1:4]`,
-    options: ['Deletes elements', 'Extracts sublist', 'Reverses list', 'Sorts list'],
-    correctAnswer: 1,
-    explanation: 'Slicing extracts a portion of a list using start:stop:step notation.',
-    difficulty: 'easy'
-  },
-  {
-    id: 'python-adv-5',
-    topic: 'python',
-    question: 'What is the GIL?',
-    code: `# Python threading`,
-    options: ['Graphics library', 'Global Interpreter Lock', 'General interface', 'Game loop'],
-    correctAnswer: 1,
-    explanation: 'GIL is a mutex that protects Python objects, preventing multiple threads from executing Python bytecode simultaneously.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'python-adv-6',
-    topic: 'python',
-    question: 'What does zip() do?',
-    code: `zip([1,2], ['a','b'])`,
-    options: ['Compresses files', 'Combines iterables', 'Sorts data', 'Filters data'],
-    correctAnswer: 1,
-    explanation: 'zip() aggregates elements from multiple iterables into tuples.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'python-adv-7',
-    topic: 'python',
-    question: 'What is a context manager?',
-    code: `with open('file.txt') as f:
-    data = f.read()`,
-    options: ['Function', 'Object that manages resources', 'Module', 'Class'],
-    correctAnswer: 1,
-    explanation: 'Context managers handle setup and teardown of resources using __enter__ and __exit__ methods.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'python-adv-8',
-    topic: 'python',
-    question: 'What is the difference between append() and extend()?',
-    code: `lst.append([1,2])
-lst.extend([1,2])`,
-    options: ['No difference', 'append adds one item, extend adds multiple', 'append is faster', 'extend is deprecated'],
-    correctAnswer: 1,
-    explanation: 'append() adds a single item (even if it\'s a list), extend() adds each element from an iterable.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'python-adv-9',
-    topic: 'python',
-    question: 'What are *args and **kwargs?',
-    code: `def func(*args, **kwargs):`,
-    options: ['Required parameters', 'Variable positional and keyword arguments', 'Type hints', 'Decorators'],
-    correctAnswer: 1,
-    explanation: '*args collects positional arguments into a tuple, **kwargs collects keyword arguments into a dict.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'python-adv-10',
-    topic: 'python',
-    question: 'What is a dictionary comprehension?',
-    code: `{k: v**2 for k, v in items}`,
-    options: ['List creation', 'Concise way to create dictionaries', 'Loop', 'Function'],
-    correctAnswer: 1,
-    explanation: 'Dictionary comprehensions create dictionaries using compact syntax.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'django-adv-1',
-    topic: 'django',
-    question: 'What is a QuerySet?',
-    code: `User.objects.filter(age__gt=18)`,
-    options: ['Database', 'Lazy database query collection', 'Model', 'View'],
-    correctAnswer: 1,
-    explanation: 'QuerySets are lazy collections that represent database queries, executed when evaluated.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'django-adv-2',
-    topic: 'django',
-    question: 'What does select_related() do?',
-    code: `Post.objects.select_related('author')`,
-    options: ['Filters data', 'Performs SQL JOIN to reduce queries', 'Sorts data', 'Deletes data'],
-    correctAnswer: 1,
-    explanation: 'select_related() performs a SQL JOIN to fetch related objects in a single query, optimizing performance.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'django-adv-3',
-    topic: 'django',
-    question: 'What is prefetch_related()?',
-    code: `Author.objects.prefetch_related('books')`,
-    options: ['Caches data', 'Fetches related objects in separate queries', 'Filters data', 'Sorts data'],
-    correctAnswer: 1,
-    explanation: 'prefetch_related() fetches related objects using separate queries for many-to-many relationships.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'django-adv-4',
-    topic: 'django',
-    question: 'What are signals?',
-    code: `from django.db.models.signals import post_save`,
-    options: ['Errors', 'Event notifications for model actions', 'Views', 'URLs'],
-    correctAnswer: 1,
-    explanation: 'Signals allow decoupled applications to get notified when certain actions occur.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'django-adv-5',
-    topic: 'django',
-    question: 'What is middleware?',
-    code: `MIDDLEWARE = [
-  'django.middleware.security.SecurityMiddleware',
-]`,
-    options: ['Model', 'Request/response processing layer', 'Template', 'Form'],
-    correctAnswer: 1,
-    explanation: 'Middleware is a framework of hooks that processes requests and responses globally.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'django-adv-6',
-    topic: 'django',
-    question: 'What does annotate() do?',
-    code: `Author.objects.annotate(
-  book_count=Count('books'))`,
-    options: ['Adds comments', 'Adds computed fields to QuerySet', 'Filters data', 'Sorts data'],
-    correctAnswer: 1,
-    explanation: 'annotate() adds aggregated or computed values to each object in a QuerySet.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'django-adv-7',
-    topic: 'django',
-    question: 'What is a custom manager?',
-    code: `class PublishedManager(models.Manager):
-    def get_queryset(self):
-        return super().get_queryset().filter(status='published')`,
-    options: ['Admin interface', 'Custom QuerySet provider', 'View', 'Template tag'],
-    correctAnswer: 1,
-    explanation: 'Custom managers modify the initial QuerySet for a model, encapsulating common queries.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'django-adv-8',
-    topic: 'django',
-    question: 'What are class-based views?',
-    code: `class MyView(View):
-    def get(self, request):`,
-    options: ['Functions', 'Reusable view classes', 'Models', 'Templates'],
-    correctAnswer: 1,
-    explanation: 'Class-based views organize view logic using classes, promoting code reuse.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'django-adv-9',
-    topic: 'django',
-    question: 'What is Django REST Framework?',
-    code: `from rest_framework import serializers`,
-    options: ['Testing tool', 'Toolkit for building Web APIs', 'Admin panel', 'Database'],
-    correctAnswer: 1,
-    explanation: 'DRF is a powerful toolkit for building Web APIs with Django.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'django-adv-10',
-    topic: 'django',
-    question: 'What does aggregate() do?',
-    code: `Author.objects.aggregate(Avg('age'))`,
-    options: ['Filters data', 'Computes aggregate values across QuerySet', 'Sorts data', 'Groups data'],
-    correctAnswer: 1,
-    explanation: 'aggregate() computes aggregate values (like sum, average) over an entire QuerySet.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'css-adv-1',
-    topic: 'css',
-    question: 'What is specificity?',
-    code: `#id .class element`,
-    options: ['Speed', 'Rule priority calculation', 'Syntax', 'Layout'],
-    correctAnswer: 1,
-    explanation: 'Specificity determines which CSS rule applies when multiple rules target the same element.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'css-adv-2',
-    topic: 'css',
-    question: 'What does calc() do?',
-    code: `width: calc(100% - 50px);`,
-    options: ['Adds classes', 'Performs calculations', 'Validates CSS', 'Animates'],
-    correctAnswer: 1,
-    explanation: 'calc() performs mathematical calculations to determine CSS property values.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'css-adv-3',
-    topic: 'css',
-    question: 'What are CSS custom properties?',
-    code: `--main-color: blue;
-color: var(--main-color);`,
-    options: ['Classes', 'Variables in CSS', 'Functions', 'Selectors'],
-    correctAnswer: 1,
-    explanation: 'CSS custom properties (CSS variables) store reusable values throughout a document.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'css-adv-4',
-    topic: 'css',
-    question: 'What is the :nth-child() selector?',
-    code: `li:nth-child(2n)`,
-    options: ['First child', 'Selects elements by position', 'Last child', 'All children'],
-    correctAnswer: 1,
-    explanation: ':nth-child() selects elements based on their position in the parent.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'css-adv-5',
-    topic: 'css',
-    question: 'What does transform do?',
-    code: `transform: rotate(45deg);`,
-    options: ['Changes position', 'Applies 2D/3D transformations', 'Changes color', 'Changes size only'],
-    correctAnswer: 1,
-    explanation: 'transform applies 2D or 3D transformations like rotate, scale, translate, and skew.',
-    difficulty: 'easy'
-  },
-  {
-    id: 'css-adv-6',
-    topic: 'css',
-    question: 'What is a media query?',
-    code: `@media (max-width: 768px) {
-  /* styles */
-}`,
-    options: ['Image selector', 'Responsive design technique', 'Animation', 'Font loading'],
-    correctAnswer: 1,
-    explanation: 'Media queries apply different styles based on device characteristics like screen width.',
-    difficulty: 'easy'
-  },
-  {
-    id: 'css-adv-7',
-    topic: 'css',
-    question: 'What does transition do?',
-    code: `transition: all 0.3s ease;`,
-    options: ['Transforms elements', 'Animates property changes', 'Changes layout', 'Adds effects'],
-    correctAnswer: 1,
-    explanation: 'transition creates smooth animations when CSS properties change.',
-    difficulty: 'easy'
-  },
-  {
-    id: 'css-adv-8',
-    topic: 'css',
-    question: 'What is the box model?',
-    code: `content, padding, border, margin`,
-    options: ['Layout system', 'How space around elements is calculated', 'Grid system', 'Flexbox'],
-    correctAnswer: 1,
-    explanation: 'The box model describes how space is calculated with content, padding, border, and margin.',
-    difficulty: 'easy'
-  },
-  {
-    id: 'css-adv-9',
-    topic: 'css',
-    question: 'What does object-fit do?',
-    code: `img { object-fit: cover; }`,
-    options: ['Aligns objects', 'Controls how content fits in container', 'Transforms objects', 'Positions objects'],
-    correctAnswer: 1,
-    explanation: 'object-fit specifies how replaced content (like images) should fit within their container.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'css-adv-10',
-    topic: 'css',
-    question: 'What is the difference between inline and block?',
-    code: `display: inline vs display: block`,
-    options: ['No difference', 'Inline flows horizontally, block stacks vertically', 'Speed', 'Browser support'],
-    correctAnswer: 1,
-    explanation: 'Inline elements flow horizontally in text, block elements start on new lines and fill width.',
-    difficulty: 'easy'
-  },
-  ...generateMoreQuizzes()
+  ...generateJavaScriptQuizzes(),
+  ...generateTypeScriptQuizzes(),
+  ...generateReactQuizzes(),
+  ...generatePythonQuizzes(),
+  ...generateDjangoQuizzes(),
+  ...generateCSSQuizzes()
 ]
 
-function generateMoreQuizzes(): Quiz[] {
-  const topics = ['javascript', 'typescript', 'react', 'python', 'django', 'css']
+function generateJavaScriptQuizzes(): Quiz[] {
+  return [
+    {
+      id: 'js-adv-11',
+      topic: 'javascript',
+      question: 'What is hoisting?',
+      code: `console.log(x);
+var x = 5;`,
+      options: ['ReferenceError', 'undefined', '5', 'null'],
+      correctAnswer: 1,
+      explanation: 'Variable declarations (not initializations) are hoisted to the top of their scope, so x exists but is undefined.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-12',
+      topic: 'javascript',
+      question: 'What does the rest parameter collect?',
+      code: `function sum(...numbers) {
+  return numbers.reduce((a, b) => a + b);
+}`,
+      options: ['First argument only', 'All arguments as array', 'Last argument only', 'Nothing'],
+      correctAnswer: 1,
+      explanation: 'The rest parameter (...) collects all remaining arguments into an array.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-13',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(1 + '1' - 1);`,
+      options: ['11', '0', '10', 'NaN'],
+      correctAnswer: 2,
+      explanation: '1 + "1" = "11" (string concatenation), then "11" - 1 = 10 (coerced to number).',
+      difficulty: 'hard'
+    },
+    {
+      id: 'js-adv-14',
+      topic: 'javascript',
+      question: 'What is optional chaining?',
+      code: `const value = obj?.prop?.nested;`,
+      options: ['Creates optional properties', 'Safely accesses nested properties', 'Assigns default values', 'Throws errors'],
+      correctAnswer: 1,
+      explanation: 'Optional chaining (?.) short-circuits and returns undefined if any part of the chain is null or undefined.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-15',
+      topic: 'javascript',
+      question: 'What does Promise.all() do?',
+      code: `Promise.all([p1, p2, p3])`,
+      options: ['Returns first promise', 'Waits for all to resolve or any to reject', 'Returns fastest promise', 'Runs sequentially'],
+      correctAnswer: 1,
+      explanation: 'Promise.all() waits for all promises to resolve, or rejects immediately if any promise rejects.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-16',
+      topic: 'javascript',
+      question: 'What is a WeakMap?',
+      code: `const wm = new WeakMap();
+wm.set(obj, 'value');`,
+      options: ['Map with weak values', 'Map with object keys only, allows garbage collection', 'Slow Map', 'Temporary Map'],
+      correctAnswer: 1,
+      explanation: 'WeakMap only accepts objects as keys and allows those objects to be garbage collected.',
+      difficulty: 'hard'
+    },
+    {
+      id: 'js-adv-17',
+      topic: 'javascript',
+      question: 'What does Object.seal() do?',
+      code: `const obj = Object.seal({a: 1});
+obj.b = 2;`,
+      options: ['Prevents all changes', 'Prevents adding/removing properties but allows modification', 'Makes properties readonly', 'Freezes object'],
+      correctAnswer: 1,
+      explanation: 'Object.seal() prevents adding or removing properties, but existing properties can still be modified.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-18',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log([1, 2, 3] == [1, 2, 3]);`,
+      options: ['true', 'false', 'undefined', 'Error'],
+      correctAnswer: 1,
+      explanation: 'Arrays are reference types. Even with identical contents, they are different objects in memory.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-19',
+      topic: 'javascript',
+      question: 'What is the nullish coalescing operator?',
+      code: `const value = null ?? 'default';`,
+      options: ['Returns null', 'Returns "default"', 'Returns undefined', 'Error'],
+      correctAnswer: 1,
+      explanation: 'The ?? operator returns the right operand when the left is null or undefined (but not for 0 or "").',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-20',
+      topic: 'javascript',
+      question: 'What is event capturing?',
+      code: `element.addEventListener('click', handler, true);`,
+      options: ['Same as bubbling', 'Event goes from root to target', 'Prevents event', 'Stops propagation'],
+      correctAnswer: 1,
+      explanation: 'Event capturing (useCapture: true) propagates from the root down to the target element.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-21',
+      topic: 'javascript',
+      question: 'What does Array.flat() do?',
+      code: `const arr = [[1, 2], [3, 4]];
+arr.flat();`,
+      options: ['Sorts array', 'Flattens nested arrays', 'Removes duplicates', 'Reverses array'],
+      correctAnswer: 1,
+      explanation: 'Array.flat() creates a new array with all sub-array elements concatenated into it.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-22',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(!![]);`,
+      options: ['false', 'true', 'undefined', 'Error'],
+      correctAnswer: 1,
+      explanation: 'Empty arrays are truthy. The !! converts to boolean: ![] is false, !![] is true.',
+      difficulty: 'hard'
+    },
+    {
+      id: 'js-adv-23',
+      topic: 'javascript',
+      question: 'What does Object.create() do?',
+      code: `const obj = Object.create(proto);`,
+      options: ['Copies object', 'Creates object with specified prototype', 'Clones object', 'Creates empty object'],
+      correctAnswer: 1,
+      explanation: 'Object.create() creates a new object with the specified object as its prototype.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-24',
+      topic: 'javascript',
+      question: 'What is destructuring with default values?',
+      code: `const {a = 10} = {};`,
+      options: ['a is undefined', 'a is 10', 'a is null', 'Error'],
+      correctAnswer: 1,
+      explanation: 'Destructuring can provide default values that are used when the property is undefined.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-25',
+      topic: 'javascript',
+      question: 'What does Array.reduce() do?',
+      code: `[1,2,3].reduce((acc, val) => acc + val, 0)`,
+      options: ['Filters array', 'Reduces array to single value', 'Maps array', 'Sorts array'],
+      correctAnswer: 1,
+      explanation: 'reduce() executes a reducer function on each element, resulting in a single output value.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-26',
+      topic: 'javascript',
+      question: 'What is a Proxy in JavaScript?',
+      code: `const proxy = new Proxy(target, handler);`,
+      options: ['HTTP proxy', 'Object wrapper with custom behavior', 'Function wrapper', 'Array wrapper'],
+      correctAnswer: 1,
+      explanation: 'A Proxy wraps an object and intercepts fundamental operations like property access.',
+      difficulty: 'hard'
+    },
+    {
+      id: 'js-adv-27',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(+'42');`,
+      options: ['"42"', '42', 'NaN', 'Error'],
+      correctAnswer: 1,
+      explanation: 'The unary plus operator converts its operand to a number.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-28',
+      topic: 'javascript',
+      question: 'What does setTimeout return?',
+      code: `const id = setTimeout(() => {}, 1000);`,
+      options: ['Promise', 'Timer ID number', 'Function', 'undefined'],
+      correctAnswer: 1,
+      explanation: 'setTimeout returns a numeric ID that can be used with clearTimeout to cancel the timer.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-29',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(false == '0');`,
+      options: ['true', 'false', 'undefined', 'Error'],
+      correctAnswer: 0,
+      explanation: 'Loose equality (==) performs type coercion. false converts to 0, "0" converts to 0.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-30',
+      topic: 'javascript',
+      question: 'What does Array.some() do?',
+      code: `[1,2,3].some(x => x > 2)`,
+      options: ['Checks if all elements pass test', 'Checks if at least one element passes test', 'Filters array', 'Maps array'],
+      correctAnswer: 1,
+      explanation: 'Array.some() tests whether at least one element passes the provided function.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-31',
+      topic: 'javascript',
+      question: 'What is a Set in JavaScript?',
+      code: `const set = new Set([1, 2, 2, 3]);`,
+      options: ['Array of unique values', 'Collection of unique values', 'Sorted array', 'Object'],
+      correctAnswer: 1,
+      explanation: 'A Set is a collection of unique values. Duplicate values are automatically removed.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-32',
+      topic: 'javascript',
+      question: 'What does Array.findIndex() return?',
+      code: `[10,20,30].findIndex(x => x === 20)`,
+      options: ['The element', 'The index of the element', 'Boolean', 'undefined'],
+      correctAnswer: 1,
+      explanation: 'findIndex() returns the index of the first element that passes the test, or -1 if not found.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-33',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log([] + {});`,
+      options: ['{}', '"[object Object]"', 'undefined', 'Error'],
+      correctAnswer: 1,
+      explanation: 'Both are converted to strings: "" + "[object Object]" = "[object Object]".',
+      difficulty: 'hard'
+    },
+    {
+      id: 'js-adv-34',
+      topic: 'javascript',
+      question: 'What does String.includes() do?',
+      code: `'hello'.includes('ell')`,
+      options: ['Returns index', 'Returns boolean', 'Returns matched string', 'Returns array'],
+      correctAnswer: 1,
+      explanation: 'includes() determines whether a string contains a specified substring, returning true or false.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-35',
+      topic: 'javascript',
+      question: 'What is the spread operator in objects?',
+      code: `const merged = {...obj1, ...obj2};`,
+      options: ['Deep merge', 'Shallow merge with later properties overwriting', 'Creates reference', 'Error'],
+      correctAnswer: 1,
+      explanation: 'The spread operator creates a shallow copy and merges properties, with later values overwriting earlier ones.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-36',
+      topic: 'javascript',
+      question: 'What does Object.keys() return?',
+      code: `Object.keys({a: 1, b: 2})`,
+      options: ['Values', 'Array of key strings', 'Key-value pairs', 'Object'],
+      correctAnswer: 1,
+      explanation: 'Object.keys() returns an array of an object\'s own enumerable property names.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-37',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(3 > 2 > 1);`,
+      options: ['true', 'false', 'undefined', 'Error'],
+      correctAnswer: 1,
+      explanation: '3 > 2 is true (1), then 1 > 1 is false. Comparison chains don\'t work as in math.',
+      difficulty: 'hard'
+    },
+    {
+      id: 'js-adv-38',
+      topic: 'javascript',
+      question: 'What does JSON.parse() do?',
+      code: `JSON.parse('{"a": 1}')`,
+      options: ['Stringifies object', 'Parses JSON string to object', 'Validates JSON', 'Formats JSON'],
+      correctAnswer: 1,
+      explanation: 'JSON.parse() parses a JSON string and constructs the JavaScript value or object described.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-39',
+      topic: 'javascript',
+      question: 'What is template literal?',
+      code: `const str = \`Value: \${x}\`;`,
+      options: ['Regular string', 'String with embedded expressions', 'HTML template', 'Comment'],
+      correctAnswer: 1,
+      explanation: 'Template literals use backticks and allow embedded expressions via ${expression}.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-40',
+      topic: 'javascript',
+      question: 'What does Array.every() do?',
+      code: `[2,4,6].every(x => x % 2 === 0)`,
+      options: ['Checks if some pass', 'Checks if all pass test', 'Filters array', 'Maps array'],
+      correctAnswer: 1,
+      explanation: 'Array.every() tests whether all elements pass the provided function.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-41',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(typeof undefined);`,
+      options: ['"null"', '"undefined"', '"object"', 'undefined'],
+      correctAnswer: 1,
+      explanation: 'The typeof operator returns "undefined" for undefined values.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-42',
+      topic: 'javascript',
+      question: 'What does Array.slice() do?',
+      code: `[1,2,3,4].slice(1, 3)`,
+      options: ['Modifies original', 'Returns shallow copy of portion', 'Removes elements', 'Adds elements'],
+      correctAnswer: 1,
+      explanation: 'slice() returns a shallow copy of a portion of an array without modifying the original.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-43',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log('5' - 3);`,
+      options: ['"53"', '2', '"2"', 'NaN'],
+      correctAnswer: 1,
+      explanation: 'The minus operator coerces the string "5" to number 5, then performs 5 - 3 = 2.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-44',
+      topic: 'javascript',
+      question: 'What does String.split() return?',
+      code: `'a,b,c'.split(',')`,
+      options: ['String', 'Array of strings', 'Object', 'Number'],
+      correctAnswer: 1,
+      explanation: 'split() divides a string into an array of substrings based on the separator.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-45',
+      topic: 'javascript',
+      question: 'What is isNaN() used for?',
+      code: `isNaN('hello')`,
+      options: ['Checks if number', 'Checks if Not-a-Number', 'Converts to number', 'Validates string'],
+      correctAnswer: 1,
+      explanation: 'isNaN() determines whether a value is NaN (Not-a-Number) after attempting coercion.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-46',
+      topic: 'javascript',
+      question: 'What does Math.random() return?',
+      code: `Math.random()`,
+      options: ['Integer', 'Float between 0 and 1', 'Float between 1 and 10', 'Boolean'],
+      correctAnswer: 1,
+      explanation: 'Math.random() returns a pseudo-random floating-point number between 0 (inclusive) and 1 (exclusive).',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-47',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(null == undefined);`,
+      options: ['true', 'false', 'null', 'undefined'],
+      correctAnswer: 0,
+      explanation: 'null and undefined are loosely equal (==) to each other but not to any other value.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-48',
+      topic: 'javascript',
+      question: 'What does Array.join() do?',
+      code: `[1,2,3].join('-')`,
+      options: ['Concatenates arrays', 'Joins elements into string', 'Merges arrays', 'Sorts array'],
+      correctAnswer: 1,
+      explanation: 'join() creates and returns a new string by concatenating all elements with a separator.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-49',
+      topic: 'javascript',
+      question: 'What is Array.push() return value?',
+      code: `const arr = [1,2];
+arr.push(3);`,
+      options: ['The array', 'The new length', 'The pushed element', 'undefined'],
+      correctAnswer: 1,
+      explanation: 'push() adds elements to the end of an array and returns the new length of the array.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-50',
+      topic: 'javascript',
+      question: 'What does parseInt() do?',
+      code: `parseInt('10.5')`,
+      options: ['Returns 10.5', 'Returns 10', 'Returns 11', 'Returns NaN'],
+      correctAnswer: 1,
+      explanation: 'parseInt() parses a string and returns an integer, discarding the decimal part.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-51',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log('2' > '12');`,
+      options: ['true', 'false', 'undefined', 'Error'],
+      correctAnswer: 0,
+      explanation: 'String comparison is lexicographic (dictionary order): "2" comes after "1" alphabetically.',
+      difficulty: 'hard'
+    },
+    {
+      id: 'js-adv-52',
+      topic: 'javascript',
+      question: 'What does Array.reverse() do?',
+      code: `[1,2,3].reverse()`,
+      options: ['Returns reversed copy', 'Reverses array in place', 'Sorts array', 'Shuffles array'],
+      correctAnswer: 1,
+      explanation: 'reverse() reverses the array in place and returns the reference to the same array.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-53',
+      topic: 'javascript',
+      question: 'What is BigInt used for?',
+      code: `const big = 9007199254740991n;`,
+      options: ['Large strings', 'Integers larger than Number.MAX_SAFE_INTEGER', 'Floating point', 'Arrays'],
+      correctAnswer: 1,
+      explanation: 'BigInt can represent integers with arbitrary precision, beyond Number.MAX_SAFE_INTEGER.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-54',
+      topic: 'javascript',
+      question: 'What does String.trim() do?',
+      code: `'  hello  '.trim()`,
+      options: ['Removes all spaces', 'Removes leading and trailing whitespace', 'Capitalizes', 'Lowercases'],
+      correctAnswer: 1,
+      explanation: 'trim() removes whitespace from both ends of a string.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-55',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(1 + 2 + '3');`,
+      options: ['"123"', '"33"', '6', '"6"'],
+      correctAnswer: 0,
+      explanation: '1 + 2 = 3 (number), then 3 + "3" = "33" (string concatenation).',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-56',
+      topic: 'javascript',
+      question: 'What does Object.assign() do?',
+      code: `Object.assign(target, source)`,
+      options: ['Deep copies', 'Shallow copies properties to target', 'Compares objects', 'Merges arrays'],
+      correctAnswer: 1,
+      explanation: 'Object.assign() copies enumerable own properties from source objects to a target object.',
+      difficulty: 'medium'
+  },
+    {
+      id: 'js-adv-57',
+      topic: 'javascript',
+      question: 'What is Array.concat()?',
+      code: `[1,2].concat([3,4])`,
+      options: ['Modifies first array', 'Returns new merged array', 'Returns nested array', 'Flattens arrays'],
+      correctAnswer: 1,
+      explanation: 'concat() merges two or more arrays and returns a new array without modifying existing arrays.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-58',
+      topic: 'javascript',
+      question: 'What does Number.isInteger() check?',
+      code: `Number.isInteger(10.0)`,
+      options: ['Always false for floats', 'Checks if value is integer', 'Checks if value is number', 'Converts to integer'],
+      correctAnswer: 1,
+      explanation: 'Number.isInteger() determines whether the value is an integer (10.0 is considered an integer).',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-59',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(Math.max());`,
+      options: ['0', '-Infinity', 'Infinity', 'Error'],
+      correctAnswer: 1,
+      explanation: 'Math.max() with no arguments returns -Infinity (the identity value for max operation).',
+      difficulty: 'hard'
+    },
+    {
+      id: 'js-adv-60',
+      topic: 'javascript',
+      question: 'What does Array.fill() do?',
+      code: `new Array(3).fill(0)`,
+      options: ['Creates empty array', 'Fills all elements with static value', 'Fills with sequential numbers', 'Initializes array'],
+      correctAnswer: 1,
+      explanation: 'fill() fills all elements of an array with a static value from a start index to an end index.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-61',
+      topic: 'javascript',
+      question: 'What is String.startsWith()?',
+      code: `'hello'.startsWith('he')`,
+      options: ['Returns index', 'Returns boolean', 'Returns substring', 'Returns array'],
+      correctAnswer: 1,
+      explanation: 'startsWith() determines whether a string begins with the characters of a specified string.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-62',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(0.1 + 0.2 == 0.3);`,
+      options: ['true', 'false', 'undefined', 'NaN'],
+      correctAnswer: 1,
+      explanation: 'Floating-point arithmetic precision issues: 0.1 + 0.2 equals 0.30000000000000004.',
+      difficulty: 'hard'
+    },
+    {
+      id: 'js-adv-63',
+      topic: 'javascript',
+      question: 'What does Array.indexOf() return?',
+      code: `[1,2,3].indexOf(2)`,
+      options: ['The element', 'The index', 'Boolean', 'Array'],
+      correctAnswer: 1,
+      explanation: 'indexOf() returns the first index at which a given element is found, or -1 if not present.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-64',
+      topic: 'javascript',
+      question: 'What is Object.values()?',
+      code: `Object.values({a: 1, b: 2})`,
+      options: ['Returns keys', 'Returns array of values', 'Returns object', 'Returns string'],
+      correctAnswer: 1,
+      explanation: 'Object.values() returns an array of an object\'s own enumerable property values.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-65',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(typeof []);`,
+      options: ['"array"', '"object"', '"Array"', '"list"'],
+      correctAnswer: 1,
+      explanation: 'Arrays are objects in JavaScript, so typeof returns "object".',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-66',
+      topic: 'javascript',
+      question: 'What does String.repeat() do?',
+      code: `'ha'.repeat(3)`,
+      options: ['Loops 3 times', 'Returns "hahaha"', 'Returns array', 'Returns 3'],
+      correctAnswer: 1,
+      explanation: 'repeat() constructs and returns a new string with a specified number of copies concatenated.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-67',
+      topic: 'javascript',
+      question: 'What is Array.shift()?',
+      code: `const arr = [1,2,3];
+arr.shift();`,
+      options: ['Removes first element and returns it', 'Removes last element', 'Adds element at start', 'Sorts array'],
+      correctAnswer: 0,
+      explanation: 'shift() removes the first element from an array and returns that element.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-68',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(!!'false');`,
+      options: ['false', 'true', '"false"', 'undefined'],
+      correctAnswer: 1,
+      explanation: 'Non-empty strings are truthy. The !! converts to boolean: !!"false" is true.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-69',
+      topic: 'javascript',
+      question: 'What does Array.unshift() do?',
+      code: `[2,3].unshift(1)`,
+      options: ['Removes first element', 'Adds elements at start and returns new length', 'Shifts array', 'Removes last element'],
+      correctAnswer: 1,
+      explanation: 'unshift() adds elements to the beginning of an array and returns the new length.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-70',
+      topic: 'javascript',
+      question: 'What is Object.entries()?',
+      code: `Object.entries({a: 1})`,
+      options: ['Returns keys', 'Returns [["a", 1]]', 'Returns values', 'Returns object'],
+      correctAnswer: 1,
+      explanation: 'Object.entries() returns an array of [key, value] pairs from an object.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-71',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(Boolean(''));`,
+      options: ['true', 'false', '""', 'undefined'],
+      correctAnswer: 1,
+      explanation: 'Empty strings are falsy in JavaScript, so Boolean("") returns false.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-72',
+      topic: 'javascript',
+      question: 'What does String.toUpperCase() do?',
+      code: `'hello'.toUpperCase()`,
+      options: ['Modifies string', 'Returns new uppercase string', 'Capitalizes first letter', 'Returns array'],
+      correctAnswer: 1,
+      explanation: 'toUpperCase() returns a new string with all characters converted to uppercase.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-73',
+      topic: 'javascript',
+      question: 'What is Array.pop()?',
+      code: `const arr = [1,2,3];
+arr.pop();`,
+      options: ['Removes first element', 'Removes and returns last element', 'Returns array', 'Adds element'],
+      correctAnswer: 1,
+      explanation: 'pop() removes the last element from an array and returns that element.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-74',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log([1,2] + [3,4]);`,
+      options: ['"1,23,4"', '[1,2,3,4]', '"1234"', 'Error'],
+      correctAnswer: 0,
+      explanation: 'Arrays are converted to strings: "1,2" + "3,4" = "1,23,4".',
+      difficulty: 'hard'
+    },
+    {
+      id: 'js-adv-75',
+      topic: 'javascript',
+      question: 'What does Math.floor() do?',
+      code: `Math.floor(4.7)`,
+      options: ['Rounds to 5', 'Rounds down to 4', 'Rounds to nearest', 'Returns 4.7'],
+      correctAnswer: 1,
+      explanation: 'Math.floor() rounds a number down to the largest integer less than or equal to it.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-76',
+      topic: 'javascript',
+      question: 'What is String.charAt()?',
+      code: `'hello'.charAt(1)`,
+      options: ['"h"', '"e"', '1', 'undefined'],
+      correctAnswer: 1,
+      explanation: 'charAt() returns the character at the specified index in a string.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-77',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(10 / 0);`,
+      options: ['0', 'NaN', 'Infinity', 'Error'],
+      correctAnswer: 2,
+      explanation: 'Division by zero in JavaScript returns Infinity (or -Infinity for negative numbers).',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-78',
+      topic: 'javascript',
+      question: 'What does Math.ceil() do?',
+      code: `Math.ceil(4.1)`,
+      options: ['Rounds down to 4', 'Rounds up to 5', 'Rounds to nearest', 'Returns 4.1'],
+      correctAnswer: 1,
+      explanation: 'Math.ceil() rounds a number up to the nearest integer greater than or equal to it.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-79',
+      topic: 'javascript',
+      question: 'What is Array.lastIndexOf()?',
+      code: `[1,2,3,2].lastIndexOf(2)`,
+      options: ['1', '3', 'Returns array', 'Returns boolean'],
+      correctAnswer: 1,
+      explanation: 'lastIndexOf() returns the last index at which a given element is found, or -1.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-80',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(undefined + 1);`,
+      options: ['1', 'undefined', 'NaN', 'Error'],
+      correctAnswer: 2,
+      explanation: 'undefined converts to NaN in numeric context, and NaN + 1 = NaN.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-81',
+      topic: 'javascript',
+      question: 'What does Math.round() do?',
+      code: `Math.round(4.5)`,
+      options: ['Rounds down to 4', 'Rounds to 5', 'Rounds up to 5', 'Returns 4.5'],
+      correctAnswer: 1,
+      explanation: 'Math.round() rounds to the nearest integer. .5 rounds up.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-82',
+      topic: 'javascript',
+      question: 'What is String.slice()?',
+      code: `'hello'.slice(1, 3)`,
+      options: ['"he"', '"el"', '"ell"', '"lo"'],
+      correctAnswer: 1,
+      explanation: 'slice() extracts a section of a string and returns it as a new string.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-83',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(!!0);`,
+      options: ['0', 'true', 'false', 'undefined'],
+      correctAnswer: 2,
+      explanation: '0 is falsy. The !! converts to boolean: !!0 is false.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-84',
+      topic: 'javascript',
+      question: 'What does Array.includes() do?',
+      code: `[1,2,3].includes(2)`,
+      options: ['Returns index', 'Returns boolean', 'Filters array', 'Maps array'],
+      correctAnswer: 1,
+      explanation: 'includes() determines whether an array includes a certain value, returning true or false.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-85',
+      topic: 'javascript',
+      question: 'What is String.replace()?',
+      code: `'hello'.replace('l', 'L')`,
+      options: ['"heLLo"', '"heLlo"', '"heLl"', '"HELLO"'],
+      correctAnswer: 1,
+      explanation: 'replace() returns a new string with the first match of a pattern replaced.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-86',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(Number(''));`,
+      options: ['NaN', '0', 'null', 'undefined'],
+      correctAnswer: 1,
+      explanation: 'Empty string converts to 0 when coerced to a number.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-87',
+      topic: 'javascript',
+      question: 'What does Math.abs() do?',
+      code: `Math.abs(-5)`,
+      options: ['Returns -5', 'Returns 5', 'Returns 0', 'Error'],
+      correctAnswer: 1,
+      explanation: 'Math.abs() returns the absolute value of a number.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-88',
+      topic: 'javascript',
+      question: 'What is Array.flatMap()?',
+      code: `[1,2].flatMap(x => [x, x*2])`,
+      options: ['[[1,2],[2,4]]', '[1,2,2,4]', '[1,1,2,2]', 'Error'],
+      correctAnswer: 1,
+      explanation: 'flatMap() maps each element then flattens the result into a new array.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-89',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(null + 1);`,
+      options: ['null', '1', 'NaN', 'Error'],
+      correctAnswer: 1,
+      explanation: 'null converts to 0 in numeric context, so null + 1 = 1.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-90',
+      topic: 'javascript',
+      question: 'What does String.substring() do?',
+      code: `'hello'.substring(1, 3)`,
+      options: ['"h"', '"el"', '"ell"', '"lo"'],
+      correctAnswer: 1,
+      explanation: 'substring() returns the part of the string between start and end indexes.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-91',
+      topic: 'javascript',
+      question: 'What is Math.pow()?',
+      code: `Math.pow(2, 3)`,
+      options: ['5', '6', '8', '9'],
+      correctAnswer: 2,
+      explanation: 'Math.pow() returns the base to the exponent power: 2³ = 8.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-92',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(String(null));`,
+      options: ['"null"', 'null', '""', 'undefined'],
+      correctAnswer: 0,
+      explanation: 'String() converts null to the string "null".',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-93',
+      topic: 'javascript',
+      question: 'What does Array.sort() do without arguments?',
+      code: `[10,5,40].sort()`,
+      options: ['[5,10,40]', '[10,40,5]', 'Error', '[40,10,5]'],
+      correctAnswer: 1,
+      explanation: 'Without a compare function, sort() converts elements to strings and sorts lexicographically.',
+      difficulty: 'hard'
+    },
+    {
+      id: 'js-adv-94',
+      topic: 'javascript',
+      question: 'What is String.toLowerCase()?',
+      code: `'HELLO'.toLowerCase()`,
+      options: ['"hello"', '"HELLO"', '"Hello"', 'Error'],
+      correctAnswer: 0,
+      explanation: 'toLowerCase() returns a new string with all characters converted to lowercase.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-95',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(parseFloat('10.5abc'));`,
+      options: ['10.5', 'NaN', 'Error', '10'],
+      correctAnswer: 0,
+      explanation: 'parseFloat() parses a string and returns the floating point number, stopping at non-numeric characters.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-96',
+      topic: 'javascript',
+      question: 'What does Math.min() do?',
+      code: `Math.min(5, 2, 8)`,
+      options: ['5', '2', '8', '0'],
+      correctAnswer: 1,
+      explanation: 'Math.min() returns the smallest of the provided numbers.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-97',
+      topic: 'javascript',
+      question: 'What is String.endsWith()?',
+      code: `'hello'.endsWith('lo')`,
+      options: ['Returns index', 'Returns boolean', 'Returns substring', 'Error'],
+      correctAnswer: 1,
+      explanation: 'endsWith() determines whether a string ends with the characters of a specified string.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-98',
+      topic: 'javascript',
+      question: 'What is the output?',
+      code: `console.log(5 % 2);`,
+      options: ['2', '2.5', '1', '0'],
+      correctAnswer: 2,
+      explanation: 'The modulo operator (%) returns the remainder of division: 5 ÷ 2 has remainder 1.',
+      difficulty: 'easy'
+    },
+    {
+      id: 'js-adv-99',
+      topic: 'javascript',
+      question: 'What does Array.splice() do?',
+      code: `const arr = [1,2,3];
+arr.splice(1, 1);`,
+      options: ['Returns removed elements', 'Modifies array and returns removed elements', 'Adds elements', 'Sorts array'],
+      correctAnswer: 1,
+      explanation: 'splice() changes an array by removing/replacing elements in place and returns an array of removed elements.',
+      difficulty: 'medium'
+    },
+    {
+      id: 'js-adv-100',
+      topic: 'javascript',
+      question: 'What is Math.sqrt()?',
+      code: `Math.sqrt(16)`,
+      options: ['4', '8', '16', '2'],
+      correctAnswer: 0,
+      explanation: 'Math.sqrt() returns the square root of a number: √16 = 4.',
+      difficulty: 'easy'
+    }
+  ]
+}
+
+function generateTypeScriptQuizzes(): Quiz[] {
   const quizzes: Quiz[] = []
   
-  topics.forEach((topic, topicIndex) => {
-    for (let i = 11; i <= 100; i++) {
-      quizzes.push({
-        id: `${topic}-adv-${i}`,
-        topic,
-        question: getQuestionForTopic(topic, i),
-        code: getCodeForTopic(topic, i),
-        options: getOptionsForTopic(topic, i),
-        correctAnswer: Math.floor(Math.random() * 4),
-        explanation: getExplanationForTopic(topic, i),
-        difficulty: i < 40 ? 'medium' : i < 70 ? 'hard' : 'medium'
-      })
-    }
-  })
+  for (let i = 11; i <= 100; i++) {
+    const templates = [
+      {
+        question: `What is ${['a type assertion', 'an interface', 'a generic', 'a type guard', 'a utility type', 'type narrowing'][i % 6]}?`,
+        options: ['A class', 'A TypeScript feature', 'A JavaScript feature', 'An error'],
+        correctAnswer: 1,
+        explanation: 'This is a TypeScript-specific feature that helps with type safety and development experience.',
+        difficulty: (i < 40 ? 'easy' : i < 70 ? 'medium' : 'hard') as 'easy' | 'medium' | 'hard'
+      },
+      {
+        question: `What does ${['Pick<T, K>', 'Omit<T, K>', 'Partial<T>', 'Required<T>', 'Readonly<T>', 'Record<K, T>'][i % 6]} do?`,
+        code: `type Result = UtilityType<SourceType>;`,
+        options: ['Transforms types', 'Creates new type by transforming properties', 'Validates types', 'Compiles types'],
+        correctAnswer: 1,
+        explanation: 'This utility type transforms an existing type to create a new type with modified properties.',
+        difficulty: (i < 40 ? 'easy' : i < 70 ? 'medium' : 'hard') as 'easy' | 'medium' | 'hard'
+      }
+    ]
+    
+    const template = templates[i % 2]
+    quizzes.push({
+      id: `ts-adv-${i}`,
+      topic: 'typescript',
+      ...template
+    })
+  }
   
   return quizzes
 }
 
-function getQuestionForTopic(topic: string, index: number): string {
-  const questions: Record<string, string[]> = {
-    javascript: [
-      'What is hoisting?', 'Explain async/await', 'What is the event loop?', 'What are Promises?',
-      'What is destructuring?', 'What is the spread operator?', 'What are template literals?',
-      'What is prototypal inheritance?', 'What are arrow functions?', 'What is strict mode?',
-      'What is the this keyword?', 'What are modules?', 'What is a Map?', 'What is a Set?',
-      'What is WeakMap?', 'What is a Proxy?', 'What is Reflect?', 'What are getters/setters?',
-      'What is optional chaining?', 'What is nullish coalescing?', 'What is BigInt?',
-      'What are Intl APIs?', 'What is Array.flat()?', 'What is Object.freeze()?',
-      'What is Object.seal()?', 'What is JSON.stringify()?', 'What is localStorage?',
-      'What is sessionStorage?', 'What is IndexedDB?', 'What are Web Workers?',
-      'What is the Fetch API?', 'What are URLSearchParams?', 'What is FormData?',
-      'What is AbortController?', 'What are Iterators?', 'What is a for...of loop?',
-      'What is for...in?', 'What is Array.reduce()?', 'What is Array.map()?',
-      'What is Array.filter()?', 'What is Array.find()?', 'What is Array.some()?',
-      'What is Array.every()?', 'What is String.match()?', 'What is RegExp?',
-      'What are classes?', 'What is extends?', 'What is super?', 'What is static?',
-      'What are private fields?', 'What is instanceof?', 'What is typeof?',
-      'What is try/catch?', 'What is finally?', 'What is throw?', 'What are Error objects?',
-      'What is setTimeout?', 'What is setInterval?', 'What is clearTimeout?',
-      'What is requestAnimationFrame?', 'What is the DOM?', 'What is querySelector?',
-      'What is addEventListener?', 'What is preventDefault?', 'What is stopPropagation?',
-      'What is event delegation?', 'What is the bubbling phase?', 'What is the capturing phase?',
-      'What is innerHTML?', 'What is textContent?', 'What is createElement?',
-      'What is appendChild?', 'What is removeChild?', 'What is classList?',
-      'What is dataset?', 'What are custom elements?', 'What is Shadow DOM?',
-      'What are Custom Events?', 'What is MutationObserver?', 'What is IntersectionObserver?',
-      'What is ResizeObserver?', 'What is Performance API?', 'What is navigator?',
-      'What is window.location?', 'What is window.history?', 'What is Document?',
-      'What is the Console API?', 'What is Service Worker?', 'What is PWA?'
-    ],
-    typescript: [
-      'What are interfaces?', 'What are type aliases?', 'What are generics?',
-      'What is type inference?', 'What are union types?', 'What are intersection types?',
-      'What are literal types?', 'What is typeof operator?', 'What is keyof?',
-      'What are mapped types?', 'What are conditional types?', 'What is infer?',
-      'What are utility types?', 'What is Partial?', 'What is Required?',
-      'What is Readonly?', 'What is Pick?', 'What is Omit?', 'What is Record?',
-      'What is Exclude?', 'What is Extract?', 'What is NonNullable?',
-      'What is ReturnType?', 'What is Parameters?', 'What is ConstructorParameters?',
-      'What is InstanceType?', 'What are type guards?', 'What is type narrowing?',
-      'What is type assertion?', 'What is as const?', 'What are enums?',
-      'What are const enums?', 'What are namespaces?', 'What are modules?',
-      'What is export?', 'What is import?', 'What is default export?',
-      'What are decorators?', 'What is tsconfig.json?', 'What is strict mode?',
-      'What is noImplicitAny?', 'What is strictNullChecks?', 'What is noUnusedLocals?',
-      'What are declaration files?', 'What is .d.ts?', 'What is DefinitelyTyped?',
-      'What is @types?', 'What is any type?', 'What is unknown type?',
-      'What is never type?', 'What is void type?', 'What is tuple type?',
-      'What is rest parameter?', 'What is optional parameter?', 'What is function overload?',
-      'What is abstract class?', 'What is access modifier?', 'What is readonly modifier?',
-      'What is static member?', 'What is getter?', 'What is setter?',
-      'What is index signature?', 'What is excess property checking?',
-      'What is structural typing?', 'What is nominal typing?', 'What is duck typing?',
-      'What is covariance?', 'What is contravariance?', 'What is bivariance?',
-      'What is type compatibility?', 'What is freshness?', 'What is widening?',
-      'What is literal widening?', 'What is const assertion?', 'What is satisfies?',
-      'What are template literal types?', 'What is string manipulation?',
-      'What is Uppercase?', 'What is Lowercase?', 'What is Capitalize?',
-      'What is Uncapitalize?', 'What is awaited type?', 'What is intrinsic type?',
-      'What is variance annotation?', 'What is import type?', 'What is export type?',
-      'What is type-only import?', 'What is assertion function?', 'What is branded type?'
-    ],
-    react: [
-      'What is JSX?', 'What is Virtual DOM?', 'What are components?',
-      'What are props?', 'What is state?', 'What is useState?',
-      'What is useEffect?', 'What is useContext?', 'What is useReducer?',
-      'What is useCallback?', 'What is useMemo?', 'What is useRef?',
-      'What is useImperativeHandle?', 'What is useLayoutEffect?', 'What is useDebugValue?',
-      'What is useId?', 'What is useDeferredValue?', 'What is useTransition?',
-      'What is useSyncExternalStore?', 'What is useInsertionEffect?',
-      'What are custom hooks?', 'What is component lifecycle?', 'What is mounting?',
-      'What is updating?', 'What is unmounting?', 'What are side effects?',
-      'What is cleanup function?', 'What is dependency array?', 'What are keys?',
-      'What is reconciliation?', 'What is diffing algorithm?', 'What is fiber?',
-      'What is concurrent rendering?', 'What is Suspense?', 'What is lazy loading?',
-      'What is code splitting?', 'What is React.lazy?', 'What is ErrorBoundary?',
-      'What is getDerivedStateFromError?', 'What is componentDidCatch?',
-      'What is Context API?', 'What is Provider?', 'What is Consumer?',
-      'What is prop drilling?', 'What is lifting state up?', 'What is composition?',
-      'What is children prop?', 'What is render prop?', 'What is HOC?',
-      'What is Higher Order Component?', 'What is Pure Component?',
-      'What is React.memo?', 'What is shouldComponentUpdate?',
-      'What are controlled components?', 'What are uncontrolled components?',
-      'What is defaultValue?', 'What is ref forwarding?', 'What is forwardRef?',
-      'What are portals?', 'What is createPortal?', 'What is StrictMode?',
-      'What is Fragment?', 'What is React.Children?', 'What is cloneElement?',
-      'What is createElement?', 'What is isValidElement?', 'What are synthetic events?',
-      'What is event pooling?', 'What is event delegation?', 'What is batching?',
-      'What is automatic batching?', 'What is flushSync?', 'What is startTransition?',
-      'What is useTransition hook?', 'What is isPending?', 'What is useDeferredValue hook?',
-      'What are Server Components?', 'What are Client Components?',
-      'What is hydration?', 'What is SSR?', 'What is SSG?', 'What is ISR?',
-      'What is Next.js?', 'What is Remix?', 'What is React Router?',
-      'What are routes?', 'What is useNavigate?', 'What is useParams?'
-    ],
-    python: [
-      'What are tuples?', 'What are sets?', 'What are frozensets?',
-      'What are dictionaries?', 'What is defaultdict?', 'What is OrderedDict?',
-      'What is Counter?', 'What is ChainMap?', 'What are comprehensions?',
-      'What is set comprehension?', 'What is dict comprehension?', 'What is a generator expression?',
-      'What is yield from?', 'What are coroutines?', 'What is async?',
-      'What is await?', 'What is asyncio?', 'What is asyncio.gather?',
-      'What is asyncio.run?', 'What is asyncio.create_task?', 'What are type hints?',
-      'What is Optional?', 'What is Union?', 'What is Any?', 'What is TypeVar?',
-      'What is Generic?', 'What is Protocol?', 'What is Literal?',
-      'What is dataclass?', 'What is NamedTuple?', 'What is property?',
-      'What is classmethod?', 'What is staticmethod?', 'What is __init__?',
-      'What is __str__?', 'What is __repr__?', 'What is __eq__?',
-      'What is __hash__?', 'What is __call__?', 'What is __getitem__?',
-      'What is __setitem__?', 'What is __delitem__?', 'What is __len__?',
-      'What is __iter__?', 'What is __next__?', 'What is __enter__?',
-      'What is __exit__?', 'What is __new__?', 'What is __del__?',
-      'What is metaclass?', 'What is type()?', 'What is isinstance()?',
-      'What is issubclass?', 'What is super()?', 'What is MRO?',
-      'What is multiple inheritance?', 'What is mixin?', 'What is ABC?',
-      'What is abstractmethod?', 'What is functools?', 'What is partial?',
-      'What is lru_cache?', 'What is wraps?', 'What is reduce?',
-      'What is map?', 'What is filter?', 'What is any?',
-      'What is all?', 'What is sorted?', 'What is reversed?',
-      'What is itertools?', 'What is chain?', 'What is combinations?',
-      'What is permutations?', 'What is groupby?', 'What is cycle?',
-      'What is repeat?', 'What is takewhile?', 'What is dropwhile?',
-      'What is collections?', 'What is deque?', 'What is heapq?',
-      'What is bisect?', 'What is array?', 'What is bytes?',
-      'What is bytearray?', 'What is memoryview?', 'What is pickle?'
-    ],
-    django: [
-      'What is MVT?', 'What are apps?', 'What is settings.py?',
-      'What is urls.py?', 'What is manage.py?', 'What is wsgi.py?',
-      'What is asgi.py?', 'What are models?', 'What is Model?',
-      'What is Field?', 'What is CharField?', 'What is IntegerField?',
-      'What is BooleanField?', 'What is DateField?', 'What is DateTimeField?',
-      'What is EmailField?', 'What is URLField?', 'What is TextField?',
-      'What is ForeignKey?', 'What is OneToOneField?', 'What is ManyToManyField?',
-      'What is related_name?', 'What is on_delete?', 'What is CASCADE?',
-      'What is PROTECT?', 'What is SET_NULL?', 'What is Meta class?',
-      'What is verbose_name?', 'What is ordering?', 'What is unique_together?',
-      'What is indexes?', 'What is constraints?', 'What are managers?',
-      'What is objects?', 'What is get()?', 'What is filter()?',
-      'What is exclude()?', 'What is all()?', 'What is first()?',
-      'What is last()?', 'What is count()?', 'What is exists()?',
-      'What is create()?', 'What is update()?', 'What is delete()?',
-      'What is bulk_create()?', 'What is bulk_update()?', 'What is get_or_create()?',
-      'What is update_or_create()?', 'What are Q objects?', 'What are F objects?',
-      'What is values()?', 'What is values_list()?', 'What is only()?',
-      'What is defer()?', 'What is distinct()?', 'What is order_by()?',
-      'What is reverse()?', 'What is aggregate()?', 'What is annotate()?',
-      'What is Count?', 'What is Sum?', 'What is Avg?',
-      'What is Max?', 'What is Min?', 'What are views?',
-      'What is function view?', 'What is class-based view?', 'What is View?',
-      'What is TemplateView?', 'What is ListView?', 'What is DetailView?',
-      'What is CreateView?', 'What is UpdateView?', 'What is DeleteView?',
-      'What is FormView?', 'What are templates?', 'What is template tag?',
-      'What is filter?', 'What is {% for %}?', 'What is {% if %}?',
-      'What is {% block %}?', 'What is {% extends %}?', 'What is {% include %}?',
-      'What is {{ variable }}?', 'What is context?', 'What is render()?'
-    ],
-    css: [
-      'What is a selector?', 'What is class selector?', 'What is ID selector?',
-      'What is attribute selector?', 'What is pseudo-class?', 'What is pseudo-element?',
-      'What is :hover?', 'What is :focus?', 'What is :active?',
-      'What is :visited?', 'What is :nth-of-type?', 'What is :first-child?',
-      'What is :last-child?', 'What is :only-child?', 'What is :not?',
-      'What is ::before?', 'What is ::after?', 'What is ::first-letter?',
-      'What is ::first-line?', 'What is ::selection?', 'What is combinator?',
-      'What is descendant combinator?', 'What is child combinator?', 'What is adjacent sibling?',
-      'What is general sibling?', 'What is cascade?', 'What is inheritance?',
-      'What is !important?', 'What is box-sizing?', 'What is border-box?',
-      'What is content-box?', 'What is display?', 'What is inline-block?',
-      'What is flex?', 'What is grid?', 'What is none?',
-      'What is visibility?', 'What is opacity?', 'What is position?',
-      'What is relative?', 'What is absolute?', 'What is fixed?',
-      'What is sticky?', 'What is float?', 'What is clear?',
-      'What is overflow?', 'What is clip?', 'What is auto?',
-      'What is flexbox?', 'What is flex-direction?', 'What is flex-wrap?',
-      'What is justify-content?', 'What is align-items?', 'What is align-content?',
-      'What is flex-grow?', 'What is flex-shrink?', 'What is flex-basis?',
-      'What is gap?', 'What is CSS Grid?', 'What is grid-template-columns?',
-      'What is grid-template-rows?', 'What is grid-template-areas?', 'What is grid-gap?',
-      'What is grid-column?', 'What is grid-row?', 'What is grid-area?',
-      'What is minmax()?', 'What is fr unit?', 'What is auto-fill?',
-      'What is auto-fit?', 'What is animation?', 'What is @keyframes?',
-      'What is animation-name?', 'What is animation-duration?', 'What is animation-delay?',
-      'What is animation-iteration-count?', 'What is animation-direction?',
-      'What is animation-fill-mode?', 'What is animation-play-state?',
-      'What is transition-property?', 'What is transition-duration?',
-      'What is transition-timing-function?', 'What is transition-delay?',
-      'What is ease?', 'What is linear?', 'What is ease-in?',
-      'What is ease-out?', 'What is cubic-bezier?'
+function generateReactQuizzes(): Quiz[] {
+  const quizzes: Quiz[] = []
+  
+  for (let i = 11; i <= 100; i++) {
+    const templates = [
+      {
+        question: `What does ${['useEffect', 'useCallback', 'useMemo', 'useRef', 'useContext', 'useReducer'][i % 6]}() do?`,
+        code: `const value = ${['useEffect', 'useCallback', 'useMemo', 'useRef', 'useContext', 'useReducer'][i % 6]}(...);`,
+        options: ['Manages state', 'A React hook for specific functionality', 'Creates components', 'Handles routing'],
+        correctAnswer: 1,
+        explanation: 'This is a React hook that provides specific functionality for functional components.',
+        difficulty: (i < 40 ? 'easy' : i < 70 ? 'medium' : 'hard') as 'easy' | 'medium' | 'hard'
+      },
+      {
+        question: `What is ${['JSX', 'Virtual DOM', 'reconciliation', 'hydration', 'SSR', 'CSR'][i % 6]}?`,
+        options: ['HTML', 'A React concept', 'JavaScript', 'CSS'],
+        correctAnswer: 1,
+        explanation: 'This is a fundamental React concept that enables efficient UI rendering and updates.',
+        difficulty: (i < 40 ? 'easy' : i < 70 ? 'medium' : 'hard') as 'easy' | 'medium' | 'hard'
+      }
     ]
+    
+    const template = templates[i % 2]
+    quizzes.push({
+      id: `react-adv-${i}`,
+      topic: 'react',
+      ...template
+    })
   }
   
-  const topicQuestions = questions[topic] || []
-  return topicQuestions[(index - 11) % topicQuestions.length] || `Advanced ${topic} question ${index}`
+  return quizzes
 }
 
-function getCodeForTopic(topic: string, index: number): string | undefined {
-  if (index % 3 === 0) return undefined
-  const examples: Record<string, string> = {
-    javascript: `const result = value;`,
-    typescript: `type Result = T extends U ? X : Y;`,
-    react: `const Component = () => { };`,
-    python: `def function(): pass`,
-    django: `class Model(models.Model): pass`,
-    css: `.selector { property: value; }`
+function generatePythonQuizzes(): Quiz[] {
+  const quizzes: Quiz[] = []
+  
+  for (let i = 11; i <= 100; i++) {
+    const templates = [
+      {
+        question: `What does ${['list comprehension', 'generator', 'decorator', 'context manager', 'lambda', 'map()'][i % 6]} do?`,
+        code: `result = expression`,
+        options: ['Creates functions', 'A Python feature for concise code', 'Imports modules', 'Defines classes'],
+        correctAnswer: 1,
+        explanation: 'This is a Python feature that provides a concise way to work with data.',
+        difficulty: (i < 40 ? 'easy' : i < 70 ? 'medium' : 'hard') as 'easy' | 'medium' | 'hard'
+      },
+      {
+        question: `What is ${['*args', '**kwargs', '__init__', '__str__', 'yield', 'async'][i % 6]}?`,
+        code: `def function(param): pass`,
+        options: ['A variable', 'Python syntax for specific functionality', 'An import', 'A module'],
+        correctAnswer: 1,
+        explanation: 'This is Python syntax that enables specific functionality in functions or classes.',
+        difficulty: (i < 40 ? 'easy' : i < 70 ? 'medium' : 'hard') as 'easy' | 'medium' | 'hard'
+      }
+    ]
+    
+    const template = templates[i % 2]
+    quizzes.push({
+      id: `python-adv-${i}`,
+      topic: 'python',
+      ...template
+    })
   }
-  return examples[topic]
+  
+  return quizzes
 }
 
-function getOptionsForTopic(topic: string, index: number): string[] {
-  const baseOptions = [
-    `Correct answer for ${topic}`,
-    `Alternative explanation`,
-    `Common misconception`,
-    `Related concept`
-  ]
-  return baseOptions
+function generateDjangoQuizzes(): Quiz[] {
+  const quizzes: Quiz[] = []
+  
+  for (let i = 11; i <= 100; i++) {
+    const templates = [
+      {
+        question: `What is ${['QuerySet', 'migration', 'middleware', 'signal', 'Manager', 'Model'][i % 6]} in Django?`,
+        code: `# Django code`,
+        options: ['A function', 'A Django component', 'A Python feature', 'A database'],
+        correctAnswer: 1,
+        explanation: 'This is a Django component that provides specific functionality in the framework.',
+        difficulty: (i < 40 ? 'easy' : i < 70 ? 'medium' : 'hard') as 'easy' | 'medium' | 'hard'
+      },
+      {
+        question: `What does ${['filter()', 'select_related()', 'prefetch_related()', 'annotate()', 'aggregate()', 'values()'][i % 6]} do?`,
+        code: `Model.objects.method()`,
+        options: ['Deletes data', 'Queries database efficiently', 'Creates models', 'Runs migrations'],
+        correctAnswer: 1,
+        explanation: 'This is a Django ORM method that helps query the database efficiently.',
+        difficulty: (i < 40 ? 'easy' : i < 70 ? 'medium' : 'hard') as 'easy' | 'medium' | 'hard'
+      }
+    ]
+    
+    const template = templates[i % 2]
+    quizzes.push({
+      id: `django-adv-${i}`,
+      topic: 'django',
+      ...template
+    })
+  }
+  
+  return quizzes
 }
 
-function getExplanationForTopic(topic: string, index: number): string {
-  return `This is an advanced ${topic} concept that requires understanding of core principles and best practices in modern development.`
+function generateCSSQuizzes(): Quiz[] {
+  const quizzes: Quiz[] = []
+  
+  for (let i = 11; i <= 100; i++) {
+    const templates = [
+      {
+        question: `What is ${['flexbox', 'grid', 'specificity', 'cascade', 'box model', 'z-index'][i % 6]}?`,
+        code: `.selector { property: value; }`,
+        options: ['A CSS property', 'A CSS concept', 'A JavaScript feature', 'An HTML tag'],
+        correctAnswer: 1,
+        explanation: 'This is a fundamental CSS concept for styling and layout.',
+        difficulty: (i < 40 ? 'easy' : i < 70 ? 'medium' : 'hard') as 'easy' | 'medium' | 'hard'
+      },
+      {
+        question: `What does ${['display: flex', 'position: sticky', 'transform', 'transition', 'animation', '@media'][i % 6]} do?`,
+        code: `.element { property: value; }`,
+        options: ['Adds color', 'Controls layout or animation', 'Adds text', 'Removes elements'],
+        correctAnswer: 1,
+        explanation: 'This CSS feature controls how elements are laid out or animated on the page.',
+        difficulty: (i < 40 ? 'easy' : i < 70 ? 'medium' : 'hard') as 'easy' | 'medium' | 'hard'
+      }
+    ]
+    
+    const template = templates[i % 2]
+    quizzes.push({
+      id: `css-adv-${i}`,
+      topic: 'css',
+      ...template
+    })
+  }
+  
+  return quizzes
 }

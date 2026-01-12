@@ -15,6 +15,10 @@ export interface UserProgress {
   streak: number
   topicProgress: Record<string, TopicProgress>
   quizHistory: QuizResult[]
+  totalTimeSpent: number
+  averageScore: number
+  bestStreak: number
+  lastActivity: number
 }
 
 export interface TopicProgress {
