@@ -1,35 +1,35 @@
 import { Quiz } from './types'
 
-export const ADVANCED_QUIZZES: Quiz[] = [
-  {
     id: 'js-adv-1',
-    topic: 'javascript',
-    question: 'What is the output?',
-    code: `console.log([] + []);`,
-    options: ['[]', '""', 'undefined', 'Error'],
-    correctAnswer: 1,
-    explanation: 'Arrays are converted to strings and concatenated, resulting in an empty string.',
-    difficulty: 'hard'
+   
+    options: ['[]',
+    explanation: 'Arrays
   },
-  {
     id: 'js-adv-2',
-    topic: 'javascript',
-    question: 'What does Promise.race() return?',
-    code: `Promise.race([promise1, promise2])`,
-    options: ['All resolved promises', 'First settled promise', 'Fastest promise', 'Array of results'],
-    correctAnswer: 1,
+    question: 'What does Promise.race() return?'
+    options: ['All re
     explanation: 'Promise.race() returns the first promise that settles (resolves or rejects).',
-    difficulty: 'hard'
   },
-  {
-    id: 'js-adv-3',
-    topic: 'javascript',
-    question: 'What is a closure?',
-    code: `function outer() {
+    
+   
   let count = 0;
-  return function inner() {
     return ++count;
-  }
+}`,
+    correctAnswer: 1,
+    difficulty: 'hard'
+  {
+    topic: 'javascript',
+    code: `element.add
+    
+   
+  {
+    topic: 'javascript',
+    code: `const obj = Object.freez
+    options: ['obj.a becomes 
+    explanation:
+  },
+    id: 'js-adv-6',
+   
 }`,
     options: ['A nested function', 'A function that remembers its lexical scope', 'A callback', 'An IIFE'],
     correctAnswer: 1,
@@ -510,518 +510,518 @@ arr.flat();`,
     {
       id: 'js-adv-49',
       topic: 'javascript',
-      question: 'What is Array.push() return value?',
-      code: `const arr = [1,2];
-arr.push(3);`,
-      options: ['The array', 'The new length', 'The pushed element', 'undefined'],
-      correctAnswer: 1,
-      explanation: 'push() adds elements to the end of an array and returns the new length of the array.',
-      difficulty: 'medium'
-    },
-    {
-      id: 'js-adv-50',
-      topic: 'javascript',
-      question: 'What does parseInt() do?',
-      code: `parseInt('10.5')`,
-      options: ['Returns 10.5', 'Returns 10', 'Returns 11', 'Returns NaN'],
-      correctAnswer: 1,
-      explanation: 'parseInt() parses a string and returns an integer, discarding the decimal part.',
-      difficulty: 'easy'
-    },
-    {
-      id: 'js-adv-51',
-      topic: 'javascript',
-      question: 'What is the output?',
-      code: `console.log('2' > '12');`,
-      options: ['true', 'false', 'undefined', 'Error'],
-      correctAnswer: 0,
-      explanation: 'String comparison is lexicographic (dictionary order): "2" comes after "1" alphabetically.',
-      difficulty: 'hard'
-    },
-    {
-      id: 'js-adv-52',
-      topic: 'javascript',
-      question: 'What does Array.reverse() do?',
       code: `[1,2,3].reverse()`,
-      options: ['Returns reversed copy', 'Reverses array in place', 'Sorts array', 'Shuffles array'],
       correctAnswer: 1,
-      explanation: 'reverse() reverses the array in place and returns the reference to the same array.',
-      difficulty: 'easy'
-    },
+      difficul
     {
-      id: 'js-adv-53',
-      topic: 'javascript',
-      question: 'What is BigInt used for?',
+      topic: 'javascrip
       code: `const big = 9007199254740991n;`,
-      options: ['Large strings', 'Integers larger than Number.MAX_SAFE_INTEGER', 'Floating point', 'Arrays'],
       correctAnswer: 1,
-      explanation: 'BigInt can represent integers with arbitrary precision, beyond Number.MAX_SAFE_INTEGER.',
-      difficulty: 'medium'
-    },
+      
     {
-      id: 'js-adv-54',
-      topic: 'javascript',
-      question: 'What does String.trim() do?',
-      code: `'  hello  '.trim()`,
-      options: ['Removes all spaces', 'Removes leading and trailing whitespace', 'Capitalizes', 'Lowercases'],
+      topic: 'javascri
+      code: `'  hello  '.t
       correctAnswer: 1,
-      explanation: 'trim() removes whitespace from both ends of a string.',
       difficulty: 'easy'
-    },
     {
-      id: 'js-adv-55',
-      topic: 'javascript',
-      question: 'What is the output?',
+      topic: 'javascrip
       code: `console.log(1 + 2 + '3');`,
-      options: ['"123"', '"33"', '6', '"6"'],
       correctAnswer: 0,
-      explanation: '1 + 2 = 3 (number), then 3 + "3" = "33" (string concatenation).',
-      difficulty: 'medium'
-    },
+      
     {
-      id: 'js-adv-56',
-      topic: 'javascript',
-      question: 'What does Object.assign() do?',
-      code: `Object.assign(target, source)`,
-      options: ['Deep copies', 'Shallow copies properties to target', 'Compares objects', 'Merges arrays'],
+      topic: 'javascri
+      code: `Object.assign
       correctAnswer: 1,
-      explanation: 'Object.assign() copies enumerable own properties from source objects to a target object.',
       difficulty: 'medium'
-  },
     {
-      id: 'js-adv-57',
-      topic: 'javascript',
-      question: 'What is Array.concat()?',
+      topic: 'javascrip
       code: `[1,2].concat([3,4])`,
-      options: ['Modifies first array', 'Returns new merged array', 'Returns nested array', 'Flattens arrays'],
       correctAnswer: 1,
-      explanation: 'concat() merges two or more arrays and returns a new array without modifying existing arrays.',
-      difficulty: 'easy'
-    },
+      
     {
-      id: 'js-adv-58',
-      topic: 'javascript',
-      question: 'What does Number.isInteger() check?',
-      code: `Number.isInteger(10.0)`,
-      options: ['Always false for floats', 'Checks if value is integer', 'Checks if value is number', 'Converts to integer'],
+      topic: 'javascri
+      code: `Number.isInte
       correctAnswer: 1,
-      explanation: 'Number.isInteger() determines whether the value is an integer (10.0 is considered an integer).',
       difficulty: 'easy'
-    },
     {
-      id: 'js-adv-59',
-      topic: 'javascript',
-      question: 'What is the output?',
+      topic: 'javascrip
       code: `console.log(Math.max());`,
-      options: ['0', '-Infinity', 'Infinity', 'Error'],
       correctAnswer: 1,
-      explanation: 'Math.max() with no arguments returns -Infinity (the identity value for max operation).',
-      difficulty: 'hard'
-    },
+      
     {
-      id: 'js-adv-60',
-      topic: 'javascript',
-      question: 'What does Array.fill() do?',
-      code: `new Array(3).fill(0)`,
-      options: ['Creates empty array', 'Fills all elements with static value', 'Fills with sequential numbers', 'Initializes array'],
+      topic: 'javascri
+      code: `new Array(3).
       correctAnswer: 1,
-      explanation: 'fill() fills all elements of an array with a static value from a start index to an end index.',
       difficulty: 'easy'
-    },
     {
-      id: 'js-adv-61',
-      topic: 'javascript',
-      question: 'What is String.startsWith()?',
+      topic: 'javascrip
       code: `'hello'.startsWith('he')`,
-      options: ['Returns index', 'Returns boolean', 'Returns substring', 'Returns array'],
       correctAnswer: 1,
-      explanation: 'startsWith() determines whether a string begins with the characters of a specified string.',
-      difficulty: 'easy'
-    },
+      
     {
-      id: 'js-adv-62',
-      topic: 'javascript',
-      question: 'What is the output?',
-      code: `console.log(0.1 + 0.2 == 0.3);`,
-      options: ['true', 'false', 'undefined', 'NaN'],
+      topic: 'javascri
+      code: `console.log(0
       correctAnswer: 1,
-      explanation: 'Floating-point arithmetic precision issues: 0.1 + 0.2 equals 0.30000000000000004.',
       difficulty: 'hard'
-    },
     {
-      id: 'js-adv-63',
-      topic: 'javascript',
-      question: 'What does Array.indexOf() return?',
+      topic: 'javascrip
       code: `[1,2,3].indexOf(2)`,
-      options: ['The element', 'The index', 'Boolean', 'Array'],
       correctAnswer: 1,
-      explanation: 'indexOf() returns the first index at which a given element is found, or -1 if not present.',
-      difficulty: 'easy'
-    },
+      
     {
-      id: 'js-adv-64',
-      topic: 'javascript',
-      question: 'What is Object.values()?',
-      code: `Object.values({a: 1, b: 2})`,
-      options: ['Returns keys', 'Returns array of values', 'Returns object', 'Returns string'],
+      topic: 'javascri
+      code: `Object.values
       correctAnswer: 1,
-      explanation: 'Object.values() returns an array of an object\'s own enumerable property values.',
       difficulty: 'easy'
-    },
     {
-      id: 'js-adv-65',
-      topic: 'javascript',
-      question: 'What is the output?',
+      topic: 'javascrip
       code: `console.log(typeof []);`,
-      options: ['"array"', '"object"', '"Array"', '"list"'],
       correctAnswer: 1,
-      explanation: 'Arrays are objects in JavaScript, so typeof returns "object".',
-      difficulty: 'medium'
-    },
+      
     {
-      id: 'js-adv-66',
-      topic: 'javascript',
-      question: 'What does String.repeat() do?',
-      code: `'ha'.repeat(3)`,
-      options: ['Loops 3 times', 'Returns "hahaha"', 'Returns array', 'Returns 3'],
+      topic: 'javascri
+      code: `'ha'.repeat(3
       correctAnswer: 1,
-      explanation: 'repeat() constructs and returns a new string with a specified number of copies concatenated.',
       difficulty: 'easy'
-    },
     {
-      id: 'js-adv-67',
-      topic: 'javascript',
-      question: 'What is Array.shift()?',
+      topic: 'javascrip
       code: `const arr = [1,2,3];
-arr.shift();`,
-      options: ['Removes first element and returns it', 'Removes last element', 'Adds element at start', 'Sorts array'],
-      correctAnswer: 0,
-      explanation: 'shift() removes the first element from an array and returns that element.',
-      difficulty: 'easy'
-    },
-    {
+      options: ['Removes f
+    
+    }
       id: 'js-adv-68',
-      topic: 'javascript',
-      question: 'What is the output?',
-      code: `console.log(!!'false');`,
-      options: ['false', 'true', '"false"', 'undefined'],
-      correctAnswer: 1,
-      explanation: 'Non-empty strings are truthy. The !! converts to boolean: !!"false" is true.',
-      difficulty: 'medium'
+      question: 'What is t
+      options: ['false', 'true', '"false"'
+      explanation: 'Non-empty stri
     },
-    {
       id: 'js-adv-69',
-      topic: 'javascript',
       question: 'What does Array.unshift() do?',
-      code: `[2,3].unshift(1)`,
-      options: ['Removes first element', 'Adds elements at start and returns new length', 'Shifts array', 'Removes last element'],
-      correctAnswer: 1,
-      explanation: 'unshift() adds elements to the beginning of an array and returns the new length.',
-      difficulty: 'easy'
-    },
-    {
+      options: ['Removes
+      
+    }
       id: 'js-adv-70',
-      topic: 'javascript',
-      question: 'What is Object.entries()?',
-      code: `Object.entries({a: 1})`,
-      options: ['Returns keys', 'Returns [["a", 1]]', 'Returns values', 'Returns object'],
-      correctAnswer: 1,
-      explanation: 'Object.entries() returns an array of [key, value] pairs from an object.',
-      difficulty: 'easy'
+      question: 'What is O
+      options: ['Returns keys', 'Returns [["a", 1]]', 
+      explanation: 'Object.entries() 
     },
-    {
       id: 'js-adv-71',
-      topic: 'javascript',
       question: 'What is the output?',
-      code: `console.log(Boolean(''));`,
-      options: ['true', 'false', '""', 'undefined'],
-      correctAnswer: 1,
-      explanation: 'Empty strings are falsy in JavaScript, so Boolean("") returns false.',
-      difficulty: 'easy'
-    },
-    {
+      options: ['true', 
+      
+    }
       id: 'js-adv-72',
-      topic: 'javascript',
-      question: 'What does String.toUpperCase() do?',
-      code: `'hello'.toUpperCase()`,
-      options: ['Modifies string', 'Returns new uppercase string', 'Capitalizes first letter', 'Returns array'],
-      correctAnswer: 1,
-      explanation: 'toUpperCase() returns a new string with all characters converted to uppercase.',
-      difficulty: 'easy'
+      question: 'What does
+      options: ['Modifies string', 'Re
+      explanation: 'toUpperCase() retur
     },
-    {
       id: 'js-adv-73',
-      topic: 'javascript',
       question: 'What is Array.pop()?',
-      code: `const arr = [1,2,3];
 arr.pop();`,
-      options: ['Removes first element', 'Removes and returns last element', 'Returns array', 'Adds element'],
-      correctAnswer: 1,
-      explanation: 'pop() removes the last element from an array and returns that element.',
-      difficulty: 'easy'
-    },
+      
+     
     {
-      id: 'js-adv-74',
       topic: 'javascript',
-      question: 'What is the output?',
       code: `console.log([1,2] + [3,4]);`,
-      options: ['"1,23,4"', '[1,2,3,4]', '"1234"', 'Error'],
       correctAnswer: 0,
-      explanation: 'Arrays are converted to strings: "1,2" + "3,4" = "1,23,4".',
       difficulty: 'hard'
-    },
     {
-      id: 'js-adv-75',
       topic: 'javascript',
-      question: 'What does Math.floor() do?',
-      code: `Math.floor(4.7)`,
-      options: ['Rounds to 5', 'Rounds down to 4', 'Rounds to nearest', 'Returns 4.7'],
-      correctAnswer: 1,
-      explanation: 'Math.floor() rounds a number down to the largest integer less than or equal to it.',
-      difficulty: 'easy'
-    },
+      code: `Math.floor(
+      
+     
     {
-      id: 'js-adv-76',
       topic: 'javascript',
-      question: 'What is String.charAt()?',
       code: `'hello'.charAt(1)`,
-      options: ['"h"', '"e"', '1', 'undefined'],
       correctAnswer: 1,
-      explanation: 'charAt() returns the character at the specified index in a string.',
       difficulty: 'easy'
-    },
     {
-      id: 'js-adv-77',
       topic: 'javascript',
-      question: 'What is the output?',
-      code: `console.log(10 / 0);`,
-      options: ['0', 'NaN', 'Infinity', 'Error'],
-      correctAnswer: 2,
-      explanation: 'Division by zero in JavaScript returns Infinity (or -Infinity for negative numbers).',
-      difficulty: 'medium'
-    },
+      code: `console.log
+      
+     
     {
-      id: 'js-adv-78',
       topic: 'javascript',
-      question: 'What does Math.ceil() do?',
       code: `Math.ceil(4.1)`,
-      options: ['Rounds down to 4', 'Rounds up to 5', 'Rounds to nearest', 'Returns 4.1'],
       correctAnswer: 1,
-      explanation: 'Math.ceil() rounds a number up to the nearest integer greater than or equal to it.',
       difficulty: 'easy'
-    },
     {
-      id: 'js-adv-79',
       topic: 'javascript',
-      question: 'What is Array.lastIndexOf()?',
-      code: `[1,2,3,2].lastIndexOf(2)`,
-      options: ['1', '3', 'Returns array', 'Returns boolean'],
-      correctAnswer: 1,
-      explanation: 'lastIndexOf() returns the last index at which a given element is found, or -1.',
-      difficulty: 'easy'
-    },
+      code: `[1,2,3,2].l
+      
+     
     {
-      id: 'js-adv-80',
       topic: 'javascript',
-      question: 'What is the output?',
       code: `console.log(undefined + 1);`,
-      options: ['1', 'undefined', 'NaN', 'Error'],
       correctAnswer: 2,
-      explanation: 'undefined converts to NaN in numeric context, and NaN + 1 = NaN.',
       difficulty: 'medium'
-    },
     {
-      id: 'js-adv-81',
       topic: 'javascript',
-      question: 'What does Math.round() do?',
-      code: `Math.round(4.5)`,
-      options: ['Rounds down to 4', 'Rounds to 5', 'Rounds up to 5', 'Returns 4.5'],
-      correctAnswer: 1,
-      explanation: 'Math.round() rounds to the nearest integer. .5 rounds up.',
-      difficulty: 'easy'
-    },
+      code: `Math.round(
+      
+     
     {
-      id: 'js-adv-82',
       topic: 'javascript',
-      question: 'What is String.slice()?',
       code: `'hello'.slice(1, 3)`,
-      options: ['"he"', '"el"', '"ell"', '"lo"'],
       correctAnswer: 1,
-      explanation: 'slice() extracts a section of a string and returns it as a new string.',
       difficulty: 'easy'
-    },
     {
-      id: 'js-adv-83',
       topic: 'javascript',
-      question: 'What is the output?',
-      code: `console.log(!!0);`,
-      options: ['0', 'true', 'false', 'undefined'],
-      correctAnswer: 2,
-      explanation: '0 is falsy. The !! converts to boolean: !!0 is false.',
-      difficulty: 'easy'
-    },
+      code: `console.log
+      
+     
     {
-      id: 'js-adv-84',
       topic: 'javascript',
-      question: 'What does Array.includes() do?',
       code: `[1,2,3].includes(2)`,
-      options: ['Returns index', 'Returns boolean', 'Filters array', 'Maps array'],
       correctAnswer: 1,
-      explanation: 'includes() determines whether an array includes a certain value, returning true or false.',
       difficulty: 'easy'
-    },
     {
-      id: 'js-adv-85',
       topic: 'javascript',
-      question: 'What is String.replace()?',
-      code: `'hello'.replace('l', 'L')`,
-      options: ['"heLLo"', '"heLlo"', '"heLl"', '"HELLO"'],
-      correctAnswer: 1,
-      explanation: 'replace() returns a new string with the first match of a pattern replaced.',
-      difficulty: 'easy'
-    },
+      code: `'hello'.repla
+      
+     
     {
-      id: 'js-adv-86',
       topic: 'javascript',
-      question: 'What is the output?',
       code: `console.log(Number(''));`,
-      options: ['NaN', '0', 'null', 'undefined'],
       correctAnswer: 1,
-      explanation: 'Empty string converts to 0 when coerced to a number.',
       difficulty: 'medium'
-    },
     {
-      id: 'js-adv-87',
       topic: 'javascript',
-      question: 'What does Math.abs() do?',
-      code: `Math.abs(-5)`,
-      options: ['Returns -5', 'Returns 5', 'Returns 0', 'Error'],
+      code: `Math.abs(-5
+      
+     
+    {
+      topic: 'javascript',
+      code: `[1,2].flatMap(x => [x, x*2])
       correctAnswer: 1,
-      explanation: 'Math.abs() returns the absolute value of a number.',
-      difficulty: 'easy'
-    },
+      difficul
     {
-      id: 'js-adv-88',
-      topic: 'javascript',
-      question: 'What is Array.flatMap()?',
-      code: `[1,2].flatMap(x => [x, x*2])`,
-      options: ['[[1,2],[2,4]]', '[1,2,2,4]', '[1,1,2,2]', 'Error'],
-      correctAnswer: 1,
-      explanation: 'flatMap() maps each element then flattens the result into a new array.',
-      difficulty: 'medium'
-    },
-    {
-      id: 'js-adv-89',
-      topic: 'javascript',
-      question: 'What is the output?',
+      topic: 'javascrip
       code: `console.log(null + 1);`,
-      options: ['null', '1', 'NaN', 'Error'],
       correctAnswer: 1,
-      explanation: 'null converts to 0 in numeric context, so null + 1 = 1.',
-      difficulty: 'medium'
-    },
+      
     {
-      id: 'js-adv-90',
-      topic: 'javascript',
-      question: 'What does String.substring() do?',
-      code: `'hello'.substring(1, 3)`,
-      options: ['"h"', '"el"', '"ell"', '"lo"'],
+      topic: 'javascri
+      code: `'hello'.subst
       correctAnswer: 1,
-      explanation: 'substring() returns the part of the string between start and end indexes.',
       difficulty: 'easy'
-    },
     {
-      id: 'js-adv-91',
-      topic: 'javascript',
-      question: 'What is Math.pow()?',
+      topic: 'javascrip
       code: `Math.pow(2, 3)`,
-      options: ['5', '6', '8', '9'],
       correctAnswer: 2,
-      explanation: 'Math.pow() returns the base to the exponent power: 2³ = 8.',
-      difficulty: 'easy'
-    },
+      
     {
-      id: 'js-adv-92',
-      topic: 'javascript',
-      question: 'What is the output?',
-      code: `console.log(String(null));`,
-      options: ['"null"', 'null', '""', 'undefined'],
+      topic: 'javascri
+      code: `console.log(S
       correctAnswer: 0,
-      explanation: 'String() converts null to the string "null".',
       difficulty: 'easy'
-    },
     {
-      id: 'js-adv-93',
-      topic: 'javascript',
-      question: 'What does Array.sort() do without arguments?',
+      topic: 'javascrip
       code: `[10,5,40].sort()`,
-      options: ['[5,10,40]', '[10,40,5]', 'Error', '[40,10,5]'],
       correctAnswer: 1,
-      explanation: 'Without a compare function, sort() converts elements to strings and sorts lexicographically.',
-      difficulty: 'hard'
-    },
+      
     {
-      id: 'js-adv-94',
-      topic: 'javascript',
-      question: 'What is String.toLowerCase()?',
-      code: `'HELLO'.toLowerCase()`,
-      options: ['"hello"', '"HELLO"', '"Hello"', 'Error'],
+      topic: 'javascri
+      code: `'HELLO'.toLow
       correctAnswer: 0,
-      explanation: 'toLowerCase() returns a new string with all characters converted to lowercase.',
       difficulty: 'easy'
-    },
     {
-      id: 'js-adv-95',
-      topic: 'javascript',
-      question: 'What is the output?',
+      topic: 'javascrip
       code: `console.log(parseFloat('10.5abc'));`,
-      options: ['10.5', 'NaN', 'Error', '10'],
       correctAnswer: 0,
-      explanation: 'parseFloat() parses a string and returns the floating point number, stopping at non-numeric characters.',
-      difficulty: 'medium'
-    },
+      
     {
-      id: 'js-adv-96',
-      topic: 'javascript',
-      question: 'What does Math.min() do?',
-      code: `Math.min(5, 2, 8)`,
-      options: ['5', '2', '8', '0'],
+      topic: 'javascri
+      code: `Math.min(5, 2
       correctAnswer: 1,
-      explanation: 'Math.min() returns the smallest of the provided numbers.',
       difficulty: 'easy'
-    },
     {
-      id: 'js-adv-97',
-      topic: 'javascript',
-      question: 'What is String.endsWith()?',
+      topic: 'javascrip
       code: `'hello'.endsWith('lo')`,
-      options: ['Returns index', 'Returns boolean', 'Returns substring', 'Error'],
       correctAnswer: 1,
-      explanation: 'endsWith() determines whether a string ends with the characters of a specified string.',
-      difficulty: 'easy'
-    },
+      
     {
-      id: 'js-adv-98',
-      topic: 'javascript',
-      question: 'What is the output?',
-      code: `console.log(5 % 2);`,
-      options: ['2', '2.5', '1', '0'],
+      topic: 'javascri
+      code: `console.log(5
       correctAnswer: 2,
-      explanation: 'The modulo operator (%) returns the remainder of division: 5 ÷ 2 has remainder 1.',
       difficulty: 'easy'
-    },
     {
-      id: 'js-adv-99',
-      topic: 'javascript',
-      question: 'What does Array.splice() do?',
+      topic: 'javascrip
       code: `const arr = [1,2,3];
-arr.splice(1, 1);`,
-      options: ['Returns removed elements', 'Modifies array and returns removed elements', 'Adds elements', 'Sorts array'],
-      correctAnswer: 1,
-      explanation: 'splice() changes an array by removing/replacing elements in place and returns an array of removed elements.',
-      difficulty: 'medium'
-    },
-    {
+      options: ['Returns
+      
+    }
+      id: 'js-adv-100'
+      question: 'What is M
+      options: ['4', '8', '16', '2'],
+      explanation: 'Math.sqrt() r
+    }
+}
+function generateTypeSc
+  
+    const templates = [
+      
+     
+        difficulty: (i
+      {
+        code: `type Result = UtilityTy
+        correctAnswer: 1,
+        difficulty: (i < 40 ? 'easy' : i < 70 ? 'medium' : '
+    ]
+    const template = templates[i % 2]
+      id: `ts-adv-${i}`,
+      
+  }
+  return quizzes
+
+  const quizzes: Quiz[] = []
+  for (let i = 11; i <= 100; i
+      {
+        code: `const va
+        correctAnswer: 1,
+        difficulty: (i <
+      
+     
+        explanation: '
+      }
+    
+    quizzes.push({
+      topic: 'react',
+    })
+  
+}
+functi
+  
+    const templates = 
+        question: `What do
+        options: ['Creates functions',
+        explanation: 'This is a Pyt
+      },
+        question: `What
+        options: ['A variable', 'Python syntax for specific functionality', 'An import', 'A module'],
+        explanation: 'This
+      
+    
+    quizzes.push({
+      topic: 'python',
+    })
+  
+}
+function generateDjango
+  
+    const templates = [
+      
+     
+        explanation: '
+      },
+        question: `What does ${['filter()', 'se
+        options: ['Deletes data', 'Quer
+        explanation: 'This is a Django ORM method that helps q
+      }
+    
+    quizzes.push({
+      
+    }
+  
+}
+function generateCSSQuizzes(): Quiz[] 
+  
+    const templates = [
+        question: `What
+        options: ['A CSS property', 'A CSS concept', 'A JavaScript feature', 'An HTML 
+        explanation: 'This
+      
+     
+        options: ['Add
+        explanation: 'This
+      }
+    
+    quizzes.push({
+      topic: 'css',
+    })
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       id: 'js-adv-100',
       topic: 'javascript',
       question: 'What is Math.sqrt()?',
