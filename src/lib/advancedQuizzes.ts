@@ -1,7 +1,7 @@
 import { Quiz } from './types'
 
-export const ADVANCED_QUIZZES: Quiz[] = [
-  {
+    id: 'js-adv-1',
+   
     id: 'js-adv-1',
     topic: 'javascript',
     question: 'What is a closure in JavaScript?',
@@ -14,22 +14,22 @@ export const ADVANCED_QUIZZES: Quiz[] = [
 const c = counter();
 console.log(c(), c());`,
     options: ['0 0', '1 2', '1 1', 'undefined undefined'],
-    correctAnswer: 1,
-    explanation: 'The closure maintains the count variable across multiple calls, so it returns 1, then 2.',
-    difficulty: 'hard'
-  },
   {
-    id: 'js-adv-2',
     topic: 'javascript',
-    question: 'What is event bubbling?',
-    code: `document.getElementById('parent').addEventListener('click', () => {
-  console.log('Parent clicked');
+    code: `document.ge
 });
-   
-document.getElementById('child').addEventListener('click', () => {
-  console.log('Child clicked');
+doc
 });`,
-    options: ['Events propagate from child to parent', 'Events propagate from parent to child', 'Events fire simultaneously', 'Events cancel each other'],
+    correctAnswer: 0,
+    difficulty: 'medium'
+  {
+    topic: 'javascript',
+   
+con
+    correctAnswer: 1,
+    difficulty: 'medium'
+  {
+    topic: 'typescript',
     correctAnswer: 0,
     explanation: 'Event bubbling means events propagate from the target element up through its ancestors.',
     difficulty: 'medium'
@@ -126,130 +126,130 @@ type PartialUser = Partial<User>;`,
   {
     id: 'react-adv-2',
     topic: 'react',
-    question: 'What does useMemo optimize?',
-    code: `const expensiveValue = useMemo(() => {
-  return computeExpensiveValue(a, b);
-}, [a, b]);`,
-    options: ['Component renders', 'Expensive calculations', 'Event handlers', 'State updates'],
-    correctAnswer: 1,
-    explanation: 'useMemo memoizes the result of expensive calculations and only recalculates when dependencies change.',
-    difficulty: 'hard'
   },
-  {
-    id: 'django-adv-1',
-    topic: 'django',
-    question: 'What is Django middleware?',
-    code: `class CustomMiddleware:
-    def __init__(self, get_response):
-        self.get_response = get_response`,
-    options: ['A database layer', 'Request/response processing hooks', 'A template engine', 'A URL router'],
-    correctAnswer: 1,
-    explanation: 'Middleware provides hooks for processing requests and responses globally before they reach views.',
-    difficulty: 'hard'
-  },
-  {
     id: 'django-adv-2',
-    topic: 'django',
-    question: 'What does select_related do?',
-    code: `User.objects.select_related('profile').all()`,
-    options: ['Filters results', 'Performs JOIN to reduce queries', 'Orders results', 'Counts results'],
-    correctAnswer: 1,
-    explanation: 'select_related performs SQL JOIN to fetch related objects in a single query, reducing database hits.',
-    difficulty: 'hard'
+    question: 'What does select_relat
+    options: 
+    explanation: 'select_related performs SQL JOIN to fetch related objects in a single query, r
   },
-  {
     id: 'django-adv-3',
-    topic: 'django',
-    question: 'What is prefetch_related used for?',
-    code: `Book.objects.prefetch_related('authors').all()`,
-    options: ['One-to-one relations', 'Many-to-many relations', 'Foreign keys only', 'Filtering'],
-    correctAnswer: 1,
-    explanation: 'prefetch_related optimizes many-to-many and reverse foreign key lookups with separate queries.',
-    difficulty: 'hard'
+    question: 'What is
+    
+   
   },
-  {
     id: 'css-adv-1',
-    topic: 'css',
-    question: 'What does CSS Grid "gap" property do?',
-    code: `.container {
+    question: 'What does CSS Grid "gap" pro
   display: grid;
-  gap: 20px;
 }`,
-    options: ['Border spacing', 'Space between grid items', 'Padding', 'Margin'],
     correctAnswer: 1,
-    explanation: 'The gap property creates space between grid items without affecting outer margins.',
     difficulty: 'medium'
-  },
   {
-    id: 'css-adv-2',
     topic: 'css',
-    question: 'What is CSS specificity?',
-    code: `#id .class element { }`,
-    options: ['Execution order', 'Rule priority calculation', 'Browser support', 'Animation timing'],
-    correctAnswer: 1,
-    explanation: 'Specificity determines which CSS rules apply when multiple rules target the same element.',
-    difficulty: 'medium'
-  },
+    code: `#id .class 
+    
+   
   {
-    id: 'css-adv-3',
     topic: 'css',
-    question: 'What does transform: translateZ do?',
     code: `.element {
-  transform: translateZ(50px);
 }`,
-    options: ['2D translation', '3D translation on Z-axis', 'Rotation', 'Scaling'],
     correctAnswer: 1,
-    explanation: 'translateZ moves elements along the Z-axis in 3D space, creating depth effects.',
-    difficulty: 'hard'
-  },
+    difficulty: 'hard
   {
-    id: 'css-adv-4',
     topic: 'css',
-    question: 'What is a CSS custom property?',
-    code: `:root {
-  --primary-color: blue;
+    
 }
-.element {
-  color: var(--primary-color);
-}`,
-    options: ['A class selector', 'A CSS variable', 'A pseudo-element', 'A media query'],
-    correctAnswer: 1,
-    explanation: 'CSS custom properties (variables) allow you to store and reuse values throughout your stylesheet.',
-    difficulty: 'medium'
+  color: var(--primary-
+    options: ['A cla
+    explanation: 'CSS custom properties (variables)
   },
-  {
     id: 'python-adv-1',
-    topic: 'python',
-    question: 'What is a decorator in Python?',
-    code: `@timer
+    question: 'What i
 def slow_function():
-    time.sleep(1)`,
-    options: ['A comment', 'A function modifier', 'A class method', 'An import statement'],
-    correctAnswer: 1,
-    explanation: 'Decorators are functions that modify the behavior of other functions or classes.',
-    difficulty: 'hard'
-  },
-  {
-    id: 'python-adv-2',
-    topic: 'python',
-    question: 'What does __init__ do in Python classes?',
-    code: `class Person:
-    def __init__(self, name):
-        self.name = name`,
-    options: ['Destroys objects', 'Initializes new objects', 'Static method', 'Class variable'],
-    correctAnswer: 1,
-    explanation: '__init__ is the constructor method called when creating new instances of a class.',
-    difficulty: 'medium'
-  },
-  {
-    id: 'python-adv-3',
-    topic: 'python',
-    question: 'What is list slicing in Python?',
-    code: `nums = [0, 1, 2, 3, 4]
-result = nums[1:4]`,
-    options: ['[1, 2, 3]', '[1, 2, 3, 4]', '[0, 1, 2, 3]', '[2, 3, 4]'],
-    correctAnswer: 0,
-    explanation: 'List slicing [start:end] returns elements from start index up to (but not including) end index.',
-    difficulty: 'easy'
+    options: ['A comme
+    
   }
+    id: 'python-adv-
+    question: 'Wh
+    def __init__(self, name):
+    options: ['Destroys
+    explanation:
+  },
+   
+    question: 'What is list slicing in Python?',
+result = nums[1:4]`,
+    correctAnswer: 0,
+    difficulty: 'easy'
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
