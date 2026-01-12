@@ -1,7 +1,7 @@
 import { Quiz } from './types'
 
-    id: 'js-adv-1',
-   
+export const ADVANCED_QUIZZES: Quiz[] = [
+  {
     id: 'js-adv-1',
     topic: 'javascript',
     question: 'What is a closure in JavaScript?',
@@ -14,23 +14,22 @@ import { Quiz } from './types'
 const c = counter();
 console.log(c(), c());`,
     options: ['0 0', '1 2', '1 1', 'undefined undefined'],
-  {
-    topic: 'javascript',
-    code: `document.ge
-});
-doc
-});`,
-    correctAnswer: 0,
-    difficulty: 'medium'
-  {
-    topic: 'javascript',
-   
-con
     correctAnswer: 1,
+    explanation: 'Closures allow inner functions to access variables from their outer scope. The counter increments each call, returning 1 then 2.',
     difficulty: 'medium'
+  },
   {
-    topic: 'typescript',
-    correctAnswer: 0,
+    id: 'js-adv-2',
+    topic: 'javascript',
+    question: 'What is event bubbling in JavaScript?',
+    code: `document.getElementById('child').addEventListener('click', () => {
+  console.log('child');
+});
+document.getElementById('parent').addEventListener('click', () => {
+  console.log('parent');
+});`,
+    options: ['Events propagate from parent to child', 'Events propagate from child to parent', 'Events only fire on the target', 'Events fire randomly'],
+    correctAnswer: 1,
     explanation: 'Event bubbling means events propagate from the target element up through its ancestors.',
     difficulty: 'medium'
   },
@@ -126,130 +125,88 @@ type PartialUser = Partial<User>;`,
   {
     id: 'react-adv-2',
     topic: 'react',
-  },
-    id: 'django-adv-2',
-    question: 'What does select_relat
-    options: 
-    explanation: 'select_related performs SQL JOIN to fetch related objects in a single query, r
-  },
-    id: 'django-adv-3',
-    question: 'What is
-    
-   
-  },
-    id: 'css-adv-1',
-    question: 'What does CSS Grid "gap" pro
-  display: grid;
-}`,
+    question: 'What is the purpose of the key prop in React lists?',
+    code: `const items = ['a', 'b', 'c'];
+items.map((item, index) => 
+  <li key={index}>{item}</li>
+);`,
+    options: ['Styling elements', 'Identifying elements for efficient updates', 'Setting event handlers', 'Creating unique IDs'],
     correctAnswer: 1,
+    explanation: 'Keys help React identify which items have changed, been added, or removed, enabling efficient DOM updates.',
     difficulty: 'medium'
+  },
   {
+    id: 'css-adv-1',
     topic: 'css',
-    code: `#id .class 
-    
-   
-  {
-    topic: 'css',
-    code: `.element {
+    question: 'What does CSS Grid "gap" property do?',
+    code: `.container {
+  display: grid;
+  gap: 20px;
 }`,
+    options: ['Sets padding inside elements', 'Sets space between grid items', 'Sets margin outside the container', 'Sets border width'],
     correctAnswer: 1,
-    difficulty: 'hard
+    explanation: 'The gap property sets the spacing between grid items (rows and columns) in CSS Grid layouts.',
+    difficulty: 'medium'
+  },
   {
+    id: 'css-adv-2',
     topic: 'css',
-    
+    question: 'What is CSS specificity?',
+    code: `#id .class div { }  /* A */
+.class div { }       /* B */`,
+    options: ['How fast CSS loads', 'Weight of selectors determining which styles apply', 'Order of CSS rules', 'CSS validation'],
+    correctAnswer: 1,
+    explanation: 'CSS specificity determines which style rules take precedence based on selector weight (IDs > classes > elements).',
+    difficulty: 'hard'
+  },
+  {
+    id: 'css-adv-3',
+    topic: 'css',
+    question: 'What are CSS custom properties (variables)?',
+    code: `:root {
+  --primary-color: blue;
 }
-  color: var(--primary-
-    options: ['A cla
-    explanation: 'CSS custom properties (variables)
+.element {
+  color: var(--primary-color);
+}`,
+    options: ['A class name', 'Reusable values that can be referenced', 'A pseudo-class', 'An attribute selector'],
+    correctAnswer: 1,
+    explanation: 'CSS custom properties (variables) allow storing and reusing values throughout stylesheets using the var() function.',
+    difficulty: 'medium'
   },
+  {
     id: 'python-adv-1',
-    question: 'What i
+    topic: 'python',
+    question: 'What is a decorator in Python?',
+    code: `@cache
 def slow_function():
-    options: ['A comme
-    
-  }
-    id: 'python-adv-
-    question: 'Wh
-    def __init__(self, name):
-    options: ['Destroys
-    explanation:
+    return expensive_computation()`,
+    options: ['A comment', 'A function that modifies another function', 'A type annotation', 'A class method'],
+    correctAnswer: 1,
+    explanation: 'Decorators are functions that modify the behavior of other functions or classes, using the @ syntax.',
+    difficulty: 'hard'
   },
-   
-    question: 'What is list slicing in Python?',
-result = nums[1:4]`,
-    correctAnswer: 0,
+  {
+    id: 'python-adv-2',
+    topic: 'python',
+    question: 'What is the __init__ method in Python?',
+    code: `class Person:
+    def __init__(self, name):
+        self.name = name`,
+    options: ['Destroys objects', 'Initializes new objects', 'Compares objects', 'Converts to string'],
+    correctAnswer: 1,
+    explanation: 'The __init__ method is a constructor that initializes new instances of a class with initial values.',
     difficulty: 'easy'
+  },
+  {
+    id: 'python-adv-3',
+    topic: 'python',
+    question: 'What is list slicing in Python?',
+    code: `nums = [0, 1, 2, 3, 4, 5]
+result = nums[1:4]`,
+    options: ['[1, 2, 3]', '[1, 2, 3, 4]', '[0, 1, 2, 3]', '[2, 3, 4]'],
+    correctAnswer: 0,
+    explanation: 'List slicing extracts a portion of a list. [1:4] means start at index 1 (inclusive) and end at index 4 (exclusive).',
+    difficulty: 'easy'
+  }
 ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
